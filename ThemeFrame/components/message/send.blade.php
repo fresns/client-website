@@ -16,7 +16,7 @@
                             name="messageImage"
                             accept="{{ fs_post_editor('image.inputAccept') }}"
                             data-type="image"
-                            data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/uploads']) }}"
+                            data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}"
                             data-send-action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/conversation/message']) }}"
                             data-user-fsid="{{ $user['fsid'] }}">
                     @endif
@@ -27,7 +27,7 @@
                             name="messageVideo"
                             accept="{{ fs_post_editor('video.inputAccept') }}"
                             data-type="video"
-                            data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/uploads']) }}"
+                            data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}"
                             data-send-action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/conversation/message']) }}"
                             data-user-fsid="{{ $user['fsid'] }}">
                     @endif
@@ -38,7 +38,7 @@
                             name="messageAudio"
                             accept="{{ fs_post_editor('audio.inputAccept') }}"
                             data-type="audio"
-                            data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/uploads']) }}"
+                            data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}"
                             data-send-action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/conversation/message']) }}"
                             data-user-fsid="{{ $user['fsid'] }}">
                     @endif
@@ -49,7 +49,7 @@
                             name="messageDocument"
                             accept="{{ fs_post_editor('document.inputAccept') }}"
                             data-type="document"
-                            data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/uploads']) }}"
+                            data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}"
                             data-send-action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/conversation/message']) }}"
                             data-user-fsid="{{ $user['fsid'] }}">
                     @endif

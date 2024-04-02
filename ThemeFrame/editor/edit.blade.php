@@ -172,12 +172,11 @@
                     <form class="mt-2" method="post" id="upload-form" multiple="true" enctype="multipart/form-data">
                         <input type="hidden" name="usageType" @if ($type === 'post') value="postDraft" @elseif($type === "comment") value="commentDraft" @endif>
                         <input type="hidden" name="usageFsid" value="{{ $draft['detail']['did'] }}">
-                        <input type="hidden" name="uploadMode" value="file">
                         <input type="hidden" name="type">
                         <input class="form-control" type="file" id="formFile">
                         <label class="form-label mt-3 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipExtensions') }}: <span id="extensions"></span></label>
                         <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipMaxSize') }}: <span id="maxSize"></span> MB</label>
-                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block" id="maxTimeDiv">{{ fs_lang('editorUploadTipMaxTime') }}: <span id="maxTime"></span> {{ fs_lang('unitSecond') }}</label>
+                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block" id="maxDurationDiv">{{ fs_lang('editorUploadTipMaxDuration') }}: <span id="maxDuration"></span> {{ fs_lang('unitSecond') }}</label>
                         <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipNumber') }}: <span id="maxNumber"></span></label>
                     </form>
                 </div>
@@ -387,13 +386,14 @@
 
         (function($){
             let fileUploadModal = document.getElementById('fresns-upload');
+
             fileUploadModal.addEventListener('show.bs.modal', function (event) {
                 let button = event.relatedTarget,
                     extensions = $(button).data('extensions'),
                     type = $(button).data('type'),
                     accept = $(button).data('accept'),
-                    maxSize = $(button).data('maxsize');
-                    maxTime = $(button).data('maxtime') ?? 0;
+                    maxSize = $(button).data('maxsize'),
+                    maxDuration = $(button).data('maxduration') ?? 0,
                     maxNumber = $(button).data('maxnumber');
 
                 if ($.inArray(type, ['document', 'image']) >= 0 ) {
@@ -402,16 +402,16 @@
                     $("#formFile").removeAttr('multiple')
                 }
 
-                if (maxTime == 0) {
-                    $(this).find("#maxTimeDiv").addClass('d-none');
+                if (maxDuration == 0) {
+                    $(this).find("#maxDurationDiv").addClass('d-none');
                 } else {
-                    $(this).find("#maxTimeDiv").removeClass('d-none');
+                    $(this).find("#maxDurationDiv").removeClass('d-none');
                 }
 
                 $("#formFile").prop('accept', accept)
                 $("#extensions").text(extensions);
                 $("#maxSize").text(maxSize);
-                $("#maxTime").text(maxTime);
+                $("#maxDuration").text(maxDuration);
                 $("#maxNumber").text(maxNumber);
                 $("#fresns-upload input[name='type']").val(type);
             })
@@ -458,7 +458,7 @@
                     individualForm.append('file', file);
 
                     $.ajax({
-                        url: "{{ route('fresns.api.post', ['path' => '/api/fresns/v1/common/file/uploads']) }}",
+                        url: "{{ route('fresns.api.post', ['path' => '/api/fresns/v1/common/file/upload']) }}",
                         type: "POST",
                         data: individualForm,
                         timeout: 600000,

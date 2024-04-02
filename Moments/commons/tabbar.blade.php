@@ -1,6 +1,8 @@
 @if (Route::is([
     'fresns.home',
     'fresns.portal',
+    'fresns.login',
+    'fresns.custom.page',
     'fresns.post.index',
     'fresns.nearby.posts',
     'fresns.group.index',

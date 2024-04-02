@@ -4,6 +4,14 @@
  * Licensed under the Apache-2.0 license
  */
 
+/* Fresns Token */
+$.ajaxSetup({
+    headers: {
+        Accept: 'application/json',
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    },
+});
+
 // utc timezone
 const now = new Date();
 const timezoneOffsetInHours = now.getTimezoneOffset() / -60;
@@ -13,7 +21,11 @@ Cookies.set('fresns_timezone', fresnsTimezone);
 // bootstrap Tooltips
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
+    var title = tooltipTriggerEl.getAttribute('title') || tooltipTriggerEl.getAttribute('data-bs-title');
+
+    if (title) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    }
 });
 
 // set timeout toast hide
@@ -30,14 +42,6 @@ const setTimeoutToastHide = () => {
         }, 1500);
     });
 };
-
-/* Fresns Token */
-$.ajaxSetup({
-    headers: {
-        Accept: 'application/json',
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    },
-});
 
 // fs_lang
 window.fs_lang = function (key, replace = {}) {
@@ -856,7 +860,6 @@ window.buildAjaxAndSubmit = function (url, body, succeededCallback, failedCallba
         formData.append('usageType', 'userAvatar');
         formData.append('usageFsid', uidOrUsername);
         formData.append('type', 'image');
-        formData.append('uploadMode', 'file');
 
         $.ajax({
             url: uploadAction,
@@ -898,7 +901,6 @@ window.buildAjaxAndSubmit = function (url, body, succeededCallback, failedCallba
         formData.append('usageType', 'conversation');
         formData.append('usageFsid', uidOrUsername);
         formData.append('type', type);
-        formData.append('uploadMode', 'file');
 
         $.ajax({
             url: uploadAction,

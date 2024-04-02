@@ -41,7 +41,7 @@
                 data-accept="{{ $editorConfig['image']['inputAccept'] }}"
                 data-extensions="{{ $editorConfig['image']['extensions'] }}"
                 data-maxsize="{{ $editorConfig['image']['maxSize'] }}"
-                data-maxnumber="{{ $editorConfig['image']['uploadNumber'] }}">
+                data-maxnumber="{{ $editorConfig['image']['maxUploadNumber'] }}">
                 <div class="d-flex flex-column">
                     <i class="fa-regular fa-image"></i>
                     <span>{{ fs_lang('editorImages') }}</span>
@@ -71,8 +71,8 @@
                 data-accept="{{ $editorConfig['video']['inputAccept'] }}"
                 data-extensions="{{ $editorConfig['video']['extensions'] }}"
                 data-maxsize="{{ $editorConfig['video']['maxSize'] }}"
-                data-maxtime="{{ $editorConfig['video']['maxTime'] }}"
-                data-maxnumber="{{ $editorConfig['video']['uploadNumber'] }}">
+                data-maxduration="{{ $editorConfig['video']['maxDuration'] }}"
+                data-maxnumber="{{ $editorConfig['video']['maxUploadNumber'] }}">
                 <div class="d-flex flex-column">
                     <i class="fa-solid fa-video"></i>
                     <span>{{ fs_lang('editorVideos') }}</span>
@@ -102,8 +102,8 @@
                 data-accept="{{ $editorConfig['audio']['inputAccept'] }}"
                 data-extensions="{{ $editorConfig['audio']['extensions'] }}"
                 data-maxsize="{{ $editorConfig['audio']['maxSize'] }}"
-                data-maxtime="{{ $editorConfig['audio']['maxTime'] }}"
-                data-maxnumber="{{ $editorConfig['audio']['uploadNumber'] }}">
+                data-maxduration="{{ $editorConfig['audio']['maxDuration'] }}"
+                data-maxnumber="{{ $editorConfig['audio']['maxUploadNumber'] }}">
                 <div class="d-flex flex-column">
                     <i class="fa-solid fa-music"></i>
                     <span>{{ fs_lang('editorAudios') }}</span>
@@ -133,7 +133,7 @@
                 data-accept="{{ $editorConfig['document']['inputAccept'] }}"
                 data-extensions="{{ $editorConfig['document']['extensions'] }}"
                 data-maxsize="{{ $editorConfig['document']['maxSize'] }}"
-                data-maxnumber="{{ $editorConfig['document']['uploadNumber'] }}">
+                data-maxnumber="{{ $editorConfig['document']['maxUploadNumber'] }}">
                 <div class="d-flex flex-column">
                     <i class="fa-solid fa-box-archive"></i>
                     <span>{{ fs_lang('editorDocuments') }}</span>

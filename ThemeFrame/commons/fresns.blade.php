@@ -139,6 +139,7 @@
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/js-cookie.min.js"></script>
     <script src="/static/js/iframeResizer.min.js"></script>
+    <script src="/static/js/fresns-callback.js"></script>
     <script>
         window.ajaxGetList = false;
         window.siteName = "{{ fs_config('site_name') }}";

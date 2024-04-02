@@ -22,10 +22,12 @@
         @if (fs_user()->check() && Route::is([
             'fresns.home',
             'fresns.portal',
+            'fresns.login',
+            'fresns.custom.page',
             'fresns.*.index',
             'fresns.*.list',
-            'fresns.*.location',
-            'fresns.*.nearby',
+            'fresns.geotag.*',
+            'fresns.nearby.*',
             'fresns.timeline.*',
             'fresns.group.detail',
         ]) && ! Route::is([

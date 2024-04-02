@@ -60,28 +60,14 @@ $('#fresnsModal.fresnsExtensions').on('show.bs.modal', function (e) {
 
 // fresns extensions callback
 window.onmessage = function (event) {
-    let fresnsCallback;
+    let callbackData = FresnsCallback.decode(event.data);
 
-    try {
-        fresnsCallback = JSON.parse(event.data);
-    } catch (error) {
+    if (callbackData.code != 0) {
+        tips(callbackData.message);
         return;
     }
 
-    console.log('fresnsCallback', fresnsCallback);
-
-    if (!fresnsCallback) {
-        return;
-    }
-
-    if (fresnsCallback.code != 0) {
-        if (fresnsCallback.message) {
-            tips(fresnsCallback.message, fresnsCallback.code);
-        }
-        return;
-    }
-
-    switch (fresnsCallback.action.postMessageKey) {
+    switch (callbackData.action.postMessageKey) {
         case 'reload':
             window.location.reload();
             break;
@@ -103,7 +89,7 @@ window.onmessage = function (event) {
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    loginToken: fresnsCallback.data.loginToken,
+                    loginToken: callbackData.data.loginToken,
                 }),
                 success: function (res) {
                     if (res.code !== 0) {
@@ -144,8 +130,8 @@ window.onmessage = function (event) {
             break;
 
         case 'fresnsEditorUpload':
-            if (fresnsCallback.action.dataHandler == 'add') {
-                fresnsCallback.data.forEach((fileInfo) => {
+            if (callbackData.action.dataHandler == 'add') {
+                callbackData.data.forEach((fileInfo) => {
                     addEditorFile(fileInfo);
                 });
 
@@ -156,13 +142,11 @@ window.onmessage = function (event) {
             break;
     }
 
-    if (fresnsCallback.action.windowClose) {
+    if (callbackData.action.windowClose) {
         $('#fresnsModal').modal('hide');
     }
 
-    if (fresnsCallback.action.redirectUrl) {
-        window.location.href = fresnsCallback.action.redirectUrl;
+    if (callbackData.action.redirectUrl) {
+        window.location.href = callbackData.action.redirectUrl;
     }
-
-    console.log('fresnsCallback end');
 };

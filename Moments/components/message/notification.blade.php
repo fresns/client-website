@@ -109,10 +109,14 @@
                         @break
 
                         @case(4)
-                            {{ fs_config('post_name') }}
+                            {{ fs_config('geotag_name') }}
                         @break
 
                         @case(5)
+                            {{ fs_config('post_name') }}
+                        @break
+
+                        @case(6)
                             {{ fs_config('comment_name') }}
                         @break
 
@@ -195,6 +199,10 @@
                 @break
 
                 @case(4)
+                    <a href="{{ fs_route(route('fresns.geotag.detail', ['gtid' => $notification['actionInfo']['gtid']])) }}" class="text-decoration-none text-secondary mt-2"><span class="badge text-bg-primary">{{ $notification['actionInfo']['name'] }}</span></a>
+                @break
+
+                @case(5)
                     <section class="comment-post mt-2 position-relative">
                         <div class="d-flex">
                             <div class="flex-shrink-0"><img src="{{ $notification['actionInfo']['author']['avatar'] }}" loading="lazy" class="rounded"></div>
@@ -207,7 +215,7 @@
                     </section>
                 @break
 
-                @case(5)
+                @case(6)
                     <section class="comment-post mt-2 position-relative">
                         <div class="d-flex">
                             <div class="flex-shrink-0"><img src="{{ $notification['actionInfo']['author']['avatar'] }}" loading="lazy" class="rounded"></div>
