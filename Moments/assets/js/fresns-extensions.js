@@ -62,6 +62,11 @@ $('#fresnsModal.fresnsExtensions').on('show.bs.modal', function (e) {
 window.onmessage = function (event) {
     let callbackData = FresnsCallback.decode(event.data);
 
+    if (callbackData.code == 40000) {
+        // callback data format error
+        return;
+    }
+
     if (callbackData.code != 0) {
         tips(callbackData.message);
         return;
@@ -131,13 +136,13 @@ window.onmessage = function (event) {
 
         case 'fresnsEditorUpload':
             if (callbackData.action.dataHandler == 'add') {
-                callbackData.data.forEach((fileInfo) => {
+                if (Array.isArray(callbackData.data)) {
+                    callbackData.data.forEach((fileInfo) => {
+                        addEditorFile(fileInfo);
+                    });
+                } else {
                     addEditorFile(fileInfo);
-                });
-
-                $('#fresnsModal').modal('hide');
-
-                return;
+                }
             }
             break;
     }
