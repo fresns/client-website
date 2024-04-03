@@ -160,7 +160,7 @@
                         <label class="form-label mt-3 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipExtensions') }}: <span id="extensions"></span></label>
                         <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipMaxSize') }}: <span id="maxSize"></span> MB</label>
                         <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block" id="maxDurationDiv">{{ fs_lang('editorUploadTipMaxDuration') }}: <span id="maxDuration"></span> {{ fs_lang('unitSecond') }}</label>
-                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipNumber') }}: <span id="maxNumber"></span></label>
+                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipMaxNumber') }}: <span id="maxNumber"></span></label>
                     </form>
                 </div>
                 <div class="modal-footer">
