@@ -141,7 +141,7 @@ window.onmessage = function (event) {
                         addEditorFile(fileInfo);
                     });
                 } else {
-                    addEditorFile(fileInfo);
+                    addEditorFile(callbackData.data);
                 }
             }
             break;

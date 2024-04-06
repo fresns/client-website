@@ -448,12 +448,14 @@
                         processData: false,
                         contentType: false,
                         enctype: 'multipart/form-data',
-                        success: function (resp) {
-                            if (resp.code === 0) {
-                                addEditorFile(resp.data);
-                            } else {
-                                tips(resp.message, resp.code);
+                        success: function (res) {
+                            if (res.code != 0) {
+                                tips(res.message, res.code);
+
+                                return;
                             }
+                            
+                            addEditorFile(res.data);
 
                             if (index === files.length - 1) {
                                 progress.done();
