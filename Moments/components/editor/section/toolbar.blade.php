@@ -49,7 +49,7 @@
             </button>
         @else
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
-                data-title="{{ fs_lang('editorUploadTip') }}"
+                data-title="{{ fs_lang('uploadTip') }}"
                 data-url="{{ $editorConfig['image']['uploadUrl'] }}"
                 data-draft-type="{{ $type }}"
                 data-did="{{ $did }}"
@@ -80,7 +80,7 @@
             </button>
         @else
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
-                data-title="{{ fs_lang('editorUploadTip') }}"
+                data-title="{{ fs_lang('uploadTip') }}"
                 data-url="{{ $editorConfig['video']['uploadUrl'] }}"
                 data-draft-type="{{ $type }}"
                 data-did="{{ $did }}"
@@ -111,7 +111,7 @@
             </button>
         @else
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
-                data-title="{{ fs_lang('editorUploadTip') }}"
+                data-title="{{ fs_lang('uploadTip') }}"
                 data-url="{{ $editorConfig['audio']['uploadUrl'] }}"
                 data-draft-type="{{ $type }}"
                 data-did="{{ $did }}"
@@ -141,7 +141,7 @@
             </button>
         @else
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
-                data-title="{{ fs_lang('editorUploadTip') }}"
+                data-title="{{ fs_lang('uploadTip') }}"
                 data-url="{{ $editorConfig['document']['uploadUrl'] }}"
                 data-draft-type="{{ $type }}"
                 data-did="{{ $did }}"

@@ -148,7 +148,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{ fs_lang('editorUploadTip') }}</h5>
+                    <h5 class="modal-title">{{ fs_lang('uploadTip') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -157,14 +157,14 @@
                         <input type="hidden" name="usageFsid" value="{{ $draft['detail']['did'] }}">
                         <input type="hidden" name="type">
                         <input class="form-control" type="file" id="formFile">
-                        <label class="form-label mt-3 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipExtensions') }}: <span id="extensions"></span></label>
-                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipMaxSize') }}: <span id="maxSize"></span> MB</label>
-                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block" id="maxDurationDiv">{{ fs_lang('editorUploadTipMaxDuration') }}: <span id="maxDuration"></span> {{ fs_lang('unitSecond') }}</label>
-                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('editorUploadTipMaxNumber') }}: <span id="maxNumber"></span></label>
+                        <label class="form-label mt-3 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('uploadTipExtensions') }}: <span id="extensions"></span></label>
+                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('uploadTipMaxSize') }}: <span id="maxSize"></span> MB</label>
+                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block" id="maxDurationDiv">{{ fs_lang('uploadTipMaxDuration') }}: <span id="maxDuration"></span> {{ fs_lang('unitSecond') }}</label>
+                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('uploadTipMaxNumber') }}: <span id="maxNumber"></span></label>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="ajax-upload">{{ fs_lang('editorUploadButton') }}</button>
+                    <button type="button" class="btn btn-primary" id="ajax-upload">{{ fs_lang('uploadButton') }}</button>
                     <div class="progress w-100 d-none" id="upload-progress"></div>
                 </div>
             </div>
@@ -301,7 +301,7 @@
                         </button>
                     </div>
                     <div class="position-absolute top-50 start-50 translate-middle">
-                        <button type="button" class="btn btn-light editor-btn-video-play" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ fs_lang('editorVideoPlay') }}" title="{{ fs_lang('editorVideoPlay') }}">
+                        <button type="button" class="btn btn-light editor-btn-video-play" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ fs_lang('editorVideoPlayTip') }}" title="{{ fs_lang('editorVideoPlayTip') }}">
                             <i class="fa-solid fa-play"></i>
                         </button>
                     </div>
@@ -397,7 +397,7 @@
                 $("#maxDuration").text(maxDuration);
                 $("#maxNumber").text(maxNumber);
                 $("#fresns-upload input[name='type']").val(type);
-            })
+            });
 
             $(".fresns-sticker").on('click',function (){
                 $("#content").trigger('click').insertAtCaret("[" + $(this).attr('value') + "]");
@@ -421,7 +421,7 @@
                 }
 
                 if (!files.length) {
-                    alert("{{ fs_lang('editorUploadTip') }}");
+                    alert("{{ fs_lang('uploadTip') }}");
                     return;
                 }
 
@@ -433,7 +433,7 @@
 
                 $.each(files, function (index, file) {
                     if (file.size > maxSize * 1024 * 1024) {
-                        alert("{{ fs_lang('editorUploadTipMaxSize') }}: " + maxSize + "MB");
+                        alert("{{ fs_lang('uploadTipMaxSize') }}: " + maxSize + "MB");
                         return false;
                     }
 
