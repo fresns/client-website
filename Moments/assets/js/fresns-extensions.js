@@ -154,4 +154,16 @@ window.onmessage = function (event) {
     if (callbackData.action.redirectUrl) {
         window.location.href = callbackData.action.redirectUrl;
     }
+
+    switch (callbackData.action.dataHandler) {
+        case 'add':
+            break;
+
+        case 'remove':
+            break;
+
+        case 'reload':
+            window.location.reload();
+            break;
+    }
 };
