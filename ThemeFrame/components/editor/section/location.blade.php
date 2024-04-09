@@ -1,7 +1,7 @@
 @if ($geotag || $locationInfo)
     @php
-        $name = ($geotag['name'] ?: '') ?? $locationInfo['name'];
-        $locationInfo = ($geotag ? $geotag['mapId'].','.$geotag['latitude'].','.$geotag['longitude'] : '') ?? $locationInfo['mapId'].','.$locationInfo['latitude'].','.$locationInfo['longitude'];
+        $name = $geotag ? $geotag['name'] : $locationInfo['name'];
+        $locationInfo = $geotag ? $geotag['mapId'].','.$geotag['latitude'].','.$geotag['longitude'] : $locationInfo['mapId'].','.$locationInfo['latitude'].','.$locationInfo['longitude'];
     @endphp
 
     <div class="dropup me-auto" id="location-info">
