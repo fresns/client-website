@@ -733,12 +733,12 @@ header .navbar {
     width: auto;
     max-width: 31%;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-image-1 .position-relative {
     width: auto;
     max-width: 60%;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-image-1 input {
     display: none;
@@ -748,56 +748,56 @@ header .navbar {
     width: auto;
     max-width: 48%;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-image-3 .position-relative {
     float: left;
     width: auto;
     max-width: 31%;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-image-4 .position-relative {
     float: left;
     width: auto;
     max-width: 48%;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-image-5 .position-relative {
     float: left;
     width: auto;
     max-width: 31%;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-image-6 .position-relative {
     float: left;
     width: auto;
     max-width: 31%;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-image-7 .position-relative {
     float: left;
     width: auto;
     max-width: 31%;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-image-8 .position-relative {
     float: left;
     width: auto;
     max-width: 31%;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-image-9 .position-relative {
     float: left;
     width: auto;
     max-width: 31%;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 /* file video */
@@ -806,7 +806,7 @@ header .navbar {
     max-width: 48%;
     float: left;
     margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-btn-video-play {
     line-height: 0rem;
@@ -821,12 +821,12 @@ header .navbar {
     width: 100%;
 }
 .editor-file-audio .position-relative {
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 /* file document */
 .editor-file-document .position-relative {
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 .editor-file-document .editor-document-box {
     margin-bottom: 1rem;
