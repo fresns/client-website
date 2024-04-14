@@ -1133,7 +1133,16 @@ var maxProgress = 50;
 
 var fresnsFile = {
     // get file data
-    uploadRequest: function (usageType, usageFsid, fileType, uploadType, files, supportedExtensions, maxSize, maxDuration = 0) {
+    uploadRequest: function (
+        usageType,
+        usageFsid,
+        fileType,
+        uploadType,
+        files,
+        supportedExtensions,
+        maxSize,
+        maxDuration = 0
+    ) {
         if (!files.length) {
             alert(fs_lang('uploadTip'));
             return;
@@ -1148,7 +1157,7 @@ var fresnsFile = {
         clearInterval(progressInterval);
 
         // Adjusting progress bar increment dynamically
-        progressInterval = setInterval(function() {
+        progressInterval = setInterval(function () {
             var currentProgress = parseInt($('#uploadProgressBar').attr('aria-valuenow'));
             var increment = 0;
 
@@ -1164,7 +1173,10 @@ var fresnsFile = {
             newProgress = newProgress > 100 ? 100 : newProgress;
 
             $('#uploadProgressBar').attr('aria-valuenow', newProgress);
-            $('#uploadProgressBar').find('.progress-bar').css('width', newProgress + '%').text(newProgress + '%');
+            $('#uploadProgressBar')
+                .find('.progress-bar')
+                .css('width', newProgress + '%')
+                .text(newProgress + '%');
 
             if (newProgress >= 100 || numberUploaded === numberFiles) {
                 clearInterval(progressInterval);
@@ -1172,13 +1184,31 @@ var fresnsFile = {
         }, 500);
 
         // upload
-        Array.from(files).forEach(file => {
-            fresnsFile.getFileData(usageType, usageFsid, fileType, uploadType, file, supportedExtensions, maxSize, maxDuration);
+        Array.from(files).forEach((file) => {
+            fresnsFile.getFileData(
+                usageType,
+                usageFsid,
+                fileType,
+                uploadType,
+                file,
+                supportedExtensions,
+                maxSize,
+                maxDuration
+            );
         });
     },
 
     // get file data
-    getFileData: function (usageType, usageFsid, fileType, uploadType, file, supportedExtensions, maxSize, maxDuration) {
+    getFileData: function (
+        usageType,
+        usageFsid,
+        fileType,
+        uploadType,
+        file,
+        supportedExtensions,
+        maxSize,
+        maxDuration
+    ) {
         function proceedWithUpload(fileType, fileData) {
             console.log('fileData', fileType, fileData);
 
@@ -1211,7 +1241,7 @@ var fresnsFile = {
 
         if (fileType == 'image') {
             const image = new Image();
-            image.onload = function() {
+            image.onload = function () {
                 fileData.width = this.naturalWidth;
                 fileData.height = this.naturalHeight;
 
@@ -1221,8 +1251,8 @@ var fresnsFile = {
                 // upload file
                 proceedWithUpload(fileType, fileData);
             };
-            image.onerror = function() {
-                console.error("Error loading image");
+            image.onerror = function () {
+                console.error('Error loading image');
             };
             image.src = URL.createObjectURL(file);
 
@@ -1232,7 +1262,7 @@ var fresnsFile = {
         if (fileType == 'video' || fileType == 'audio') {
             const media = document.createElement(fileType);
             media.preload = 'metadata';
-            media.onloadedmetadata = function() {
+            media.onloadedmetadata = function () {
                 fileData.width = fileType == 'video' ? media.videoWidth : null;
                 fileData.height = fileType == 'video' ? media.videoHeight : null;
                 fileData.duration = Math.round(media.duration);
@@ -1243,7 +1273,7 @@ var fresnsFile = {
                 // upload file
                 proceedWithUpload(fileType, fileData);
             };
-            media.onerror = function() {
+            media.onerror = function () {
                 console.error(`Error loading ${fileType}`);
             };
             media.src = URL.createObjectURL(file);
@@ -1385,7 +1415,7 @@ var fresnsFile = {
                         $('#uploadSubmit').prop('disabled', false);
                         $('#uploadSubmit').find('.spinner-border').remove();
 
-                        $("#fresnsUploadModal .btn-close").trigger('click');
+                        $('#fresnsUploadModal .btn-close').trigger('click');
 
                         $('#uploadProgressBar').attr('aria-valuenow', 100);
                         $('#uploadProgressBar').find('.progress-bar').css('width', '100%').text('100%');
@@ -1450,7 +1480,7 @@ var fresnsFile = {
                     $('#uploadSubmit').prop('disabled', false);
                     $('#uploadSubmit').find('.spinner-border').remove();
 
-                    $("#fresnsUploadModal .btn-close").trigger('click');
+                    $('#fresnsUploadModal .btn-close').trigger('click');
 
                     $('#uploadProgressBar').attr('aria-valuenow', 100);
                     $('#uploadProgressBar').find('.progress-bar').css('width', '100%').text('100%');
