@@ -31,7 +31,9 @@ $('#fresnsModal').on('show.bs.modal', function (e) {
     }
 
     if (modalWidth && modalHeight != '100%') {
-        $(this).find('.modal-dialog').css('max-width:' + modalWidth +'px;');
+        $(this)
+            .find('.modal-dialog')
+            .css('max-width:' + modalWidth + 'px;');
     }
 
     let loadingTip = `<div class="d-flex justify-content-center py-5">
@@ -61,7 +63,12 @@ $('#fresnsModal').on('show.bs.modal', function (e) {
         });
     }
 
-    let inputHtml = '<iframe src="' + url + '" class="iframe-modal" scrolling="yes" style="min-height:' + modalHeight + ';"></iframe>';
+    let inputHtml =
+        '<iframe src="' +
+        url +
+        '" class="iframe-modal" scrolling="yes" style="min-height:' +
+        modalHeight +
+        ';"></iframe>';
 
     $(this).find('.modal-body').empty().html(inputHtml);
 });
