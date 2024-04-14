@@ -161,29 +161,36 @@
     </div>
 
     {{-- Upload Modal --}}
-    <div class="modal fade" id="fresns-upload" tabindex="-1" aria-labelledby="fresns-upload" aria-hidden="true">
+    <div class="modal fade" id="fresnsUploadModal" tabindex="-1" aria-labelledby="fresnsUploadModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">{{ fs_lang('uploadTip') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form class="mt-2" method="post" id="upload-form" multiple="true" enctype="multipart/form-data">
-                        <input type="hidden" name="usageType" @if ($type === 'post') value="postDraft" @elseif($type === "comment") value="commentDraft" @endif>
+                <form class="mt-2" id="upload-form" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <input type="hidden" name="usageType" @if ($type === 'post') value="postDraft" @elseif ($type === "comment") value="commentDraft" @endif>
                         <input type="hidden" name="usageFsid" value="{{ $draft['detail']['did'] }}">
-                        <input type="hidden" name="type">
-                        <input class="form-control" type="file" id="formFile">
+                        <input type="hidden" name="fileType">
+                        <input type="hidden" name="uploadType">
+                        <input type="file" name="files" class="form-control" id="fileInput">
+
+                        {{-- progress bar --}}
+                        <div class="progress mt-3 d-none" id="uploadProgressBar" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+                        </div>
+
+                        {{-- upload tip --}}
                         <label class="form-label mt-3 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('uploadTipExtensions') }}: <span id="extensions"></span></label>
                         <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('uploadTipMaxSize') }}: <span id="maxSize"></span> MB</label>
-                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block" id="maxDurationDiv">{{ fs_lang('uploadTipMaxDuration') }}: <span id="maxDuration"></span> {{ fs_lang('unitSecond') }}</label>
+                        <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-none" id="maxDurationDiv">{{ fs_lang('uploadTipMaxDuration') }}: <span id="maxDuration"></span> {{ fs_lang('unitSecond') }}</label>
                         <label class="form-label mt-1 ms-1 text-secondary text-break fs-7 d-block">{{ fs_lang('uploadTipMaxNumber') }}: <span id="maxNumber"></span></label>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="ajax-upload">{{ fs_lang('uploadButton') }}</button>
-                    <div class="progress w-100 d-none" id="upload-progress"></div>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="uploadSubmit">{{ fs_lang('uploadButton') }}</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -355,7 +362,7 @@
                 </div>`
                 $(".editor-file-document").append(html);
             }
-        }
+        };
 
         function deleteFile(obj) {
             let fid = $(obj).data('fid');
@@ -369,7 +376,7 @@
             });
 
             $(obj).parent().parent().remove();
-        }
+        };
 
         function deleteLocation() {
             $.ajax({
@@ -382,113 +389,63 @@
 
             $('#location-info').hide();
             $('#location-btn').show();
-        }
+        };
 
         (function($){
-            let fileUploadModal = document.getElementById('fresns-upload');
-
-            fileUploadModal.addEventListener('show.bs.modal', function (event) {
-                let button = event.relatedTarget,
-                    extensions = $(button).data('extensions'),
-                    type = $(button).data('type'),
-                    accept = $(button).data('accept'),
-                    maxSize = $(button).data('maxsize'),
-                    maxDuration = $(button).data('maxduration') ?? 0,
-                    maxNumber = $(button).data('maxnumber');
-
-                if ($.inArray(type, ['document', 'image']) >= 0 ) {
-                    $("#formFile").attr('multiple', 'multiple')
-                } else {
-                    $("#formFile").removeAttr('multiple')
-                }
-
-                if (maxDuration == 0) {
-                    $(this).find("#maxDurationDiv").addClass('d-none');
-                } else {
-                    $(this).find("#maxDurationDiv").removeClass('d-none');
-                }
-
-                $("#formFile").prop('accept', accept)
-                $("#extensions").text(extensions);
-                $("#maxSize").text(maxSize);
-                $("#maxDuration").text(maxDuration);
-                $("#maxNumber").text(maxNumber);
-                $("#fresns-upload input[name='type']").val(type);
-            })
-
-            $(".fresns-sticker").on('click',function (){
-                $("#content").trigger('click').insertAtCaret("[" + $(this).attr('value') + "]");
+            $('.fresns-sticker').on('click',function (){
+                $('#content').trigger('click').insertAtCaret('[' + $(this).attr('value') + ']');
             });
 
-            $("#fresns-upload").on('show.bs.modal', function () {
-                $(this).find('#ajax-upload').show().removeAttr("disabled");
-                $(this).find('#formFile').val("");
-                $(this).find("#upload-progress").addClass('d-none').empty();
-            })
+            $('#fresnsUploadModal').on('show.bs.modal', function (e) {
+                var button = $(e.relatedTarget);
 
-            $("#ajax-upload").on('click', function (event) {
-                event.preventDefault();
-                let obj = $(this),
-                    maxSize = $("#maxSize").text() || 0,
-                    form = document.getElementById("upload-form"),
-                    files = $('#formFile').prop('files');
+                let fileType = button.data('type'),
+                    uploadType = button.data('uploadtype'),
+                    accept = button.data('accept'),
+                    extensions = button.data('extensions'),
+                    maxSize = button.data('maxsize'),
+                    maxDuration = button.data('maxduration'),
+                    maxNumber = button.data('maxnumber');
 
-                if (obj.is(":disabled")) {
-                    return;
+                $('#extensions').text(extensions);
+                $('#maxSize').text(maxSize);
+                $('#maxDuration').text(maxDuration);
+                $('#maxNumber').text(maxNumber);
+
+                $('#fileInput').prop('accept', accept);
+
+                if (maxDuration) {
+                    $('#maxDurationDiv').removeClass('d-none');
+                } else {
+                    $('#maxDurationDiv').addClass('d-none');
                 }
 
-                if (!files.length) {
-                    alert("{{ fs_lang('uploadTip') }}");
-                    return;
+                if (maxNumber > 1) {
+                    $('#fileInput').prop('multiple', true);
+                    $('#fileInput').prop('max', maxNumber);
                 }
 
-                obj.attr('disabled', true);
-                obj.hide();
+                $(this).find("input[name='fileType']").val(fileType);
+                $(this).find("input[name='uploadType']").val(uploadType);
+            });
 
-                // set progress
-                progress.init().setParentElement(obj.next('.progress').removeClass('d-none')).work();
+            // upload request
+            $('#upload-form').submit(function (e) {
+                e.preventDefault();
 
-                $.each(files, function (index, file) {
-                    if (file.size > maxSize * 1024 * 1024) {
-                        alert("{{ fs_lang('uploadTipMaxSize') }}: " + maxSize + "MB");
-                        return false;
-                    }
+                let form = $(this),
+                    usageType = form.find('input[name=usageType]').val(),
+                    usageFsid = form.find('input[name=usageFsid]').val(),
+                    fileType = form.find('input[name=fileType]').val(),
+                    uploadType = form.find('input[name=uploadType]').val(),
+                    files = form.find('input[name=files]')[0].files,
+                    supportedExtensions = $('#extensions').text(),
+                    maxSize = parseInt($('#maxSize').text()),
+                    maxDuration = parseInt($('#maxDuration').text() || 0),
+                    maxNumber = parseInt($('#maxNumber').text());
 
-                    let individualForm = new FormData(form);
-                    individualForm.append('file', file);
-
-                    $.ajax({
-                        url: "{{ route('fresns.api.post', ['path' => '/api/fresns/v1/common/file/upload']) }}",
-                        type: "POST",
-                        data: individualForm,
-                        timeout: 600000,
-                        processData: false,
-                        contentType: false,
-                        enctype: 'multipart/form-data',
-                        success: function (res) {
-                            if (res.code != 0) {
-                                tips(res.message, res.code);
-
-                                return;
-                            }
-
-                            addEditorFile(res.data);
-
-                            if (index === files.length - 1) {
-                                progress.done();
-                                $("#fresns-upload .btn-close").trigger('click');
-                                obj.removeAttr('disabled').show();
-                            }
-                        },
-                        error: function (e) {
-                            progress.exit();
-                            tips(e.responseJSON.message);
-                            $("#fresns-upload .btn-close").trigger('click');
-                            obj.removeAttr('disabled').show();
-                            return false;
-                        },
-                    });
-                });
+                console.log(usageType, usageFsid, fileType, uploadType, supportedExtensions, maxSize, maxDuration);
+                fresnsFile.uploadRequest(usageType, usageFsid, fileType, uploadType, files, supportedExtensions, maxSize, maxDuration);
             });
         })(jQuery);
     </script>

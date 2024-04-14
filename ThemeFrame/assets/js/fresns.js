@@ -225,66 +225,6 @@ function atwho() {
     }
 }
 
-// progress sleep
-const sleep = (delay = 500) => {
-    let t = Date.now();
-    while (Date.now() - t <= delay) {
-        continue;
-    }
-};
-
-// progress
-window.progress = {
-    total: 100,
-    valuenow: 0,
-    speed: 1000,
-    parentElement: null,
-    stop: false,
-    html: function () {
-        return `<div class="progress-bar" role="progressbar" style="width: ${progress.valuenow}%" aria-valuenow="${progress.valuenow}" aria-valuemin="0" aria-valuemax="100">${progress.valuenow}</div>`;
-    },
-    setParentElement: function (pe) {
-        this.parentElement = pe;
-        return this;
-    },
-    init: function () {
-        this.total = 100;
-        this.valuenow = 0;
-        this.parentElement = null;
-        this.stop = false;
-        return this;
-    },
-    work: function () {
-        this.add(progress);
-    },
-    add: function (obj) {
-        if (obj.stop !== true && obj.valuenow < obj.total) {
-            let num = parseFloat(obj.total) - parseFloat(obj.valuenow);
-            obj.valuenow = (parseFloat(obj.valuenow) + parseFloat(num / 100)).toFixed(2);
-            obj.parentElement.empty().append(obj.html());
-        } else {
-            obj.parentElement.empty().append(obj.html());
-            return;
-        }
-        setTimeout(function () {
-            obj.add(obj);
-        }, obj.speed);
-    },
-    exit: function () {
-        this.stop = true;
-        sleep(1000);
-        return this;
-    },
-    done: function () {
-        this.valuenow = this.total;
-        sleep(1000);
-        return this;
-    },
-    clearHtml: function () {
-        this.parentElement?.empty();
-    },
-};
-
 // build ajax and submit
 window.buildAjaxAndSubmit = function (url, body, succeededCallback, failedCallback, completeCallback = null) {
     $.ajax({
@@ -455,7 +395,7 @@ window.buildAjaxAndSubmit = function (url, body, succeededCallback, failedCallba
                     return;
                 }
 
-                downloadFile(res.data.originalUrl, name, mime);
+                downloadFile(res.data.link, name, mime);
             },
             complete: function (e) {
                 tips(e.responseJSON.message, e.responseJSON.code);
@@ -1181,6 +1121,342 @@ var editorGroup = {
 
             $('#editor-groups-modal-class').addClass('modal-xl');
         }
+    },
+};
+
+// File Upload
+var numberFiles = 0;
+var numberUploaded = 0;
+
+var progressInterval;
+var maxProgress = 50;
+
+var fresnsFile = {
+    // get file data
+    uploadRequest: function (usageType, usageFsid, fileType, uploadType, files, supportedExtensions, maxSize, maxDuration = 0) {
+        if (!files.length) {
+            alert(fs_lang('uploadTip'));
+            return;
+        }
+
+        numberFiles = files.length;
+        numberUploaded = 0;
+
+        // progress bar initialization
+        $('#uploadProgressBar').removeClass('d-none').attr('aria-valuenow', 0);
+        $('#uploadProgressBar').find('.progress-bar').css('width', '0%').text('0%');
+        clearInterval(progressInterval);
+
+        // Adjusting progress bar increment dynamically
+        progressInterval = setInterval(function() {
+            var currentProgress = parseInt($('#uploadProgressBar').attr('aria-valuenow'));
+            var increment = 0;
+
+            if (currentProgress < maxProgress) {
+                // Faster increment rate before reaching maxProgress
+                increment = maxProgress - currentProgress > 10 ? 10 : maxProgress - currentProgress;
+            } else if (currentProgress >= maxProgress && currentProgress < 100) {
+                // Slower increment rate after reaching maxProgress
+                increment = currentProgress < 98 ? 1 : 0.5; // even slower when approaching 100%
+            }
+
+            var newProgress = currentProgress + increment;
+            newProgress = newProgress > 100 ? 100 : newProgress;
+
+            $('#uploadProgressBar').attr('aria-valuenow', newProgress);
+            $('#uploadProgressBar').find('.progress-bar').css('width', newProgress + '%').text(newProgress + '%');
+
+            if (newProgress >= 100 || numberUploaded === numberFiles) {
+                clearInterval(progressInterval);
+            }
+        }, 500);
+
+        // upload
+        Array.from(files).forEach(file => {
+            fresnsFile.getFileData(usageType, usageFsid, fileType, uploadType, file, supportedExtensions, maxSize, maxDuration);
+        });
+    },
+
+    // get file data
+    getFileData: function (usageType, usageFsid, fileType, uploadType, file, supportedExtensions, maxSize, maxDuration) {
+        function proceedWithUpload(fileType, fileData) {
+            console.log('fileData', fileType, fileData);
+
+            if (!fresnsFile.validateFile(fileData, supportedExtensions, maxSize, maxDuration)) {
+                $('#uploadSubmit').prop('disabled', false);
+                $('#uploadSubmit').find('.spinner-border').remove();
+
+                $('#uploadProgressBar').addClass('d-none');
+
+                return;
+            }
+
+            fresnsFile.makeUploadToken(fileData, uploadType, file);
+        }
+
+        let fileData = {
+            usageType: usageType,
+            usageFsid: usageFsid,
+            type: fileType,
+            name: file.name,
+            mime: file.type,
+            extension: file.name.split('.').pop(),
+            size: file.size,
+            width: null,
+            height: null,
+            duration: null,
+            warning: 'none',
+            moreInfo: null,
+        };
+
+        if (fileType == 'image') {
+            const image = new Image();
+            image.onload = function() {
+                fileData.width = this.naturalWidth;
+                fileData.height = this.naturalHeight;
+
+                // clean up memory
+                URL.revokeObjectURL(this.src);
+
+                // upload file
+                proceedWithUpload(fileType, fileData);
+            };
+            image.onerror = function() {
+                console.error("Error loading image");
+            };
+            image.src = URL.createObjectURL(file);
+
+            return;
+        }
+
+        if (fileType == 'video' || fileType == 'audio') {
+            const media = document.createElement(fileType);
+            media.preload = 'metadata';
+            media.onloadedmetadata = function() {
+                fileData.width = fileType == 'video' ? media.videoWidth : null;
+                fileData.height = fileType == 'video' ? media.videoHeight : null;
+                fileData.duration = Math.round(media.duration);
+
+                // clean up memory
+                URL.revokeObjectURL(this.src);
+
+                // upload file
+                proceedWithUpload(fileType, fileData);
+            };
+            media.onerror = function() {
+                console.error(`Error loading ${fileType}`);
+            };
+            media.src = URL.createObjectURL(file);
+
+            return;
+        }
+
+        // upload file
+        proceedWithUpload(fileType, fileData);
+    },
+
+    // validate file data
+    validateFile: function (fileData, supportedExtensions, maxSize, maxDuration) {
+        let fileName = fileData.name;
+        let fileExtension = fileData.extension;
+        let fileSize = fileData.size;
+        let fileDuration = fileData.duration;
+        let tipMessage;
+
+        let extensions = supportedExtensions.split(',');
+        if (!extensions.includes(fileExtension)) {
+            tipMessage = `[${fileName}] ${fs_lang('uploadWarningExtension')}`;
+            tips(tipMessage);
+
+            return false;
+        }
+
+        if (fileSize > maxSize * 1024 * 1024) {
+            tipMessage = `[${fileName}] ${fs_lang('uploadWarningMaxSize')}`;
+            tips(tipMessage);
+
+            return false;
+        }
+
+        if (maxDuration && fileDuration > maxDuration) {
+            tipMessage = `[${fileName}] ${fs_lang('uploadWarningMaxDuration')}`;
+            tips(tipMessage);
+
+            return false;
+        }
+
+        return true;
+    },
+
+    // make upload token
+    makeUploadToken: function (fileData, uploadType, file) {
+        if (uploadType == 'api') {
+            let uploadToken = {
+                url: '/api/theme/actions/api/fresns/v1/common/file/upload',
+                method: 'POST',
+                headers: {},
+                fid: '',
+            };
+
+            fresnsFile.uploadFile(uploadType, uploadToken, fileData, file);
+            return;
+        }
+
+        $.ajax({
+            url: '/api/theme/actions/api/fresns/v1/common/file/upload-token',
+            type: 'POST',
+            data: fileData,
+            success: function (res) {
+                if (res.code != 0) {
+                    tips(res.message, true);
+
+                    $('#uploadSubmit').prop('disabled', false);
+                    $('#uploadSubmit').find('.spinner-border').remove();
+
+                    $('#uploadProgressBar').addClass('d-none');
+
+                    return;
+                }
+
+                fresnsFile.uploadFile(uploadType, res.data, fileData, file);
+            },
+            error: function (e) {
+                tips(e.responseJSON.message, true);
+
+                $('#uploadSubmit').prop('disabled', false);
+                $('#uploadSubmit').find('.spinner-border').remove();
+
+                $('#uploadProgressBar').addClass('d-none');
+            },
+        });
+    },
+
+    // upload file
+    uploadFile: function (uploadType, uploadToken, fileData, file) {
+        let formData = new FormData();
+        formData.append('usageType', fileData.usageType);
+        formData.append('usageFsid', fileData.usageFsid);
+        formData.append('type', fileData.type);
+        formData.append('file', file);
+        formData.append('warning', fileData.warning);
+        formData.append('moreInfo', JSON.stringify(fileData.moreInfo));
+
+        // api upload
+        if (uploadType == 'api') {
+            let fileNumber = numberFiles - numberUploaded;
+
+            $.ajax({
+                url: '/api/theme/actions/api/fresns/v1/common/file/upload',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                success: function (res) {
+                    if (res.code != 0) {
+                        tips(res.message, res.code);
+
+                        if (fileNumber >= 1) {
+                            $('#uploadSubmit').prop('disabled', false);
+                            $('#uploadSubmit').find('.spinner-border').remove();
+
+                            $('#uploadProgressBar').addClass('d-none');
+                        }
+                        return;
+                    }
+
+                    numberUploaded++;
+
+                    addEditorFile(res.data);
+                },
+                error: function (e) {
+                    tips(e.responseJSON.message);
+
+                    if (fileNumber >= 1) {
+                        $('#uploadSubmit').prop('disabled', false);
+                        $('#uploadSubmit').find('.spinner-border').remove();
+
+                        $('#uploadProgressBar').addClass('d-none');
+                    }
+                },
+                complete: function (e) {
+                    let lastUploaded = numberFiles == numberUploaded;
+                    if (lastUploaded) {
+                        $('#uploadSubmit').prop('disabled', false);
+                        $('#uploadSubmit').find('.spinner-border').remove();
+
+                        $("#fresnsUploadModal .btn-close").trigger('click');
+
+                        $('#uploadProgressBar').attr('aria-valuenow', 100);
+                        $('#uploadProgressBar').find('.progress-bar').css('width', '100%').text('100%');
+                    }
+                },
+            });
+
+            return;
+        }
+
+        // s3 upload
+        $.ajax({
+            url: uploadToken.url,
+            type: uploadToken.method,
+            headers: uploadToken.headers,
+            data: formData,
+            processData: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            success: function (res) {
+                numberUploaded++;
+
+                console.log('updateFileUploaded', uploadToken.fid, numberFiles, numberUploaded);
+
+                fresnsFile.updateFileUploaded(uploadToken.fid);
+            },
+            error: function (e) {
+                tips(e.responseJSON.message);
+
+                $('#uploadSubmit').prop('disabled', false);
+                $('#uploadSubmit').find('.spinner-border').remove();
+
+                $('#uploadProgressBar').addClass('d-none');
+            },
+        });
+    },
+
+    // update file uploaded
+    updateFileUploaded: function (fid) {
+        let lastUploaded = numberFiles == numberUploaded;
+
+        $.ajax({
+            url: '/api/theme/actions/api/fresns/v1/common/file/' + fid + '/info',
+            type: 'patch',
+            data: {
+                fid: fid,
+                uploaded: 1,
+            },
+            success: function (res) {
+                if (res.code != 0) {
+                    tips(res.message, res.code);
+                    return;
+                }
+
+                addEditorFile(res.data);
+            },
+            error: function (e) {
+                tips(e.responseJSON.message);
+            },
+            complete: function (e) {
+                if (lastUploaded) {
+                    $('#uploadSubmit').prop('disabled', false);
+                    $('#uploadSubmit').find('.spinner-border').remove();
+
+                    $("#fresnsUploadModal .btn-close").trigger('click');
+
+                    $('#uploadProgressBar').attr('aria-valuenow', 100);
+                    $('#uploadProgressBar').find('.progress-bar').css('width', '100%').text('100%');
+                }
+            },
+        });
     },
 };
 
