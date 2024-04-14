@@ -175,28 +175,38 @@ function showReply(fresnsReply) {
 
 // at and hashtag
 function atwho() {
+    // Debounce function to limit the rate of API calls
+    function debounce(func, delay) {
+        let debounceTimer;
+        return function() {
+            const context = this;
+            const args = arguments;
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => func.apply(context, args), delay);
+        };
+    }
+
     if (window.mentionStatus) {
         $('.editor-content').atwho({
             at: '@',
-            displayTpl:
-                '<li><img src="${image}" height="20" width="20"/> ${name} <small class="text-muted">@${fsid}</small></li>',
+            displayTpl: '<li><img src="${image}" height="20" width="20"/> ${name} <small class="text-muted">@${fsid}</small></li>',
             insertTpl: '${atwho-at}${fsid}',
             searchKey: 'searchQuery',
             callbacks: {
-                remoteFilter: function (query, callback) {
+                remoteFilter: debounce(function(query, callback) {
                     if (query) {
                         $.get(
                             '/api/theme/actions/api/fresns/v1/common/input-tips',
                             { type: 'user', key: query },
-                            function (data) {
+                            function(data) {
                                 const list = data.data;
                                 list.map((item) => (item.searchQuery = item.name + item.fsid));
-                                callback(data);
+                                callback(list);
                             },
                             'json'
                         );
                     }
-                },
+                }, 300), // Debounce time is 300 milliseconds
             },
         });
     }
@@ -207,19 +217,19 @@ function atwho() {
             displayTpl: '<li> ${name} </li>',
             insertTpl: window.hashtagFormat == 1 ? '${atwho-at}${name}' : '${atwho-at}${name}${atwho-at}',
             callbacks: {
-                remoteFilter: function (query, callback) {
+                remoteFilter: debounce(function(query, callback) {
                     if (query) {
                         $.get(
                             '/api/theme/actions/api/fresns/v1/common/input-tips',
                             { type: 'hashtag', key: query },
-                            function (data) {
+                            function(data) {
                                 const list = data.data;
                                 callback(list);
                             },
                             'json'
                         );
                     }
-                },
+                }, 300), // Debounce time is 300 milliseconds
             },
         });
     }
