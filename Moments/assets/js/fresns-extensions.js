@@ -63,12 +63,7 @@ $('#fresnsModal').on('show.bs.modal', function (e) {
         });
     }
 
-    let inputHtml =
-        '<iframe src="' +
-        url +
-        '" class="iframe-modal" scrolling="yes" style="min-height:' +
-        modalHeight +
-        ';"></iframe>';
+    let inputHtml = `<iframe src="${url}" class="iframe-modal" scrolling="yes" style="min-height:${modalHeight};"></iframe>`;
 
     $(this).find('.modal-body').empty().html(inputHtml);
 });
