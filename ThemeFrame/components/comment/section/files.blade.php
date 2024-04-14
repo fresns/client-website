@@ -129,7 +129,7 @@
                                 data-url="{{ route('fresns.api.get', ['path' => "/api/fresns/v1/common/file/{$document['fid']}/link?type=comment&fsid={$cid}"]) }}"
                                 data-name="{{ $document['name'] }}"
                                 data-mime="{{ $document['mime'] }}">
-                                <i class="bi bi-download"></i> {{ fs_lang('contentFileDownload') }}
+                                <i class="bi bi-download"></i> {{ fs_lang('download') }}
                             </button>
                         </p>
                     </div>

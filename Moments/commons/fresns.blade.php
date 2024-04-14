@@ -130,11 +130,11 @@
     @include('commons.tabbar')
 
     {{-- Fresns Extensions Modal --}}
-    <div class="modal fade fresnsExtensions" id="fresnsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fresnsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered @if (Route::is('fresns.custom.page')) modal-fullscreen @endif">
+    <div class="modal fade" id="fresnsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fresnsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="fresnsModalLabel">Extensions title</h5>
+                    <h5 class="modal-title" id="fresnsModalLabel">Fresns Title</h5>
                     <button type="button" class="btn-close btn-done-extensions" id="done-extensions" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="padding:0"></div>
@@ -205,17 +205,20 @@
                         <p class="mt-2 mb-4 text-secondary">{{ fs_lang('errorNoLogin') }}</p>
 
                         <button class="btn btn-outline-success me-3" type="button" data-bs-toggle="modal" data-bs-target="#fresnsModal"
+                            data-modal-height="700px"
                             data-title="{{ fs_lang('accountLogin') }}"
                             data-url="{{ fs_config('account_login_service') }}"
+                            data-redirect-url="{{ fs_theme('login', request()->fullUrl()) }}"
                             data-post-message-key="fresnsAccountSign">
                             {{ fs_lang('accountLogin') }}
                         </button>
 
                         @if (fs_config('account_register_status'))
                             <button class="btn btn-success me-3" type="button" data-bs-toggle="modal" data-bs-target="#fresnsModal"
-                                data-modal-height="700"
+                                data-modal-height="700px"
                                 data-title="{{ fs_lang('accountRegister') }}"
                                 data-url="{{ fs_config('account_register_service') }}"
+                                data-redirect-url="{{ fs_theme('login', request()->fullUrl()) }}"
                                 data-post-message-key="fresnsAccountSign">
                                 {{ fs_lang('accountRegister') }}
                             </button>
@@ -232,7 +235,6 @@
     @endif
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/js-cookie.min.js"></script>
-    <script src="/static/js/iframeResizer.min.js"></script>
     <script src="/static/js/fresns-callback.js"></script>
     <script>
         window.ajaxGetList = true;

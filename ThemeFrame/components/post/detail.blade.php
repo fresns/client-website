@@ -114,7 +114,17 @@
         {{-- Content --}}
         <div class="content-article text-break">
             @if ($post['isMarkdown'])
-                {!! Str::markdown($post['content']) !!}
+                @php
+                    $searchArr = [
+                        '&lt;audio class=&quot;fresns_file_audio&quot; controls preload=&quot;metadata&quot; controlsList=&quot;nodownload&quot; src=&quot;',
+                        '&quot;&gt;</audio>',
+                    ];
+                    $replaceArr = [
+                        '<audio class="fresns_file_audio" controls preload="metadata" controlsList="nodownload" src="',
+                        '"></audio>',
+                    ];
+                @endphp
+                {!! str_replace($searchArr, $replaceArr, Str::markdown($post['content'])) !!}
             @else
                 {!! nl2br($post['content']) !!}
             @endif

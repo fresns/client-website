@@ -75,6 +75,7 @@
         <div class="list-group rounded-0 my-3">
             @foreach(fs_channels() as $channel)
                 <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-start" data-bs-toggle="modal" href="#fresnsModal"
+                    data-modal-width="100%"
                     data-modal-height="100%"
                     data-title="{{ $channel['name'] }}"
                     data-url="{{ $channel['appUrl'] }}"

@@ -118,7 +118,17 @@
                 </div>
             @else
                 @if ($comment['isMarkdown'])
-                    {!! Str::markdown($comment['content']) !!}
+                    @php
+                        $searchArr = [
+                            '&lt;audio class=&quot;fresns_file_audio&quot; controls preload=&quot;metadata&quot; controlsList=&quot;nodownload&quot; src=&quot;',
+                            '&quot;&gt;</audio>',
+                        ];
+                        $replaceArr = [
+                            '<audio class="fresns_file_audio" controls preload="metadata" controlsList="nodownload" src="',
+                            '"></audio>',
+                        ];
+                    @endphp
+                    {!! str_replace($searchArr, $replaceArr, Str::markdown($comment['content'])) !!}
                 @else
                     {!! nl2br($comment['content']) !!}
                 @endif
@@ -231,6 +241,13 @@
             </div>
         </div>
 
+        {{-- Post Author Like Status --}}
+        @if ($comment['interaction']['postAuthorLikeStatus'])
+            <div class="post-author-liked order-5 mt-2">
+                <span class="author-badge p-1">{{ fs_lang('contentAuthorLiked') }}</span>
+            </div>
+        @endif
+
         {{-- Comment Box --}}
         @component('components.editor.quick-publish-comment', [
             'nickname' => $comment['author']['nickname'],
@@ -239,11 +256,4 @@
             'show' => true,
         ])@endcomponent
     </section>
-
-    {{-- Post Author Like Status --}}
-    @if ($comment['interaction']['postAuthorLikeStatus'])
-        <div class="post-author-liked order-5 mt-2 mx-3">
-            <span class="author-badge p-1">{{ fs_lang('contentAuthorLiked') }}</span>
-        </div>
-    @endif
 </div>

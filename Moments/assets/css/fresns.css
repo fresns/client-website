@@ -27,6 +27,7 @@ body {
 }
 .iframe-modal {
     width: 100%;
+    overflow: auto;
 }
 .border-end-rounded-0 {
     border-top-right-radius: 0;

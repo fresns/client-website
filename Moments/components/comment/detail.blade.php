@@ -123,7 +123,17 @@
                 </div>
             @else
                 @if ($comment['isMarkdown'])
-                    {!! Str::markdown($comment['content']) !!}
+                    @php
+                        $searchArr = [
+                            '&lt;audio class=&quot;fresns_file_audio&quot; controls preload=&quot;metadata&quot; controlsList=&quot;nodownload&quot; src=&quot;',
+                            '&quot;&gt;</audio>',
+                        ];
+                        $replaceArr = [
+                            '<audio class="fresns_file_audio" controls preload="metadata" controlsList="nodownload" src="',
+                            '"></audio>',
+                        ];
+                    @endphp
+                    {!! str_replace($searchArr, $replaceArr, Str::markdown($comment['content'])) !!}
                 @else
                     {!! nl2br($comment['content']) !!}
                 @endif

@@ -16,12 +16,32 @@ function makeAccessToken() {
     return accessToken;
 }
 
-$('#fresnsModal.fresnsExtensions').on('show.bs.modal', function (e) {
+$('#fresnsModal').on('show.bs.modal', function (e) {
+    $(this).find('.modal-dialog').removeClass('modal-fullscreen');
+
     let button = $(e.relatedTarget),
-        modalHeight = button.data('modal-height'),
-        modalWidth = button.data('modal-width'),
         title = button.data('title'),
-        reg = /\{[^\}]+\}/g,
+        modalWidth = button.data('modal-width'),
+        modalHeight = button.data('modal-height') || '500px';
+
+    $(this).find('.modal-title').empty().html(title);
+
+    if (modalWidth == '100%' && modalHeight == '100%') {
+        $(this).find('.modal-dialog').addClass('modal-fullscreen');
+    }
+
+    if (modalWidth && modalHeight != '100%') {
+        $(this).find('.modal-dialog').css('max-width:' + modalWidth +'px;');
+    }
+
+    let loadingTip = `<div class="d-flex justify-content-center py-5">
+        <div class="spinner-border text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>`;
+    $(this).find('.modal-body').empty().html(loadingTip);
+
+    let reg = /\{[^\}]+\}/g,
         url = button.data('url'),
         replaceJson = button.data(),
         searchArr = url.match(reg);
@@ -41,21 +61,9 @@ $('#fresnsModal.fresnsExtensions').on('show.bs.modal', function (e) {
         });
     }
 
-    $(this).find('.modal-title').empty().html(title);
-    let inputHtml = `<iframe src="` + url + `" class="iframe-modal"></iframe>`;
-    $(this).find('.modal-body').empty().html(inputHtml);
+    let inputHtml = '<iframe src="' + url + '" class="iframe-modal" scrolling="yes" style="min-height:' + modalHeight + ';"></iframe>';
 
-    // iFrame Resizer V4
-    // https://github.com/davidjbradshaw/iframe-resizer
-    let isOldIE = navigator.userAgent.indexOf('MSIE') !== -1;
-    $('#fresnsModal.fresnsExtensions iframe').on('load', function () {
-        $(this).iFrameResize({
-            autoResize: true,
-            minHeight: modalHeight ? modalHeight : 500,
-            heightCalculationMethod: isOldIE ? 'max' : 'lowestElement',
-            scrolling: true,
-        });
-    });
+    $(this).find('.modal-body').empty().html(inputHtml);
 });
 
 // fresns extensions callback
