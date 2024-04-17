@@ -73,7 +73,7 @@ body {
     margin-top: 36px;
     border-right: 0px var(--bs-border-style) var(--bs-border-color) !important;
 }
-.fs-account-main {
+.main-fullscreen {
     margin-top: 44px;
 }
 @media (min-width: 992px) {
@@ -107,7 +107,7 @@ body {
         padding: 0 2rem;
         float: left !important;
     }
-    .fs-account-main .account-settings {
+    .main-fullscreen .account-settings {
         width: 50%;
     }
 }
@@ -139,7 +139,7 @@ body {
         padding: 0 2rem;
         float: left !important;
     }
-    .fs-account-main .account-settings {
+    .main-fullscreen .account-settings {
         width: 50%;
     }
 }

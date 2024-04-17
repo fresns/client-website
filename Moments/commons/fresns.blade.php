@@ -42,7 +42,7 @@
         'fresns.custom.page',
     ]) || fs_config('default_homepage') == 'portal' && Route::is('fresns.home'))
         {{-- Main --}}
-        <main class="fs-account-main ms-25 pt-4 mt-lg-0 pt-lg-0">
+        <main class="main-fullscreen ms-25 pt-4 mt-lg-0 pt-lg-0">
             @yield('content')
         </main>
 
