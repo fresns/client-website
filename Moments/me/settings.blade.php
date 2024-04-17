@@ -34,7 +34,7 @@
                 <img src="{{ fs_user('detail.avatar') }}" loading="lazy" class="rounded-circle" style="width:8rem;height:8rem;">
                 <div class="position-absolute top-50 start-50 translate-middle">
                     <label class="btn btn-light" type="button" for="uploadAvatar"><i class="fa-solid fa-camera"></i></label>
-                    <input hidden="hidden" type="file" name="uploadAvatar" id="uploadAvatar" accept="{{ fs_post_editor('image.inputAccept') }}" data-user-fsid="{{ fs_user('detail.uid') }}" data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}">
+                    <input hidden="hidden" type="file" name="uploadAvatar" id="uploadAvatar" accept="{{ fs_editor('post', 'image.inputAccept') }}" data-user-fsid="{{ fs_user('detail.uid') }}" data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}">
                 </div>
             </div>
         </div>
@@ -207,17 +207,23 @@
             <span class="form-control">{{ fs_account('detail.aid') }}</span>
         </div> --}}
         {{-- Account Center --}}
-        <div class="input-group mb-3">
-            <span class="input-group-text">{{ fs_lang('accountCenter') }}</span>
-            <span class="form-control">{{ fs_lang('accountCenterDesc') }}</span>
-            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#fresnsModal"
-                data-modal-height="700px"
-                data-title="{{ fs_lang('accountCenter') }}"
-                data-url="{{ fs_config('account_center_service') }}"
-                data-redirect-url="{{ urlencode(request()->fullUrl()) }}"
-                data-post-message-key="reload">
-                {{ fs_lang('accountCenterSeeMore') }}
-            </button>
+        <div class="card mb-4">
+            <div class="card-body">
+                <p><img src="{{ fs_config('site_logo') }}" height="28"></p>
+                <h5 class="card-title">{{ fs_lang('accountCenter') }}</h5>
+                <p class="text-secondary mb-2">{{ fs_lang('accountCenterDesc') }}</p>
+                <p class="text-secondary mb-1"><i class="fa-solid fa-cake-candles fa-fw"></i> {{ fs_lang('userBirthday') }}</p>
+                <p class="text-secondary mb-1"><i class="fa-solid fa-user-shield fa-fw"></i> {{ fs_lang('emailOrPhone') }}</p>
+                <p class="text-secondary"><i class="fa-solid fa-key fa-fw"></i> {{ fs_lang('accountPassword') }}</p>
+                <p class="mb-0">
+                    <a class="link-primary text-decoration-none" data-bs-toggle="modal" href="#fresnsModal"
+                        data-modal-height="700px"
+                        data-title="{{ fs_lang('accountCenter') }}"
+                        data-url="{{ fs_config('account_center_service') }}"
+                        data-redirect-url="{{ urlencode(request()->fullUrl()) }}"
+                        data-post-message-key="reload">{{ fs_lang('accountCenterSeeMore') }}</a>
+                </p>
+            </div>
         </div>
     </div>
 
