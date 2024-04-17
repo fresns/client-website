@@ -41,7 +41,7 @@
                                 <img src="{{ fs_user('detail.avatar') }}" loading="lazy" class="rounded-circle" style="width:8rem;height:8rem;">
                                 <div class="position-absolute top-50 start-50 translate-middle">
                                     <label class="btn btn-light" type="button" for="uploadAvatar"><i class="bi bi-camera-fill"></i></label>
-                                    <input hidden="hidden" type="file" name="uploadAvatar" id="uploadAvatar" accept="{{ fs_post_editor('image.inputAccept') }}" data-user-fsid="{{ fs_user('detail.uid') }}" data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}">
+                                    <input hidden="hidden" type="file" name="uploadAvatar" id="uploadAvatar" accept="{{ fs_editor('post', 'image.inputAccept') }}" data-user-fsid="{{ fs_user('detail.uid') }}" data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}">
                                 </div>
                             </div>
                         </div>

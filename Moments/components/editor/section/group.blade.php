@@ -21,7 +21,7 @@
             <div class="modal-body d-flex justify-content-start">
                 {{-- Group List --}}
                 <div id="editor-top-groups">
-                    @if (! fs_post_editor('group.required'))
+                    @if (! fs_editor('post', 'group.required'))
                         <button type="button" class="btn btn-outline-secondary btn-sm mb-2 w-100" data-bs-dismiss="modal" onclick="editorGroup.editorGroupConfirm(this)" data-gid="" data-name="{{ fs_config('group_name') }}: {{ fs_lang('editorNoSelectGroup') }}" data-web-page="editor">
                             {{ fs_lang('editorNoGroup') }}
                         </button>

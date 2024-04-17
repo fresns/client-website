@@ -33,7 +33,7 @@
 
                             {{-- Sticker and Upload --}}
                             <div class="d-flex mt-2">
-                                @if (fs_comment_editor('sticker'))
+                                @if (fs_editor('comment', 'sticker'))
                                     <div class="me-2">
                                         <button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                             <i class="fa-regular fa-face-smile"></i>
@@ -74,10 +74,10 @@
                                     </div>
                                 @endif
 
-                                @if (fs_comment_editor('image.status'))
+                                @if (fs_editor('comment', 'image.status'))
                                     <div class="input-group">
                                         <label class="input-group-text" for="modal-comment-file-{{ $pid.$cid }}">{{ fs_lang('editorImages') }}</label>
-                                        <input type="file" class="form-control" accept="{{ fs_comment_editor('image.inputAccept') }}" name="image" id="modal-comment-file-{{ $pid.$cid }}">
+                                        <input type="file" class="form-control" accept="{{ fs_editor('comment', 'image.inputAccept') }}" name="image" id="modal-comment-file-{{ $pid.$cid }}">
                                     </div>
                                 @endif
                             </div>
@@ -90,7 +90,7 @@
                                 </div>
 
                                 {{-- Anonymous Option --}}
-                                @if (fs_comment_editor('anonymous'))
+                                @if (fs_editor('comment', 'anonymous'))
                                     <div class="bd-highlight">
                                         <div class="form-check">
                                             <input class="form-check-input" name="isAnonymous" type="checkbox" value="1" id="{{ $pid.$cid.'isAnonymous' }}">

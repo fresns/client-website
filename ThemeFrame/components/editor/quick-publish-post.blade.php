@@ -15,8 +15,8 @@
 
             <div class="modal-body">
                 <form class="form-quick-publish" action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/editor/post/publish']) }}" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="gid" id="editor-group-gid" value="{{ (fs_post_editor('group.status') && $group) ? $group['gid'] : '' }}">
-                    @if (fs_post_editor('group.status'))
+                    <input type="hidden" name="gid" id="editor-group-gid" value="{{ (fs_editor('post', 'group.status') && $group) ? $group['gid'] : '' }}">
+                    @if (fs_editor('post', 'group.status'))
                         <div class="shadow-sm">
                             <div class="d-grid">
                                 <button class="rounded-0 border-0 list-group-item list-group-item-action d-flex justify-content-between align-items-center p-2" style="background-color: aliceblue;" type="button" data-bs-toggle="modal" data-bs-target="#editor-groups-modal" data-initialized="0" id="editor-group">
@@ -33,13 +33,13 @@
                     {{-- Content Start --}}
                     <div class="p-3">
                         {{-- Title --}}
-                        @if (fs_post_editor('title.status'))
-                            <div class="collapse @if (fs_post_editor('title.show')) show @endif" id="quickTitleCollapse">
+                        @if (fs_editor('post', 'title.status'))
+                            <div class="collapse @if (fs_editor('post', 'title.show')) show @endif" id="quickTitleCollapse">
                                 <input type="text" class="form-control form-control-lg rounded-0 border-0 ps-2"
                                     name="title"
-                                    placeholder="{{ fs_lang('editorTitle') }} (@if (fs_post_editor('title.required')) {{ fs_lang('required') }} @else {{ fs_lang('optional') }} @endif)"
-                                    maxlength="{{ fs_post_editor('title.length') }}"
-                                    @if (fs_post_editor('title.required')) required @endif >
+                                    placeholder="{{ fs_lang('editorTitle') }} (@if (fs_editor('post', 'title.required')) {{ fs_lang('required') }} @else {{ fs_lang('optional') }} @endif)"
+                                    maxlength="{{ fs_editor('post', 'title.length') }}"
+                                    @if (fs_editor('post', 'title.required')) required @endif >
                                 <hr>
                             </div>
                         @endif
@@ -50,12 +50,12 @@
                         {{-- Function Buttons --}}
                         <div class="d-flex mt-2">
                             {{-- Title --}}
-                            @if (fs_post_editor('title.status') && ! fs_post_editor('title.show'))
+                            @if (fs_editor('post', 'title.status') && ! fs_editor('post', 'title.show'))
                                 <button type="button" class="btn btn-outline-secondary me-2" data-bs-toggle="collapse" href="#quickTitleCollapse" aria-expanded="false" aria-controls="quickTitleCollapse"><i class="bi bi-textarea-t"></i></button>
                             @endif
 
                             {{-- Sticker --}}
-                            @if (fs_post_editor('sticker'))
+                            @if (fs_editor('post', 'sticker'))
                                 <div class="me-2">
                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                         <i class="bi bi-emoji-smile"></i>
@@ -86,10 +86,10 @@
                             @endif
 
                             {{-- Upload Image --}}
-                            @if (fs_post_editor('image.status'))
+                            @if (fs_editor('post', 'image.status'))
                                 <div class="input-group">
                                     <label class="input-group-text" for="post-file">{{ fs_lang('editorImages') }}</label>
-                                    <input type="file" class="form-control" accept="{{ fs_post_editor('image.inputAccept') ?? null }}" name="image" id="post-file">
+                                    <input type="file" class="form-control" accept="{{ fs_editor('post', 'image.inputAccept') ?? null }}" name="image" id="post-file">
                                 </div>
                             @endif
                         </div>
@@ -100,7 +100,7 @@
                             <div class="bd-highlight me-auto">
                                 <button type="submit" class="btn btn-success btn-lg">{{ fs_config('publish_post_name') }}</button>
                             </div>
-                            @if (fs_post_editor('anonymous'))
+                            @if (fs_editor('post', 'anonymous'))
                                 <div class="bd-highlight">
                                     <div class="form-check">
                                         <input class="form-check-input" name="isAnonymous" type="checkbox" value="1" id="isAnonymous">
@@ -128,7 +128,7 @@
             <div class="modal-body d-flex justify-content-start">
                 {{-- Group List --}}
                 <div id="editor-top-groups">
-                    @if (! fs_post_editor('group.required'))
+                    @if (! fs_editor('post', 'group.required'))
                         <button type="button" class="btn btn-outline-secondary btn-sm mb-2 w-100" data-bs-target="#createModal" data-bs-toggle="modal" aria-label="Close" onclick="editorGroup.editorGroupConfirm(this)" data-gid="" data-name="{{ fs_config('group_name') }}: {{ fs_lang('editorNoSelectGroup') }}" data-web-page="quick">
                             {{ fs_lang('editorNoGroup') }}
                         </button>

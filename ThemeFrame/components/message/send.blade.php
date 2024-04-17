@@ -14,7 +14,7 @@
                         <li><label class="dropdown-item" for="messageImage" style="cursor:pointer;"><i class="bi bi-image"></i> {{ fs_lang('image') }}</label></li>
                         <input id="messageImage" class="sendFile" hidden="hidden" type="file"
                             name="messageImage"
-                            accept="{{ fs_post_editor('image.inputAccept') }}"
+                            accept="{{ fs_editor('post', 'image.inputAccept') }}"
                             data-type="image"
                             data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}"
                             data-send-action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/conversation/message']) }}"
@@ -25,7 +25,7 @@
                         <li><label class="dropdown-item" for="messageVideo" style="cursor:pointer;"><i class="bi bi-film"></i> {{ fs_lang('video') }}</label></li>
                         <input id="messageVideo" class="sendFile" hidden="hidden" type="file"
                             name="messageVideo"
-                            accept="{{ fs_post_editor('video.inputAccept') }}"
+                            accept="{{ fs_editor('post', 'video.inputAccept') }}"
                             data-type="video"
                             data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}"
                             data-send-action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/conversation/message']) }}"
@@ -36,7 +36,7 @@
                         <li><label class="dropdown-item" for="messageAudio" style="cursor:pointer;"><i class="bi bi-music-note-beamed"></i> {{ fs_lang('audio') }}</label></li>
                         <input id="messageAudio" class="sendFile" hidden="hidden" type="file"
                             name="messageAudio"
-                            accept="{{ fs_post_editor('audio.inputAccept') }}"
+                            accept="{{ fs_editor('post', 'audio.inputAccept') }}"
                             data-type="audio"
                             data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}"
                             data-send-action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/conversation/message']) }}"
@@ -47,7 +47,7 @@
                         <li><label class="dropdown-item" for="messageDocument" style="cursor:pointer;"><i class="bi bi-file-earmark-text"></i> {{ fs_lang('document') }}</label></li>
                         <input id="messageDocument" class="sendFile" hidden="hidden" type="file"
                             name="messageDocument"
-                            accept="{{ fs_post_editor('document.inputAccept') }}"
+                            accept="{{ fs_editor('post', 'document.inputAccept') }}"
                             data-type="document"
                             data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}"
                             data-send-action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/conversation/message']) }}"
