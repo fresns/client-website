@@ -26,7 +26,7 @@
                     {{-- Sticker and Upload --}}
                     <div class="float-lg-start @desktop w-65 @enddesktop">
                         <div class="d-flex">
-                            @if (fs_editor('comment', 'sticker'))
+                            @if (fs_editor_comment('sticker'))
                                 <div class="stickers me-2">
                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                         <i class="fa-regular fa-face-smile"></i>
@@ -34,14 +34,14 @@
                                     {{-- Sticker List Start --}}
                                     <div class="dropdown-menu pt-0" aria-labelledby="stickers">
                                         <ul class="nav nav-tabs" role="tablist">
-                                            @foreach(fs_stickers() as $sticker)
+                                            @foreach(fs_editor_stickers() as $sticker)
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link @if ($loop->first) active @endif" id="quick-comment-{{ $pid }}-sticker-{{ $loop->index }}-tab" data-bs-toggle="tab" data-bs-target="#quick-comment-{{ $pid }}-sticker-{{ $loop->index }}" type="button" role="tab" aria-controls="quick-comment-{{ $pid }}-sticker-{{ $loop->index }}" aria-selected="{{ $loop->first }}">{{ $sticker['name'] }}</button>
                                                 </li>
                                             @endforeach
                                         </ul>
                                         <div class="tab-content p-2 fs-sticker">
-                                            @foreach(fs_stickers() as $sticker)
+                                            @foreach(fs_editor_stickers() as $sticker)
                                                 <div class="tab-pane fade @if ($loop->first) show active @endif" id="quick-comment-{{ $pid }}-sticker-{{ $loop->index }}" role="tabpanel" aria-labelledby="quick-comment-{{ $pid }}-sticker-{{ $loop->index }}-tab">
                                                     @foreach($sticker['stickers'] ?? [] as $value)
                                                         <a class="{{ 'fresns-comment-sticker'.$pid }} btn btn-outline-secondary border-0" href="javascript:;" value="{{ $value['code'] }}" title="{{ $value['code'] }}" >
@@ -56,10 +56,10 @@
                                 </div>
                             @endif
 
-                            @if (fs_editor('comment', 'image.status'))
+                            @if (fs_editor_comment('image.status'))
                                 <div class="input-group">
                                     <label class="input-group-text" for="comment-file-{{ $pid.$cid }}">{{ fs_lang('editorImages') }}</label>
-                                    <input type="file" class="form-control" accept="{{ fs_editor('comment', 'image.inputAccept') }}" name="image" id="comment-file-{{ $pid.$cid }}">
+                                    <input type="file" class="form-control" accept="{{ fs_editor_comment('image.inputAccept') }}" name="image" id="comment-file-{{ $pid.$cid }}">
                                 </div>
                             @endif
                         </div>
@@ -74,7 +74,7 @@
                             </div>
 
                             {{-- Anonymous Option --}}
-                            @if (fs_editor('comment', 'anonymous'))
+                            @if (fs_editor_comment('anonymous'))
                                 <div class="bd-highlight ms-3">
                                     <div class="form-check">
                                         <input class="form-check-input" name="isAnonymous" type="checkbox" value="1" id="{{ $pid.'isAnonymous' }}">

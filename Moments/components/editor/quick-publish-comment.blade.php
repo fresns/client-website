@@ -33,7 +33,7 @@
 
                             {{-- Sticker and Upload --}}
                             <div class="d-flex mt-2">
-                                @if (fs_editor('comment', 'sticker'))
+                                @if (fs_editor_comment('sticker'))
                                     <div class="me-2">
                                         <button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                             <i class="fa-regular fa-face-smile"></i>
@@ -41,7 +41,7 @@
                                         {{-- Sticker List Start --}}
                                         <div class="dropdown-menu pt-0" aria-labelledby="stickers">
                                             <ul class="nav nav-tabs" role="tablist">
-                                                @foreach(fs_stickers() as $sticker)
+                                                @foreach(fs_editor_stickers() as $sticker)
                                                     <li class="nav-item" role="presentation">
                                                         <button class="nav-link @if ($loop->first) active @endif"
                                                             id="modal-{{ $pid.$cid }}-sticker-{{ $loop->index }}-tab"
@@ -55,7 +55,7 @@
                                                 @endforeach
                                             </ul>
                                             <div class="tab-content p-2 fs-sticker">
-                                                @foreach(fs_stickers() as $sticker)
+                                                @foreach(fs_editor_stickers() as $sticker)
                                                     <div class="tab-pane fade @if ($loop->first) show active @endif"
                                                         id="modal-{{ $pid.$cid }}-sticker-{{ $loop->index }}"
                                                         role="tabpanel"
@@ -74,10 +74,10 @@
                                     </div>
                                 @endif
 
-                                @if (fs_editor('comment', 'image.status'))
+                                @if (fs_editor_comment('image.status'))
                                     <div class="input-group">
                                         <label class="input-group-text" for="modal-comment-file-{{ $pid.$cid }}">{{ fs_lang('editorImages') }}</label>
-                                        <input type="file" class="form-control" accept="{{ fs_editor('comment', 'image.inputAccept') }}" name="image" id="modal-comment-file-{{ $pid.$cid }}">
+                                        <input type="file" class="form-control" accept="{{ fs_editor_comment('image.inputAccept') }}" name="image" id="modal-comment-file-{{ $pid.$cid }}">
                                     </div>
                                 @endif
                             </div>
@@ -90,7 +90,7 @@
                                 </div>
 
                                 {{-- Anonymous Option --}}
-                                @if (fs_editor('comment', 'anonymous'))
+                                @if (fs_editor_comment('anonymous'))
                                     <div class="bd-highlight">
                                         <div class="form-check">
                                             <input class="form-check-input" name="isAnonymous" type="checkbox" value="1" id="{{ $pid.$cid.'isAnonymous' }}">
