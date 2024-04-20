@@ -16,6 +16,14 @@
     <meta name="apple-mobile-web-app-title" content="{{ fs_config('site_name') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ fs_config('site_icon') }}">
     <link rel="icon" href="{{ fs_config('site_icon') }}">
+    @if (fs_config('language_status'))
+        @foreach(fs_config('language_menus') as $lang)
+            @if (! $lang['isEnabled'])
+                @continue
+            @endif
+            <link rel="alternate" href="{{ request()->fullUrlWithQuery(['language' => $lang['langTag']]) }}" hreflang="{{ $lang['langTag'] }}"/>
+        @endforeach
+    @endif
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/fontawesome.min.css">
     <link rel="stylesheet" href="{{ fs_theme('assets', 'css/atwho.min.css') }}">
@@ -173,14 +181,15 @@
                     <div class="modal-body">
                         <ul class="list-group list-group-flush">
                             @foreach(fs_config('language_menus') as $lang)
-                                @if ($lang['isEnabled'])
-                                    <a class="list-group-item list-group-item-action @if (fs_theme('lang') == $lang['langTag']) active @endif" hreflang="{{ $lang['langTag'] }}" href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL($lang['langTag'], null, [], true) }}">
-                                        {{ $lang['langName'] }}
-                                        @if ($lang['areaName'])
-                                            {{ '('.$lang['areaName'].')' }}
-                                        @endif
-                                    </a>
+                                @if (! $lang['isEnabled'])
+                                    @continue
                                 @endif
+                                <a class="list-group-item list-group-item-action @if (fs_theme('lang') == $lang['langTag']) active @endif" href="{{ request()->fullUrlWithQuery(['language' => $lang['langTag']]) }}" hreflang="{{ $lang['langTag'] }}">
+                                    {{ $lang['langName'] }}
+                                    @if ($lang['areaName'])
+                                        {{ '('.$lang['areaName'].')' }}
+                                    @endif
+                                </a>
                             @endforeach
                         </ul>
                     </div>

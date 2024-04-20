@@ -249,16 +249,17 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     @foreach(fs_config('language_menus') as $lang)
-                                        @if ($lang['isEnabled'])
-                                            <li>
-                                                <a class="dropdown-item @if (fs_theme('lang') == $lang['langTag']) active @endif" hreflang="{{ $lang['langTag'] }}" href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL($lang['langTag'], null, [], true) }}">
-                                                    {{ $lang['langName'] }}
-                                                    @if ($lang['areaName'])
-                                                        {{ '('.$lang['areaName'].')' }}
-                                                    @endif
-                                                </a>
-                                            </li>
+                                        @if (! $lang['isEnabled'])
+                                            @continue
                                         @endif
+                                        <li>
+                                            <a class="dropdown-item @if (fs_theme('lang') == $lang['langTag']) active @endif" href="{{ request()->fullUrlWithQuery(['language' => $lang['langTag']]) }}" hreflang="{{ $lang['langTag'] }}">
+                                                {{ $lang['langName'] }}
+                                                @if ($lang['areaName'])
+                                                    {{ '('.$lang['areaName'].')' }}
+                                                @endif
+                                            </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
