@@ -732,9 +732,11 @@ window.buildAjaxAndSubmit = function (url, body, succeededCallback, failedCallba
             type = button.data('type'),
             inputTips = button.data('input-tips'),
             option = button.data('option'),
+            action = button.data('action'),
             value = button.data('value') ?? '';
 
         $(this).find('.modal-title').empty().html(label);
+        $(this).find('form').attr('action', action);
         $(this)
             .find('.modal-footer button[type="submit"]')
             .data('targe-type', type ?? 'input')
