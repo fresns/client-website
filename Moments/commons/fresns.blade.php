@@ -59,13 +59,13 @@
             <footer class="ms-25 py-4 text-center text-muted border-top">
                 <p class="mb-1">
                     @if (fs_config('account_terms_status'))
-                        <a href="{{ fs_route(route('fresns.custom.page', ['name' => 'policies'])).'#terms-tab' }}" class="link-secondary text-decoration-none">{{ fs_lang('accountPoliciesTerms') }}</a>
+                        <a href="{{ route('fresns.custom.page', ['name' => 'policies']).'#terms-tab' }}" class="link-secondary text-decoration-none">{{ fs_lang('accountPoliciesTerms') }}</a>
                     @endif
                     @if (fs_config('account_privacy_status'))
-                        <a href="{{ fs_route(route('fresns.custom.page', ['name' => 'policies'])).'#privacy-tab' }}" class="link-secondary text-decoration-none ms-2">{{ fs_lang('accountPoliciesPrivacy') }}</a>
+                        <a href="{{ route('fresns.custom.page', ['name' => 'policies']).'#privacy-tab' }}" class="link-secondary text-decoration-none ms-2">{{ fs_lang('accountPoliciesPrivacy') }}</a>
                     @endif
                     @if (fs_config('account_cookie_status'))
-                        <a href="{{ fs_route(route('fresns.custom.page', ['name' => 'policies'])).'#cookies-tab' }}" class="link-secondary text-decoration-none ms-2">{{ fs_lang('accountPoliciesCookie') }}</a>
+                        <a href="{{ route('fresns.custom.page', ['name' => 'policies']).'#cookies-tab' }}" class="link-secondary text-decoration-none ms-2">{{ fs_lang('accountPoliciesCookie') }}</a>
                     @endif
                 </p>
 
@@ -259,7 +259,7 @@
         // back
         function goBack() {
             if (history.length <= 1) {
-                window.location.href = "{{ fs_route(route('fresns.home')) }}";
+                window.location.href = "{{ route('fresns.home') }}";
             } else {
                 history.go(-1);
             }

@@ -50,7 +50,7 @@
 
                 @if (fs_user()->guest())
                     <div class="modal-footer">
-                        <a class="btn btn-danger" role="button" href="{{ fs_route(route('fresns.me.logout')) }}"><i class="fa-solid fa-arrow-right-from-bracket"></i> {{ fs_lang('accountLogout') }}</a>
+                        <a class="btn btn-danger" role="button" href="{{ route('fresns.me.logout') }}"><i class="fa-solid fa-arrow-right-from-bracket"></i> {{ fs_lang('accountLogout') }}</a>
                     </div>
                 @endif
             </div>

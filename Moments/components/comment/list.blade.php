@@ -103,7 +103,7 @@
                     @elseif (! $comment['replyToComment']['author']['fsid'])
                         {{ fs_lang('contentAuthorAnonymous') }}
                     @else
-                        <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $comment['replyToComment']['author']['fsid']])) }}">{{ $comment['replyToComment']['author']['nickname'] }}</a>
+                        <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $comment['replyToComment']['author']['fsid']]) }}">{{ $comment['replyToComment']['author']['nickname'] }}</a>
                     @endif
 
                     <span class="mx-1">|</span>
@@ -186,7 +186,7 @@
                 {{-- Detail Link --}}
                 @if ($detailLink)
                     <p class="mt-2">
-                        <a href="{{ fs_route(route('fresns.comment.detail', ['cid' => $comment['cid']])) }}" class="text-decoration-none stretched-link">
+                        <a href="{{ route('fresns.comment.detail', ['cid' => $comment['cid']]) }}" class="text-decoration-none stretched-link">
                             @if ($comment['isBrief'])
                                 {{ fs_lang('contentFull') }}
                             @endif

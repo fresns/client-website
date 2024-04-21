@@ -124,7 +124,7 @@
                 {{-- Detail Link --}}
                 @if ($detailLink)
                     <p class="mt-2">
-                        <a href="{{ fs_route(route('fresns.comment.detail', ['cid' => $sticky['cid']])) }}" class="text-decoration-none stretched-link">
+                        <a href="{{ route('fresns.comment.detail', ['cid' => $sticky['cid']]) }}" class="text-decoration-none stretched-link">
                             @if ($sticky['isBrief'])
                                 {{ fs_lang('contentFull') }}
                             @endif

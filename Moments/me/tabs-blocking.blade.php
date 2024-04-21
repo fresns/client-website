@@ -9,22 +9,22 @@
 
 <nav class="nav nav-pills nav-fill nav-justified gap-2 p-1 small bg-white border rounded-pill shadow-sm m-3">
     @if (fs_config('user_block_enabled'))
-        <a class="nav-link rounded-pill {{ Route::is('fresns.user.blocking') ? 'active' : '' }}" href="{{ fs_route(route('fresns.user.blocking')) }}">{{ fs_config('user_name') }}</a>
+        <a class="nav-link rounded-pill {{ Route::is('fresns.user.blocking') ? 'active' : '' }}" href="{{ route('fresns.user.blocking') }}">{{ fs_config('user_name') }}</a>
     @endif
 
     @if (fs_config('group_block_enabled'))
-        <a class="nav-link rounded-pill {{ Route::is('fresns.group.blocking') ? 'active' : '' }}" href="{{ fs_route(route('fresns.group.blocking')) }}">{{ fs_config('group_name') }}</a>
+        <a class="nav-link rounded-pill {{ Route::is('fresns.group.blocking') ? 'active' : '' }}" href="{{ route('fresns.group.blocking') }}">{{ fs_config('group_name') }}</a>
     @endif
 
     @if (fs_config('hashtag_block_enabled'))
-        <a class="nav-link rounded-pill {{ Route::is('fresns.hashtag.blocking') ? 'active' : '' }}" href="{{ fs_route(route('fresns.hashtag.blocking')) }}">{{ fs_config('hashtag_name') }}</a>
+        <a class="nav-link rounded-pill {{ Route::is('fresns.hashtag.blocking') ? 'active' : '' }}" href="{{ route('fresns.hashtag.blocking') }}">{{ fs_config('hashtag_name') }}</a>
     @endif
 
     @if (fs_config('post_block_enabled'))
-        <a class="nav-link rounded-pill {{ Route::is('fresns.post.blocking') ? 'active' : '' }}" href="{{ fs_route(route('fresns.post.blocking')) }}">{{ fs_config('post_name') }}</a>
+        <a class="nav-link rounded-pill {{ Route::is('fresns.post.blocking') ? 'active' : '' }}" href="{{ route('fresns.post.blocking') }}">{{ fs_config('post_name') }}</a>
     @endif
 
     @if (fs_config('comment_block_enabled'))
-        <a class="nav-link rounded-pill {{ Route::is('fresns.comment.blocking') ? 'active' : '' }}" href="{{ fs_route(route('fresns.comment.blocking')) }}">{{ fs_config('comment_name') }}</a>
+        <a class="nav-link rounded-pill {{ Route::is('fresns.comment.blocking') ? 'active' : '' }}" href="{{ route('fresns.comment.blocking') }}">{{ fs_config('comment_name') }}</a>
     @endif
 </nav>

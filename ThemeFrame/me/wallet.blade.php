@@ -99,7 +99,7 @@
                                         <td>
                                             @if ($log['user'])
                                                 @if ($log['user']['status'])
-                                                    <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $log['user']['fsid']])) }}">
+                                                    <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $log['user']['fsid']]) }}">
                                                         <img src="{{ $log['user']['avatar'] }}" loading="lazy" class="rounded-circle" width="24" height="24">
                                                         {{ $log['user']['nickname'] }}
                                                     </a>

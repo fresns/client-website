@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">
                     {{ fs_config('publish_post_name') }}
-                    <a href="{{ fs_route(route('fresns.editor.post')) }}" target="_blank" class="fs-7">
+                    <a href="{{ route('fresns.editor.post') }}" target="_blank" class="fs-7">
                         <i class="bi bi-box-arrow-up-right"></i>
                         {{ fs_lang('editorGoTo') }}
                     </a>

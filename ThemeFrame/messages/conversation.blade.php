@@ -16,7 +16,7 @@
                     {{-- Conversation User --}}
                     <div class="card-header">
                         @if ($conversation['detail']['user'])
-                            <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $conversation['detail']['user']['fsid']])) }}" target="_blank" class="text-decoration-none">
+                            <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $conversation['detail']['user']['fsid']]) }}" target="_blank" class="text-decoration-none">
                                 <img src="{{ $conversation['detail']['user']['avatar'] }}" loading="lazy" alt="{{ $conversation['detail']['user']['nickname'] }}" class="rounded-circle conversation-avatar">
                                 <span class="ms-2 fs-5">{{ $conversation['detail']['user']['nickname'] }}</span>
                                 <span class="ms-2 conversation-user-name text-secondary">{{ '@'.$conversation['detail']['user']['fsid'] }}</span>

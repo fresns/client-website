@@ -1,7 +1,7 @@
 <header class="fixed-top">
     <nav class="navbar navbar-expand-lg shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ fs_route(route('fresns.home')) }}"><img src="{{ fs_config('site_logo') }}" height="40"></a>
+            <a class="navbar-brand" href="{{ route('fresns.home') }}"><img src="{{ fs_config('site_logo') }}" height="40"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#fresnsNavbar" aria-controls="fresnsNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -12,8 +12,8 @@
                     @if (fs_config('channel_portal_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.portal') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(fs_route(route('fresns.home')), '/') && fs_config('default_homepage') == 'portal') active @endif"
-                                href="{{ fs_route(route('fresns.portal')) }}">
+                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'portal') active @endif"
+                                href="{{ route('fresns.portal') }}">
                                 {{ fs_config('channel_portal_name') }}
                             </a>
                         </li>
@@ -23,8 +23,8 @@
                     @if (fs_config('channel_user_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.user.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(fs_route(route('fresns.home')), '/') && fs_config('default_homepage') == 'user') active @endif"
-                                href="{{ fs_route(route('fresns.user.index')) }}">
+                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'user') active @endif"
+                                href="{{ route('fresns.user.index') }}">
                                 {{ fs_config('channel_user_name') }}
                             </a>
                         </li>
@@ -34,8 +34,8 @@
                     @if (fs_config('channel_group_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.group.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(fs_route(route('fresns.home')), '/') && fs_config('default_homepage') == 'group') active @endif"
-                                href="{{ fs_route(route('fresns.group.index')) }}">
+                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'group') active @endif"
+                                href="{{ route('fresns.group.index') }}">
                                 {{ fs_config('channel_group_name') }}
                             </a>
                         </li>
@@ -45,8 +45,8 @@
                     @if (fs_config('channel_hashtag_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.hashtag.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(fs_route(route('fresns.home')), '/') && fs_config('default_homepage') == 'hashtag') active @endif"
-                                href="{{ fs_route(route('fresns.hashtag.index')) }}">
+                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'hashtag') active @endif"
+                                href="{{ route('fresns.hashtag.index') }}">
                                 {{ fs_config('channel_hashtag_name') }}
                             </a>
                         </li>
@@ -56,8 +56,8 @@
                     @if (fs_config('channel_geotag_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.geotag.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(fs_route(route('fresns.home')), '/') && fs_config('default_homepage') == 'geotag') active @endif"
-                                href="{{ fs_route(route('fresns.geotag.index')) }}">
+                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'geotag') active @endif"
+                                href="{{ route('fresns.geotag.index') }}">
                                 {{ fs_config('channel_geotag_name') }}
                             </a>
                         </li>
@@ -67,8 +67,8 @@
                     @if (fs_config('channel_post_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.post.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(fs_route(route('fresns.home')), '/') && fs_config('default_homepage') == 'post') active @endif"
-                                href="{{ fs_route(route('fresns.post.index')) }}">
+                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'post') active @endif"
+                                href="{{ route('fresns.post.index') }}">
                                 {{ fs_config('channel_post_name') }}
                             </a>
                         </li>
@@ -78,8 +78,8 @@
                     @if (fs_config('channel_comment_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.comment.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(fs_route(route('fresns.home')), '/') && fs_config('default_homepage') == 'comment') active @endif"
-                                href="{{ fs_route(route('fresns.comment.index')) }}">
+                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'comment') active @endif"
+                                href="{{ route('fresns.comment.index') }}">
                                 {{ fs_config('channel_comment_name') }}
                             </a>
                         </li>
@@ -89,8 +89,8 @@
                     @if (fs_config('channel_timeline_posts_status') || fs_config('channel_timeline_comments_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.timeline.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(fs_route(route('fresns.home')), '/') && fs_config('default_homepage') == 'timeline') active @endif"
-                                href="{{ fs_route(route('fresns.timeline.index')) }}">
+                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'timeline') active @endif"
+                                href="{{ route('fresns.timeline.index') }}">
                                 {{ fs_config('channel_timeline_name') }}
                             </a>
                         </li>
@@ -100,8 +100,8 @@
                     @if (fs_config('channel_nearby_posts_status') || fs_config('channel_nearby_comments_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.nearby.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(fs_route(route('fresns.home')), '/') && fs_config('default_homepage') == 'nearby') active @endif"
-                                href="{{ fs_route(route('fresns.nearby.index')) }}">
+                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'nearby') active @endif"
+                                href="{{ route('fresns.nearby.index') }}">
                                 {{ fs_config('channel_nearby_name') }}
                             </a>
                         </li>
@@ -109,7 +109,7 @@
                 </ul>
 
                 {{-- search --}}
-                <form class="me-3 my-4 my-lg-0" action="{{ fs_route(route('fresns.search.index')) }}" method="get">
+                <form class="me-3 my-4 my-lg-0" action="{{ route('fresns.search.index') }}" method="get">
                     <input type="hidden" name="searchType" value="post"/>
                     <input class="form-control" name="searchKey" value="{{ request('searchKey') }}" placeholder="{{ fs_lang('search') }}" aria-label="Search">
                 </form>
@@ -118,17 +118,17 @@
                 <div class="d-flex mb-4 mb-lg-0">
                     @if (fs_user()->check())
                         {{-- Logged In --}}
-                        <a class="btn" href="{{ fs_route(route('fresns.me.index')) }}" role="button"><img src="{{ fs_user('detail.avatar') }}" loading="lazy" class="nav-avatar rounded-circle"> {{ fs_user('detail.nickname') }}</a>
+                        <a class="btn" href="{{ route('fresns.me.index') }}" role="button"><img src="{{ fs_user('detail.avatar') }}" loading="lazy" class="nav-avatar rounded-circle"> {{ fs_user('detail.nickname') }}</a>
 
                         @if (! Route::is('fresns.editor.*'))
                             @if (fs_config('fs_theme_quick_publish'))
                                 <button type="button" class="btn btn-outline-secondary btn-nav ms-2 rounded-circle" data-bs-toggle="modal" data-bs-target="#createModal"><i class="bi bi-plus-lg"></i></button>
                             @else
-                                <a class="btn btn-outline-secondary btn-nav ms-2 rounded-circle" href="{{ fs_route(route('fresns.editor.post')) }}"><i class="bi bi-plus-lg"></i></a>
+                                <a class="btn btn-outline-secondary btn-nav ms-2 rounded-circle" href="{{ route('fresns.editor.post') }}"><i class="bi bi-plus-lg"></i></a>
                             @endif
                         @endif
 
-                        <a href="{{ fs_route(route('fresns.notification.index')) }}"role="button" class="btn btn-outline-secondary btn-nav ms-2 rounded-circle position-relative">
+                        <a href="{{ route('fresns.notification.index') }}"role="button" class="btn btn-outline-secondary btn-nav ms-2 rounded-circle position-relative">
                             <i class="bi bi-bell"></i>
                             @if (fs_user_overview('unreadNotifications.all') > 0)
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ fs_user_overview('unreadNotifications.all') }}</span>
@@ -136,7 +136,7 @@
                         </a>
 
                         @if (fs_config('conversation_status'))
-                            <a href="{{ fs_route(route('fresns.conversation.index')) }}"role="button" class="btn btn-outline-secondary btn-nav ms-2 rounded-circle position-relative">
+                            <a href="{{ route('fresns.conversation.index') }}"role="button" class="btn btn-outline-secondary btn-nav ms-2 rounded-circle position-relative">
                                 <i class="bi bi-envelope"></i>
                                 @if (fs_user_overview('conversations.unreadMessages') > 0)
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ fs_user_overview('conversations.unreadMessages') }}</span>
@@ -149,11 +149,11 @@
                             <button class="btn btn-outline-secondary btn-nav ms-2 rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-caret-down-fill"></i></button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 {{-- User Center --}}
-                                <li><a class="dropdown-item" href="{{ fs_route(route('fresns.me.index')) }}"><i class="bi bi-person-fill"></i> {{ fs_config('channel_me_name') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('fresns.me.index') }}"><i class="bi bi-person-fill"></i> {{ fs_config('channel_me_name') }}</a></li>
 
                                 {{-- Notifications --}}
                                 <li>
-                                    <a class="dropdown-item" href="{{ fs_route(route('fresns.notification.index')) }}">
+                                    <a class="dropdown-item" href="{{ route('fresns.notification.index') }}">
                                         <i class="bi bi-bell"></i>
                                         {{ fs_config('channel_notifications_name') }}
 
@@ -166,7 +166,7 @@
                                 {{-- Conversations --}}
                                 @if (fs_config('conversation_status'))
                                     <li>
-                                        <a class="dropdown-item" href="{{ fs_route(route('fresns.conversation.index')) }}">
+                                        <a class="dropdown-item" href="{{ route('fresns.conversation.index') }}">
                                             <i class="bi bi-envelope"></i>
                                             {{ fs_config('channel_conversations_name') }}
 
@@ -179,7 +179,7 @@
 
                                 {{-- Drafts --}}
                                 <li>
-                                    <a class="dropdown-item" href="{{ fs_route(route('fresns.me.drafts')) }}">
+                                    <a class="dropdown-item" href="{{ route('fresns.me.drafts') }}">
                                         <i class="bi bi-file-earmark-text"></i>
                                         {{ fs_config('channel_me_drafts_name') }}
 
@@ -191,16 +191,16 @@
 
                                 {{-- Wallet --}}
                                 @if (fs_config('wallet_status'))
-                                    <li><a class="dropdown-item" href="{{ fs_route(route('fresns.me.wallet')) }}"><i class="bi bi-wallet"></i> {{ fs_config('channel_me_wallet_name') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('fresns.me.wallet') }}"><i class="bi bi-wallet"></i> {{ fs_config('channel_me_wallet_name') }}</a></li>
                                 @endif
 
                                 {{-- Users of this account --}}
                                 @if (fs_user_overview('multiUser.status') || count(fs_account('detail.users')) > 1)
-                                    <li><a class="dropdown-item" href="{{ fs_route(route('fresns.me.users')) }}"><i class="bi bi-people"></i> {{ fs_config('channel_me_users_name') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('fresns.me.users') }}"><i class="bi bi-people"></i> {{ fs_config('channel_me_users_name') }}</a></li>
                                 @endif
 
                                 {{-- Settings --}}
-                                <li><a class="dropdown-item" href="{{ fs_route(route('fresns.me.settings')) }}"><i class="bi bi-gear"></i> {{ fs_config('channel_me_settings_name') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('fresns.me.settings') }}"><i class="bi bi-gear"></i> {{ fs_config('channel_me_settings_name') }}</a></li>
                                 <li><hr class="dropdown-divider"></li>
 
                                 {{-- Switch Languages --}}
@@ -214,7 +214,7 @@
                                 @endif
 
                                 {{-- Logout --}}
-                                <li><a class="dropdown-item" href="{{ fs_route(route('fresns.me.logout')) }}"><i class="bi bi-power"></i> {{ fs_lang('accountLogout') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('fresns.me.logout') }}"><i class="bi bi-power"></i> {{ fs_lang('accountLogout') }}</a></li>
                             </ul>
                         </div>
                     @else

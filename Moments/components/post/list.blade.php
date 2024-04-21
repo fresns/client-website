@@ -121,7 +121,7 @@
 
             {{-- Detail Link --}}
             <p class="mt-2">
-                <a href="{{ fs_route(route('fresns.post.detail', ['pid' => $post['pid']])) }}" class="text-decoration-none stretched-link">
+                <a href="{{ route('fresns.post.detail', ['pid' => $post['pid']]) }}" class="text-decoration-none stretched-link">
                     @if ($post['isBrief'])
                         {{ fs_lang('contentFull') }}
                     @endif
@@ -165,7 +165,7 @@
                 'files' => $post['files'],
             ])@endcomponent
 
-            <a href="{{ fs_route(route('fresns.post.detail', ['pid' => $post['pid']])) }}" class="text-decoration-none stretched-link"></a>
+            <a href="{{ route('fresns.post.detail', ['pid' => $post['pid']]) }}" class="text-decoration-none stretched-link"></a>
         </section>
     @endif
 
@@ -193,7 +193,7 @@
                 {{-- Post Group --}}
                 @if ($post['group'])
                     <div class="content-group me-2">
-                        <a href="{{ fs_route(route('fresns.group.detail', ['gid' => $post['group']['gid']])) }}" class="badge rounded-pill text-decoration-none">
+                        <a href="{{ route('fresns.group.detail', ['gid' => $post['group']['gid']]) }}" class="badge rounded-pill text-decoration-none">
                             @if ($post['group']['cover'])
                                 <img src="{{ $post['group']['cover'] }}" loading="lazy" alt="$post['group']['name']" class="rounded">
                             @endif

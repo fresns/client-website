@@ -8,7 +8,7 @@
             <img src="{{ $author['avatar'] }}" loading="lazy" alt="{{ fs_lang('contentAuthorAnonymous') }}" class="user-avatar rounded-circle">
         @else
             {{-- Author --}}
-            <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $author['fsid']])) }}">
+            <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $author['fsid']]) }}">
                 @if ($author['decorate'])
                     <img src="{{ $author['decorate'] }}" loading="lazy" alt="Avatar Decorate" class="user-decorate">
                 @endif
@@ -32,7 +32,7 @@
             @else
                 {{-- Author --}}
                 <div class="user-info d-flex text-nowrap overflow-hidden">
-                    <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $author['fsid']])) }}" class="user-link d-flex">
+                    <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $author['fsid']]) }}" class="user-link d-flex">
                         <div class="user-nickname text-nowrap overflow-hidden" style="color:{{ $author['nicknameColor'] }};">{{ $author['nickname'] }}</div>
                         @if ($author['verified'])
                             <div class="user-verified">
@@ -92,14 +92,14 @@
                     @elseif (! $replyToComment['author']['fsid'])
                         <span class="text-muted">{{ fs_lang('contentAuthorAnonymous') }}</span>
                     @else
-                        <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $replyToComment['author']['fsid']])) }}">{{ $replyToComment['author']['nickname'] }}</a>
+                        <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $replyToComment['author']['fsid']]) }}">{{ $replyToComment['author']['nickname'] }}</a>
                     @endif
                 </div>
             @endif --}}
 
             {{-- Comment Location --}}
             @if ($geotag)
-                <a href="{{ fs_route(route('fresns.geotag.detail', ['gtid' => $geotag['gtid']])) }}" class="link-secondary ms-3"><i class="fa-solid fa-map-location-dot"></i> {{ $geotag['name'] }}</a>
+                <a href="{{ route('fresns.geotag..detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="fa-solid fa-map-location-dot"></i> {{ $geotag['name'] }}</a>
             @endif
         </div>
     </div>

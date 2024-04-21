@@ -49,7 +49,7 @@
                     <div class="row">
                         <div class="col">Latitude: ${position.latitude}<br>Longitude: ${position.longitude}</div>
                         <div class="col text-end">
-                            <a href="{{ fs_route(route('fresns.nearby.posts')) }}" role="button" class="btn btn-success"><i class="fa-solid fa-map-location-dot"></i> {{ fs_lang('reloadLocation') }}</a>
+                            <a href="{{ route('fresns.nearby.posts') }}" role="button" class="btn btn-success"><i class="fa-solid fa-map-location-dot"></i> {{ fs_lang('reloadLocation') }}</a>
                         </div>
                     </div>`)
             }
@@ -62,7 +62,7 @@
                 <div class="row">
                     <div class="col"><i class="fa-solid fa-triangle-exclamation"></i> ${reason}</div>
                     <div class="col text-end">
-                        <a href="{{ fs_route(route('fresns.nearby.posts')) }}" role="button" class="btn btn-success"><i class="fa-solid fa-map-location-dot"></i> {{ fs_lang('reloadLocation') }}</a>
+                        <a href="{{ route('fresns.nearby.posts') }}" role="button" class="btn btn-success"><i class="fa-solid fa-map-location-dot"></i> {{ fs_lang('reloadLocation') }}</a>
                     </div>
                 </div>`)
         }
@@ -96,7 +96,7 @@
                         latitude: position.coords.latitude,
                     }, false)
 
-                    let url = "{{ fs_route(route('fresns.nearby.posts')) }}";
+                    let url = "{{ route('fresns.nearby.posts') }}";
                     url = url + "?mapId=1&mapLat=" + position.coords.latitude + "&mapLng=" + position.coords.longitude;
 
                     window.getNearbyPostsPagination(url)

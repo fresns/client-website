@@ -23,6 +23,6 @@
             <div class="comment-post-group border-top text-secondary">{{ $quotedPost['group']['name'] }}</div>
         @endif
 
-        <a href="{{ fs_route(route('fresns.post.detail', ['pid' => $quotedPost['pid']])) }}" class="text-decoration-none stretched-link"></a>
+        <a href="{{ route('fresns.post.detail', ['pid' => $quotedPost['pid']]) }}" class="text-decoration-none stretched-link"></a>
     </section>
 @endif

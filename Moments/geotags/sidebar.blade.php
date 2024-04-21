@@ -6,8 +6,8 @@
     <div class="collapse navbar-collapse list-group mt-2 mt-lg-0" id="fresnsMenus">
         {{-- Hashtag Home --}}
         @if (fs_config('channel_geotag_status'))
-            <a href="{{ fs_route(route('fresns.geotag.index')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.index') ? 'active' : '' }}
-                @if (request()->url() === rtrim(fs_route(route('fresns.home')), '/')) active @endif">
+            <a href="{{ route('fresns.geotag.index') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.index') ? 'active' : '' }}
+                @if (request()->url() === rtrim(route('fresns.home'), '/')) active @endif">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-group-home.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_geotag_name') }}
             </a>
@@ -15,7 +15,7 @@
 
         {{-- Hashtag List --}}
         @if (fs_config('channel_geotag_list_status'))
-            <a href="{{ fs_route(route('fresns.geotag.list')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.list') ? 'active' : '' }}">
+            <a href="{{ route('fresns.geotag.list') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.list') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-group-list.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_geotag_list_name') }}
             </a>
@@ -23,7 +23,7 @@
 
         {{-- Likes --}}
         @if (fs_config('geotag_like_enabled'))
-            <a href="{{ fs_route(route('fresns.geotag.likes')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.likes') ? 'active' : '' }}">
+            <a href="{{ route('fresns.geotag.likes') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.likes') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-likes.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_likes_geotags_name') }}
             </a>
@@ -31,7 +31,7 @@
 
         {{-- Dislikes --}}
         @if (fs_config('geotag_dislike_enabled'))
-            <a href="{{ fs_route(route('fresns.geotag.dislikes')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.dislikes') ? 'active' : '' }}">
+            <a href="{{ route('fresns.geotag.dislikes') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.dislikes') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-dislikes.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_dislikes_geotags_name') }}
             </a>
@@ -39,7 +39,7 @@
 
         {{-- Following --}}
         @if (fs_config('geotag_follow_enabled'))
-            <a href="{{ fs_route(route('fresns.geotag.following')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.following') ? 'active' : '' }}">
+            <a href="{{ route('fresns.geotag.following') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.following') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-following.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_following_geotags_name') }}
             </a>
@@ -47,7 +47,7 @@
 
         {{-- Blocking --}}
         @if (fs_config('geotag_block_enabled'))
-            <a href="{{ fs_route(route('fresns.geotag.blocking')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.blocking') ? 'active' : '' }}">
+            <a href="{{ route('fresns.geotag.blocking') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.geotag.blocking') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-blocking.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_blocking_geotags_name') }}
             </a>

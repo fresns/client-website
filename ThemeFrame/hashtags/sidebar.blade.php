@@ -6,8 +6,8 @@
     <div class="collapse navbar-collapse list-group mt-2 mt-lg-0" id="fresnsMenus">
         {{-- Hashtag Home --}}
         @if (fs_config('channel_hashtag_status'))
-            <a href="{{ fs_route(route('fresns.hashtag.index')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.index') ? 'active' : '' }}
-                @if (request()->url() === rtrim(fs_route(route('fresns.home')), '/')) active @endif">
+            <a href="{{ route('fresns.hashtag.index') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.index') ? 'active' : '' }}
+                @if (request()->url() === rtrim(route('fresns.home'), '/')) active @endif">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-hashtag-home.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_hashtag_name') }}
             </a>
@@ -15,7 +15,7 @@
 
         {{-- Hashtag List --}}
         @if (fs_config('channel_hashtag_list_status'))
-            <a href="{{ fs_route(route('fresns.hashtag.list')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.list') ? 'active' : '' }}">
+            <a href="{{ route('fresns.hashtag.list') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.list') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-hashtag-list.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_hashtag_list_name') }}
             </a>
@@ -23,7 +23,7 @@
 
         {{-- Likes --}}
         @if (fs_config('hashtag_like_enabled'))
-            <a href="{{ fs_route(route('fresns.hashtag.likes')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.likes') ? 'active' : '' }}">
+            <a href="{{ route('fresns.hashtag.likes') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.likes') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-likes.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_likes_hashtags_name') }}
             </a>
@@ -31,7 +31,7 @@
 
         {{-- Dislikes --}}
         @if (fs_config('hashtag_dislike_enabled'))
-            <a href="{{ fs_route(route('fresns.hashtag.dislikes')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.dislikes') ? 'active' : '' }}">
+            <a href="{{ route('fresns.hashtag.dislikes') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.dislikes') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-dislikes.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_dislikes_hashtags_name') }}
             </a>
@@ -39,7 +39,7 @@
 
         {{-- Following --}}
         @if (fs_config('hashtag_follow_enabled'))
-            <a href="{{ fs_route(route('fresns.hashtag.following')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.following') ? 'active' : '' }}">
+            <a href="{{ route('fresns.hashtag.following') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.following') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-following.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_following_hashtags_name') }}
             </a>
@@ -47,7 +47,7 @@
 
         {{-- Blocking --}}
         @if (fs_config('hashtag_block_enabled'))
-            <a href="{{ fs_route(route('fresns.hashtag.blocking')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.blocking') ? 'active' : '' }}">
+            <a href="{{ route('fresns.hashtag.blocking') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.hashtag.blocking') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-blocking.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_blocking_hashtags_name') }}
             </a>

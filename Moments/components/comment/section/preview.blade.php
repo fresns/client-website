@@ -6,7 +6,7 @@
             @elseif ($comment['isAnonymous'])
                 <span class="text-info">{{ fs_lang('contentAuthorAnonymous') }}</span>
             @else
-                <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $comment['author']['fsid']])) }}" class="content-link text-decoration-none">{{ $comment['author']['nickname'] }}</a>
+                <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $comment['author']['fsid']]) }}" class="content-link text-decoration-none">{{ $comment['author']['nickname'] }}</a>
             @endif
 
             @if ($comment['author']['isPostAuthor'])
@@ -19,7 +19,7 @@
                 @elseif ($comment['replyToComment']['isAnonymous'])
                     {{ fs_config('publish_comment_name') }} <span class="text-info">{{ fs_lang('contentAuthorAnonymous') }}</span>
                 @else
-                    {{ fs_config('publish_comment_name') }} <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $comment['replyToComment']['author']['fsid']])) }}" class="content-link text-decoration-none">{{ $comment['replyToComment']['author']['nickname'] }}</a>
+                    {{ fs_config('publish_comment_name') }} <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $comment['replyToComment']['author']['fsid']]) }}" class="content-link text-decoration-none">{{ $comment['replyToComment']['author']['nickname'] }}</a>
                 @endif
             @endif
 
@@ -43,7 +43,7 @@
         </div>
     @endforeach
 
-    <a href="{{ fs_route(route('fresns.comment.detail', ['cid' => $cid])) }}" class="text-decoration-none stretched-link mb-2">
+    <a href="{{ route('fresns.comment.detail', ['cid' => $cid]) }}" class="text-decoration-none stretched-link mb-2">
         {{ fs_lang('modifierCount') }}
         {{ $commentCount }}
         {{ fs_lang('contentCommentCountDesc') }}

@@ -1,7 +1,7 @@
 <article class="d-flex mb-3">
     {{-- Avatar --}}
     <section class="flex-shrink-0">
-        <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $user['fsid']])) }}">
+        <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $user['fsid']]) }}">
             @if ($user['decorate'])
                 <img src="{{ $user['decorate'] }}" loading="lazy" alt="Avatar Decorate" class="user-decorate">
             @endif
@@ -12,7 +12,7 @@
         {{-- User Header --}}
         <header class="user-primary d-lg-flex">
             <div class="user-info d-flex text-nowrap overflow-hidden">
-                <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $user['fsid']])) }}" class="user-link d-flex">
+                <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $user['fsid']]) }}" class="user-link d-flex">
                     <div class="user-nickname text-nowrap overflow-hidden" style="color:{{ $user['nicknameColor'] }};">{{ $user['nickname'] }}</div>
                     @if ($user['verified'])
                         <div class="user-verified">

@@ -60,16 +60,16 @@
         {{-- interaction --}}
         <section class="fs-7 mt-2">
             @if ($hashtag['interaction']['likePublicRecord'])
-                <a href="{{ fs_route(route('fresns.hashtag.detail.likers', ['htid' => $hashtag['htid']])) }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3">{{ $hashtag['interaction']['likeUserTitle'] }}: {{ $hashtag['likeCount'] }}</a>
+                <a href="{{ route('fresns.hashtag.detail.likers', ['htid' => $hashtag['htid']]) }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3">{{ $hashtag['interaction']['likeUserTitle'] }}: {{ $hashtag['likeCount'] }}</a>
             @endif
             @if ($hashtag['interaction']['dislikePublicRecord'])
-                <a href="{{ fs_route(route('fresns.hashtag.detail.dislikers', ['htid' => $hashtag['htid']])) }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3">{{ $hashtag['interaction']['dislikeUserTitle'] }}: {{ $hashtag['dislikeCount'] }}</a>
+                <a href="{{ route('fresns.hashtag.detail.dislikers', ['htid' => $hashtag['htid']]) }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3">{{ $hashtag['interaction']['dislikeUserTitle'] }}: {{ $hashtag['dislikeCount'] }}</a>
             @endif
             @if ($hashtag['interaction']['followPublicRecord'])
-                <a href="{{ fs_route(route('fresns.hashtag.detail.followers', ['htid' => $hashtag['htid']])) }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3">{{ $hashtag['interaction']['followUserTitle'] }}: {{ $hashtag['followCount'] }}</a>
+                <a href="{{ route('fresns.hashtag.detail.followers', ['htid' => $hashtag['htid']]) }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3">{{ $hashtag['interaction']['followUserTitle'] }}: {{ $hashtag['followCount'] }}</a>
             @endif
             @if ($hashtag['interaction']['blockPublicRecord'])
-                <a href="{{ fs_route(route('fresns.hashtag.detail.blockers', ['htid' => $hashtag['htid']])) }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{ $hashtag['interaction']['blockUserTitle'] }}: {{ $hashtag['blockCount'] }}</a>
+                <a href="{{ route('fresns.hashtag.detail.blockers', ['htid' => $hashtag['htid']]) }}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{ $hashtag['interaction']['blockUserTitle'] }}: {{ $hashtag['blockCount'] }}</a>
             @endif
         </section>
     </div>

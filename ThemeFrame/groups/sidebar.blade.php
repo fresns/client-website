@@ -6,8 +6,8 @@
     <div class="collapse navbar-collapse list-group mt-2 mt-lg-0" id="fresnsMenus">
         {{-- Group Home --}}
         @if (fs_config('channel_group_status'))
-            <a href="{{ fs_route(route('fresns.group.index')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.index') ? 'active' : '' }}
-                @if (request()->url() === rtrim(fs_route(route('fresns.home')), '/')) active @endif">
+            <a href="{{ route('fresns.group.index') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.index') ? 'active' : '' }}
+                @if (request()->url() === rtrim(route('fresns.home'), '/')) active @endif">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-group-home.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_group_name') }}
             </a>
@@ -15,7 +15,7 @@
 
         {{-- Group List --}}
         @if (fs_config('channel_group_list_status'))
-            <a href="{{ fs_route(route('fresns.group.list')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.list') ? 'active' : '' }}">
+            <a href="{{ route('fresns.group.list') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.list') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-group-list.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_group_list_name') }}
             </a>
@@ -23,7 +23,7 @@
 
         {{-- Likes --}}
         @if (fs_config('group_like_enabled'))
-            <a href="{{ fs_route(route('fresns.group.likes')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.likes') ? 'active' : '' }}">
+            <a href="{{ route('fresns.group.likes') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.likes') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-likes.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_likes_groups_name') }}
             </a>
@@ -31,7 +31,7 @@
 
         {{-- Dislikes --}}
         @if (fs_config('group_dislike_enabled'))
-            <a href="{{ fs_route(route('fresns.group.dislikes')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.dislikes') ? 'active' : '' }}">
+            <a href="{{ route('fresns.group.dislikes') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.dislikes') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-dislikes.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_dislikes_groups_name') }}
             </a>
@@ -39,7 +39,7 @@
 
         {{-- Following --}}
         @if (fs_config('group_follow_enabled'))
-            <a href="{{ fs_route(route('fresns.group.following')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.following') ? 'active' : '' }}">
+            <a href="{{ route('fresns.group.following') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.following') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-following.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_following_groups_name') }}
             </a>
@@ -47,7 +47,7 @@
 
         {{-- Blocking --}}
         @if (fs_config('group_block_enabled'))
-            <a href="{{ fs_route(route('fresns.group.blocking')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.blocking') ? 'active' : '' }}">
+            <a href="{{ route('fresns.group.blocking') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.group.blocking') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-blocking.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_blocking_groups_name') }}
             </a>

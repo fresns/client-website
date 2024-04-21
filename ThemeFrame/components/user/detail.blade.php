@@ -61,7 +61,7 @@
 
 @if (fs_config('profile_followers_you_follow_enabled') && $followersYouFollow)
     <section class="text-center my-3">
-        <a href="{{ fs_route(route('fresns.profile.followers.you.follow', ['uidOrUsername' => $user['fsid']])) }}" class="text-muted fs-7 text-decoration-none">
+        <a href="{{ route('fresns.profile.followers.you.follow', ['uidOrUsername' => $user['fsid']]) }}" class="text-muted fs-7 text-decoration-none">
             @foreach($followersYouFollow as $friend)
                 {{ $friend['nickname'] }}@if (! $loop->last), @endif
             @endforeach
@@ -127,7 +127,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="conversationModalLabel">
-                        <a href="{{ fs_route(route('fresns.conversation.index')) }}" target="_blank" class="text-decoration-none"><i class="bi bi-chat-square-dots"></i> {{ fs_config('channel_conversations_name') }}</a>
+                        <a href="{{ route('fresns.conversation.index') }}" target="_blank" class="text-decoration-none"><i class="bi bi-chat-square-dots"></i> {{ fs_config('channel_conversations_name') }}</a>
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

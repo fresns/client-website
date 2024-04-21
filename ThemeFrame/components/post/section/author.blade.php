@@ -21,7 +21,7 @@
 
                 {{-- Post Location --}}
                 @if ($geotag)
-                    <a href="{{ fs_route(route('fresns.geotag.detail', ['gtid' => $geotag['gtid']])) }}" class="link-secondary ms-3"><i class="bi bi-geo-alt-fill"></i> {{ $geotag['name'] }}</a>
+                    <a href="{{ route('fresns.geotag.detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="bi bi-geo-alt-fill"></i> {{ $geotag['name'] }}</a>
                 @endif
             </div>
         </div>
@@ -49,7 +49,7 @@
 
                 {{-- Post Location --}}
                 @if ($geotag)
-                    <a href="{{ fs_route(route('fresns.geotag.detail', ['gtid' => $geotag['gtid']])) }}" class="link-secondary ms-3"><i class="bi bi-geo-alt-fill"></i> {{ $geotag['name'] }}</a>
+                    <a href="{{ route('fresns.geotag.detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="bi bi-geo-alt-fill"></i> {{ $geotag['name'] }}</a>
                 @endif
             </div>
         </div>
@@ -58,7 +58,7 @@
     {{-- Author --}}
     <div class="d-flex">
         <div class="flex-shrink-0">
-            <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $author['fsid']])) }}">
+            <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $author['fsid']]) }}">
                 @if ($author['decorate'])
                     <img src="{{ $author['decorate'] }}" loading="lazy" alt="Avatar Decorate" class="user-decorate">
                 @endif
@@ -68,7 +68,7 @@
         <div class="flex-grow-1">
             <div class="user-primary d-lg-flex">
                 <div class="user-info d-flex text-nowrap overflow-hidden">
-                    <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $author['fsid']])) }}" class="user-link d-flex">
+                    <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $author['fsid']]) }}" class="user-link d-flex">
                         <div class="user-nickname text-nowrap overflow-hidden" style="color:{{ $author['nicknameColor'] }};">{{ $author['nickname'] }}</div>
                         @if ($author['verified'])
                             <div class="user-verified">
@@ -111,7 +111,7 @@
 
                 {{-- Post Location --}}
                 @if ($geotag)
-                    <a href="{{ fs_route(route('fresns.geotag.detail', ['gtid' => $geotag['gtid']])) }}" class="link-secondary ms-3"><i class="bi bi-geo-alt-fill"></i> {{ $geotag['name'] }}</a>
+                    <a href="{{ route('fresns.geotag.detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="bi bi-geo-alt-fill"></i> {{ $geotag['name'] }}</a>
                 @endif
             </div>
         </div>

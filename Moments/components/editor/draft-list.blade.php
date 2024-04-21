@@ -21,13 +21,13 @@
                     @if ($draft['fsid'])
                         @switch($type)
                             @case('post')
-                                <a href="{{ fs_route(route('fresns.post.detail', ['pid' => $draft['fsid']])) }}" target="_blank">
+                                <a href="{{ route('fresns.post.detail', ['pid' => $draft['fsid']]) }}" target="_blank">
                                     <span class="badge bg-info">{{ fs_lang('contentViewOriginal') }}</span>
                                 </a>
                             @break
 
                             @case('comment')
-                                <a href="{{ fs_route(route('fresns.comment.detail', ['cid' => $draft['fsid']])) }}" target="_blank">
+                                <a href="{{ route('fresns.comment.detail', ['cid' => $draft['fsid']]) }}" target="_blank">
                                     <span class="badge bg-info">{{ fs_lang('contentViewOriginal') }}</span>
                                 </a>
                             @break
@@ -45,7 +45,7 @@
                 </td>
                 <td class="text-center">
                     @if ($draft['state'] == 1 || $draft['state'] == 4)
-                        <a class="btn btn-outline-primary btn-sm" href="{{ fs_route(route('fresns.editor.edit', ['type' => $type, 'did' => $draft['did']])) }}" role="button">{{ fs_lang('edit') }}</a>
+                        <a class="btn btn-outline-primary btn-sm" href="{{ route('fresns.editor.edit', ['type' => $type, 'did' => $draft['did']]) }}" role="button">{{ fs_lang('edit') }}</a>
 
                         <a class="btn btn-link link-danger text-decoration-none api-request-link" href="#" data-method="DELETE" data-fsid="{{ $draft['did'] }}" data-action="{{ route('fresns.api.delete', ['path' => "/api/fresns/v1/editor/{$type}/draft/{$draft['did']}"]) }}">{{ fs_lang('delete') }}</a>
                     @elseif ($draft['state'] == 2)

@@ -5,7 +5,7 @@
 @section('content')
     <div class="text-bg-light p-2 mb-3">
         @if (! fs_config('moments_search_method'))
-            <form action="{{ fs_route(route('fresns.search.index')) }}" method="get">
+            <form action="{{ route('fresns.search.index') }}" method="get">
                 <input type="hidden" name="searchType" value="post"/>
                 <input class="form-control rounded-pill bg-light py-2 px-3" name="searchKey" value="{{ request('searchKey') }}" placeholder="{{ fs_lang('search') }}" aria-label="Search">
             </form>
@@ -36,35 +36,35 @@
     <div class="list-group rounded-0 my-3">
         {{-- User --}}
         @if (fs_config('channel_user_list_status'))
-            <a href="{{ fs_route(route('fresns.user.list')) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+            <a href="{{ route('fresns.user.list') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
                 <span class="py-2"><i class="fa-regular fa-fw fa-circle-user me-2"></i> {{ fs_config('channel_user_list_name') }}</span>
                 <span class="py-2 text-black-50"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
         @endif
         {{-- Group --}}
         @if (fs_config('channel_group_list_status'))
-            <a href="{{ fs_route(route('fresns.group.list')) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+            <a href="{{ route('fresns.group.list') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
                 <span class="py-2"><i class="fa-regular fa-fw fa-building me-2"></i> {{ fs_config('channel_group_list_name') }}</span>
                 <span class="py-2 text-black-50"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
         @endif
         {{-- Hashtag --}}
         @if (fs_config('channel_hashtag_list_status'))
-            <a href="{{ fs_route(route('fresns.hashtag.list')) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+            <a href="{{ route('fresns.hashtag.list') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
                 <span class="py-2"><i class="fa-solid fa-fw fa-hashtag me-2"></i> {{ fs_config('channel_hashtag_list_name') }}</span>
                 <span class="py-2 text-black-50"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
         @endif
         {{-- Post --}}
         @if (fs_config('channel_post_list_status'))
-            <a href="{{ fs_route(route('fresns.post.list')) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+            <a href="{{ route('fresns.post.list') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
                 <span class="py-2"><i class="fa-regular fa-fw fa-newspaper me-2"></i> {{ fs_config('channel_post_list_name') }}</span>
                 <span class="py-2 text-black-50"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
         @endif
         {{-- Comment --}}
         @if (fs_config('channel_comment_list_status'))
-            <a href="{{ fs_route(route('fresns.comment.list')) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+            <a href="{{ route('fresns.comment.list') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
                 <span class="py-2"><i class="fa-regular fa-fw fa-comment-dots me-2"></i> {{ fs_config('channel_comment_list_name') }}</span>
                 <span class="py-2 text-black-50"><i class="fa-solid fa-chevron-right"></i></span>
             </a>

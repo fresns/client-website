@@ -1,7 +1,7 @@
 {{-- Search --}}
 <aside class="mt-2 mb-3">
     @if (! fs_config('moments_search_method'))
-        <form action="{{ fs_route(route('fresns.search.index')) }}" method="get">
+        <form action="{{ route('fresns.search.index') }}" method="get">
             <input type="hidden" name="searchType" value="post"/>
             <input class="form-control rounded-pill bg-light py-2 px-3" name="searchKey" value="{{ request('searchKey') }}" placeholder="{{ fs_lang('search') }}" aria-label="Search">
         </form>
@@ -37,7 +37,7 @@
 <aside class="fs-list-group rounded mb-3">
     <h4 class="fs-5 px-3 pb-1 pt-3">{{ fs_lang('contentHotList') }}</h4>
     @foreach(fs_content_list('post', 'list') as $topPost)
-        <a href="{{ fs_route(route('fresns.post.detail', ['pid' => $topPost['pid']])) }}" class="list-group-item list-group-item-action text-break px-3 py-2">
+        <a href="{{ route('fresns.post.detail', ['pid' => $topPost['pid']]) }}" class="list-group-item list-group-item-action text-break px-3 py-2">
             <i class="fa-solid fa-arrow-trend-up me-1 text-primary"></i>
             {{ $topPost['title'] ?? Str::limit(strip_tags($topPost['content']), 80) }}
         </a>

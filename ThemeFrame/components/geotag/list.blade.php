@@ -1,13 +1,13 @@
 <article class="d-flex">
     @if ($geotag['cover'])
         <section class="flex-shrink-0">
-            <a href="{{ fs_route(route('fresns.geotag.detail', ['gtid' => $geotag['gtid']])) }}"><img src="{{ $geotag['cover'] }}" loading="lazy" alt="{{ $geotag['name'] }}" class="rounded list-cover"></a>
+            <a href="{{ route('fresns.geotag.detail', ['gtid' => $geotag['gtid']]) }}"><img src="{{ $geotag['cover'] }}" loading="lazy" alt="{{ $geotag['name'] }}" class="rounded list-cover"></a>
         </section>
     @endif
     <div class="flex-grow-1 ms-3">
         <header class="d-lg-flex">
             <section class="d-flex">
-                <a href="{{ fs_route(route('fresns.geotag.detail', ['gtid' => $geotag['gtid']])) }}" class="text-nowrap overflow-hidden list-name">{{ $geotag['name'] }}</a>
+                <a href="{{ route('fresns.geotag.detail', ['gtid' => $geotag['gtid']]) }}" class="text-nowrap overflow-hidden list-name">{{ $geotag['name'] }}</a>
                 <div class="badge-bg-info ms-2">
                     <span class="badge rounded-pill">{{ $geotag['postCount'] }} {{ fs_config('post_name') }}</span>
                     <span class="badge rounded-pill">{{ $geotag['postDigestCount'] }} {{ fs_lang('contentDigest') }}</span>

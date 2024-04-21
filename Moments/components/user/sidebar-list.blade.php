@@ -23,7 +23,7 @@
         <div class="user-name text-secondary fs-7">{{ '@' . $user['username'] }}</div>
     </div>
 
-    <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $user['fsid']])) }}" class="stretched-link"></a>
+    <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $user['fsid']]) }}" class="stretched-link"></a>
 
     <form action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/user/mark']) }}" method="post" class="position-absolute top-50 end-0 translate-middle-y fresns_link">
         <input type="hidden" name="markType" value="follow"/>

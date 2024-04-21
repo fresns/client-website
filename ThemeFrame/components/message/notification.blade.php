@@ -7,7 +7,7 @@
     {{-- User Avatar --}}
     @if ($notification['actionUser'])
         @if ($notification['actionUser']['status'])
-            <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $notification['actionUser']['fsid']])) }}">
+            <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $notification['actionUser']['fsid']]) }}">
                 <img src="{{ $notification['actionUser']['avatar'] }}" loading="lazy" class="rounded-circle mx-3" style="width:3.2rem;height:3.2rem;">
             </a>
         @else
@@ -22,7 +22,7 @@
         @if ($notification['actionUser'])
             <div class="user-info text-nowrap overflow-hidden">
                 @if ($notification['actionUser']['status'])
-                    <a href="{{ fs_route(route('fresns.profile.index', ['uidOrUsername' => $notification['actionUser']['fsid']])) }}" class="user-link d-flex">
+                    <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $notification['actionUser']['fsid']]) }}" class="user-link d-flex">
                         <div class="user-nickname text-nowrap overflow-hidden">{{ $notification['actionUser']['nickname'] }}</div>
 
                         @if ($notification['actionUser']['verified'])
@@ -163,11 +163,11 @@
                 @if ($notification['contentFsid'])
                     @switch($notification['type'])
                         @case(8)
-                            <a href="{{ fs_route(route('fresns.comment.detail', ['cid' => $notification['contentFsid']])) }}" class="text-decoration-none text-secondary fs-6 mt-2">{{ $notification['content'] }}</a>
+                            <a href="{{ route('fresns.comment.detail', ['cid' => $notification['contentFsid']]) }}" class="text-decoration-none text-secondary fs-6 mt-2">{{ $notification['content'] }}</a>
                         @break
 
                         @case(9)
-                            <a href="{{ fs_route(route('fresns.post.detail', ['pid' => $notification['contentFsid']])) }}" class="text-decoration-none text-secondary fs-6 mt-2">{{ $notification['content'] }}</a>
+                            <a href="{{ route('fresns.post.detail', ['pid' => $notification['contentFsid']]) }}" class="text-decoration-none text-secondary fs-6 mt-2">{{ $notification['content'] }}</a>
                         @break
 
                         @default
@@ -185,7 +185,7 @@
             @switch($notification['actionTarget'])
                 @case(2)
                     <div class="content-group mt-2">
-                        <a href="{{ fs_route(route('fresns.group.detail', ['gid' => $notification['actionInfo']['gid']])) }}" class="badge rounded-pill text-decoration-none">
+                        <a href="{{ route('fresns.group.detail', ['gid' => $notification['actionInfo']['gid']]) }}" class="badge rounded-pill text-decoration-none">
                             @if ($notification['actionInfo']['cover'])
                                 <img src="{{ $notification['actionInfo']['cover'] }}" loading="lazy" alt="$notification['actionInfo']['name']" class="rounded">
                             @endif
@@ -195,11 +195,11 @@
                 @break
 
                 @case(3)
-                    <a href="{{ fs_route(route('fresns.hashtag.detail', ['htid' => $notification['actionInfo']['htid']])) }}" class="text-decoration-none text-secondary mt-2"><span class="badge text-bg-primary">{{ $notification['actionInfo']['name'] }}</span></a>
+                    <a href="{{ route('fresns.hashtag.detail', ['htid' => $notification['actionInfo']['htid']]) }}" class="text-decoration-none text-secondary mt-2"><span class="badge text-bg-primary">{{ $notification['actionInfo']['name'] }}</span></a>
                 @break
 
                 @case(4)
-                    <a href="{{ fs_route(route('fresns.geotag.detail', ['gtid' => $notification['actionInfo']['gtid']])) }}" class="text-decoration-none text-secondary mt-2"><span class="badge text-bg-primary">{{ $notification['actionInfo']['name'] }}</span></a>
+                    <a href="{{ route('fresns.geotag.detail', ['gtid' => $notification['actionInfo']['gtid']]) }}" class="text-decoration-none text-secondary mt-2"><span class="badge text-bg-primary">{{ $notification['actionInfo']['name'] }}</span></a>
                 @break
 
                 @case(5)
@@ -211,7 +211,7 @@
                         @if ($notification['actionInfo']['group'])
                             <div class="comment-post-group border-top text-secondary">{{ $notification['actionInfo']['group']['name'] }}</div>
                         @endif
-                        <a href="{{ fs_route(route('fresns.post.detail', ['pid' => $notification['actionInfo']['pid']])) }}" class="text-decoration-none stretched-link"></a>
+                        <a href="{{ route('fresns.post.detail', ['pid' => $notification['actionInfo']['pid']]) }}" class="text-decoration-none stretched-link"></a>
                     </section>
                 @break
 
@@ -221,7 +221,7 @@
                             <div class="flex-shrink-0"><img src="{{ $notification['actionInfo']['author']['avatar'] }}" loading="lazy" class="rounded"></div>
                             <div class="flex-grow-1">{{ $notification['actionInfo']['title'] ?? Str::limit(strip_tags($notification['actionInfo']['content']), 80) }}</div>
                         </div>
-                        <a href="{{ fs_route(route('fresns.comment.detail', ['cid' => $notification['actionInfo']['cid']])) }}" class="text-decoration-none stretched-link"></a>
+                        <a href="{{ route('fresns.comment.detail', ['cid' => $notification['actionInfo']['cid']]) }}" class="text-decoration-none stretched-link"></a>
                     </section>
                 @break
 

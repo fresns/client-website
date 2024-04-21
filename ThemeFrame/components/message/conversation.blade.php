@@ -1,4 +1,4 @@
-<a href="{{ fs_route(route('fresns.conversation.detail', ['uidOrUsername' => $conversation['user']['fsid']])) }}" class="list-group-item list-group-item-action d-flex justify-content-between position-relative">
+<a href="{{ route('fresns.conversation.detail', ['uidOrUsername' => $conversation['user']['fsid']]) }}" class="list-group-item list-group-item-action d-flex justify-content-between position-relative">
     @if ($conversation['user'])
         <img src="{{ $conversation['user']['avatar'] }}" loading="lazy" class="conversation-list-avatar rounded-circle">
     @else

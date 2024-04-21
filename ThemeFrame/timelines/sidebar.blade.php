@@ -6,17 +6,17 @@
     <div class="collapse navbar-collapse list-group mt-2 mt-lg-0" id="fresnsMenus">
         {{-- Post List --}}
         @if (fs_config('channel_timeline_posts_status'))
-            <a href="{{ fs_route(route('fresns.timeline.posts')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.posts') ? 'active' : '' }}">
+            <a href="{{ route('fresns.timeline.posts') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.posts') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-post-home.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_timeline_posts_name') }}
             </a>
 
-            <a href="{{ fs_route(route('fresns.timeline.user.posts')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.user.posts') ? 'active' : '' }}">
+            <a href="{{ route('fresns.timeline.user.posts') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.user.posts') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-post-list.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_timeline_user_posts_name') }}
             </a>
             
-            <a href="{{ fs_route(route('fresns.timeline.group.posts')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.group.posts') ? 'active' : '' }}">
+            <a href="{{ route('fresns.timeline.group.posts') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.group.posts') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-follow-posts.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_timeline_group_posts_name') }}
             </a>
@@ -24,17 +24,17 @@
 
         {{-- Comment List --}}
         @if (fs_config('channel_timeline_comments_status'))
-            <a href="{{ fs_route(route('fresns.timeline.comments')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.comments') ? 'active' : '' }}">
+            <a href="{{ route('fresns.timeline.comments') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.comments') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-comment-home.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_timeline_comments_name') }}
             </a>
 
-            <a href="{{ fs_route(route('fresns.timeline.user.comments')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.user.comments') ? 'active' : '' }}">
+            <a href="{{ route('fresns.timeline.user.comments') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.user.comments') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-comment-list.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_timeline_user_comments_name') }}
             </a>
             
-            <a href="{{ fs_route(route('fresns.timeline.group.comments')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.group.comments') ? 'active' : '' }}">
+            <a href="{{ route('fresns.timeline.group.comments') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.timeline.group.comments') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-follow-comments.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_timeline_group_comments_name') }}
             </a>

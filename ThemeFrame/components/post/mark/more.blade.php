@@ -2,7 +2,7 @@
     {{-- Edit --}}
     @if ($editControls['isAuthor'] && $editControls['canEdit'])
         <li>
-            <a class="dropdown-item py-2" href="{{ fs_route(route('fresns.editor.post', ['pid' => $pid])) }}">
+            <a class="dropdown-item py-2" href="{{ route('fresns.editor.post', ['pid' => $pid]) }}">
                 <i class="bi bi-pencil-square"></i>
                 {{ fs_lang('edit') }}
             </a>

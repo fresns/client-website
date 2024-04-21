@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">
                     {{ fs_config('publish_post_name') }}
-                    <a href="{{ fs_route(route('fresns.editor.post')) }}" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill ms-2">
+                    <a href="{{ route('fresns.editor.post') }}" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill ms-2">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         {{ fs_lang('editorGoTo') }}
                     </a>

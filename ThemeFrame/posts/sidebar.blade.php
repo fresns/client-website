@@ -6,8 +6,8 @@
     <div class="collapse navbar-collapse list-group mt-2 mt-lg-0" id="fresnsMenus">
         {{-- Post Home --}}
         @if (fs_config('channel_post_status'))
-            <a href="{{ fs_route(route('fresns.post.index')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.index') ? 'active' : '' }}
-                @if (request()->url() === rtrim(fs_route(route('fresns.home')), '/')) active @endif">
+            <a href="{{ route('fresns.post.index') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.index') ? 'active' : '' }}
+                @if (request()->url() === rtrim(route('fresns.home'), '/')) active @endif">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-post-home.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_post_name') }}
             </a>
@@ -15,7 +15,7 @@
 
         {{-- Post List --}}
         @if (fs_config('channel_post_list_status'))
-            <a href="{{ fs_route(route('fresns.post.list')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.list') ? 'active' : '' }}">
+            <a href="{{ route('fresns.post.list') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.list') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-post-list.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_post_list_name') }}
             </a>
@@ -23,7 +23,7 @@
 
         {{-- Likes --}}
         @if (fs_config('post_like_enabled'))
-            <a href="{{ fs_route(route('fresns.post.likes')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.likes') ? 'active' : '' }}">
+            <a href="{{ route('fresns.post.likes') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.likes') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-likes.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_likes_posts_name') }}
             </a>
@@ -31,7 +31,7 @@
 
         {{-- Dislikes --}}
         @if (fs_config('post_dislike_enabled'))
-            <a href="{{ fs_route(route('fresns.post.dislikes')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.dislikes') ? 'active' : '' }}">
+            <a href="{{ route('fresns.post.dislikes') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.dislikes') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-dislikes.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_dislikes_posts_name') }}
             </a>
@@ -39,7 +39,7 @@
 
         {{-- Following --}}
         @if (fs_config('post_follow_enabled'))
-            <a href="{{ fs_route(route('fresns.post.following')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.following') ? 'active' : '' }}">
+            <a href="{{ route('fresns.post.following') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.following') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-following.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_following_posts_name') }}
             </a>
@@ -47,7 +47,7 @@
 
         {{-- Blocking --}}
         @if (fs_config('post_block_enabled'))
-            <a href="{{ fs_route(route('fresns.post.blocking')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.blocking') ? 'active' : '' }}">
+            <a href="{{ route('fresns.post.blocking') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.post.blocking') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-blocking.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_blocking_posts_name') }}
             </a>

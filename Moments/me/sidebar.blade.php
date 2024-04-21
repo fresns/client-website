@@ -5,13 +5,13 @@
     </button>
     <div class="collapse navbar-collapse list-group mt-2 mt-lg-0" id="fresnsMenus">
         {{-- User Center --}}
-        <a href="{{ fs_route(route('fresns.me.index')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.index') ? 'active' : '' }}">
+        <a href="{{ route('fresns.me.index') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.index') ? 'active' : '' }}">
             <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-account.png" loading="lazy" width="36" height="36">
             {{ fs_config('channel_me_name') }}
         </a>
 
         {{-- Notifications --}}
-        <a href="{{ fs_route(route('fresns.notification.index')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.notification.index') ? 'active' : '' }}">
+        <a href="{{ route('fresns.notification.index') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.notification.index') ? 'active' : '' }}">
             <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-account-notifications.png" loading="lazy" width="36" height="36">
             {{ fs_config('channel_notifications_name') }}
 
@@ -22,7 +22,7 @@
 
         {{-- Conversations --}}
         @if (fs_config('conversation_status'))
-            <a href="{{ fs_route(route('fresns.conversation.index')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.conversation.*') ? 'active' : '' }}">
+            <a href="{{ route('fresns.conversation.index') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.conversation.*') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-account-conversations.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_conversations_name') }}
 
@@ -33,7 +33,7 @@
         @endif
 
         {{-- Draft Box --}}
-        <a href="{{ fs_route(route('fresns.me.drafts')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.drafts') ? 'active' : '' }}">
+        <a href="{{ route('fresns.me.drafts') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.drafts') ? 'active' : '' }}">
             <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-account-drafts.png" loading="lazy" width="36" height="36">
             {{ fs_config('channel_me_drafts_name') }}
 
@@ -44,7 +44,7 @@
 
         {{-- Wallet --}}
         @if (fs_config('wallet_status'))
-            <a href="{{ fs_route(route('fresns.me.wallet')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.wallet') ? 'active' : '' }}">
+            <a href="{{ route('fresns.me.wallet') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.wallet') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-account-wallet.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_me_wallet_name') }}
             </a>
@@ -52,14 +52,14 @@
 
         {{-- Users of this account --}}
         @if (fs_user_overview('multiUser.status') || count(fs_account('detail.users')) > 1)
-            <a href="{{ fs_route(route('fresns.me.users')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.users') ? 'active' : '' }}">
+            <a href="{{ route('fresns.me.users') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.users') ? 'active' : '' }}">
                 <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-account-users.png" loading="lazy" width="36" height="36">
                 {{ fs_config('channel_me_users_name') }}
             </a>
         @endif
 
         {{-- Settings --}}
-        <a href="{{ fs_route(route('fresns.me.settings')) }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.settings') ? 'active' : '' }}">
+        <a href="{{ route('fresns.me.settings') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.settings') ? 'active' : '' }}">
             <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-account-settings.png" loading="lazy" width="36" height="36">
             {{ fs_config('channel_me_settings_name') }}
         </a>
