@@ -1,13 +1,13 @@
 <article class="d-flex border-bottom py-3 fs-hover">
     @if ($group['cover'])
         <section class="flex-shrink-0">
-            <a href="{{ route('fresns.group..detail', ['gid' => $group['gid']]) }}"><img src="{{ $group['cover'] }}" loading="lazy" alt="{{ $group['name'] }}" class="rounded list-cover"></a>
+            <a href="{{ route('fresns.group.detail', ['gid' => $group['gid']]) }}"><img src="{{ $group['cover'] }}" loading="lazy" alt="{{ $group['name'] }}" class="rounded list-cover"></a>
         </section>
     @endif
     <div class="flex-grow-1 ms-3">
         <header class="d-lg-flex">
             <section class="d-flex">
-                <a href="{{ route('fresns.group..detail', ['gid' => $group['gid']]) }}" class="text-nowrap overflow-hidden list-name">{{ $group['name'] }}</a>
+                <a href="{{ route('fresns.group.detail', ['gid' => $group['gid']]) }}" class="text-nowrap overflow-hidden list-name">{{ $group['name'] }}</a>
                 @if ($group['recommend'])
                     <img src="{{ fs_theme('assets') }}images/icon-recommend.png" loading="lazy" class="list-recommend ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Recommend" alt="Recommend">
                 @endif

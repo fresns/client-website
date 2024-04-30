@@ -21,7 +21,7 @@
 
                 {{-- Post Location --}}
                 @if ($geotag)
-                    <a href="{{ route('fresns.geotag..detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="fa-solid fa-map-location-dot"></i> {{ $geotag['name'] }}</a>
+                    <a href="{{ route('fresns.geotag.detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="fa-solid fa-map-location-dot"></i> {{ $geotag['name'] }}</a>
                 @endif
             </div>
         </div>
@@ -49,7 +49,7 @@
 
                 {{-- Post Location --}}
                 @if ($geotag)
-                    <a href="{{ route('fresns.geotag..detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="fa-solid fa-map-location-dot"></i> {{ $geotag['name'] }}</a>
+                    <a href="{{ route('fresns.geotag.detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="fa-solid fa-map-location-dot"></i> {{ $geotag['name'] }}</a>
                 @endif
             </div>
         </div>
@@ -111,7 +111,7 @@
 
                 {{-- Post Location --}}
                 @if ($geotag)
-                    <a href="{{ route('fresns.geotag..detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="fa-solid fa-map-location-dot"></i> {{ $geotag['name'] }}</a>
+                    <a href="{{ route('fresns.geotag.detail', ['gtid' => $geotag['gtid']]) }}" class="link-secondary ms-3"><i class="fa-solid fa-map-location-dot"></i> {{ $geotag['name'] }}</a>
                 @endif
             </div>
         </div>
