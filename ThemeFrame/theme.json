@@ -3,8 +3,8 @@
     "name": "ThemeFrame",
     "description": "Fresns website framework to showcase web-side functionality and interaction flow.",
     "author": "Fresns",
-    "authorLink": "https://fresns.org",
-    "version": "4.1.1",
+    "website": "https://fresns.org",
+    "version": "4.1.2",
     "functions": true,
     "functionItems": [
         {
