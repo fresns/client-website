@@ -249,7 +249,6 @@
         window.ajaxGetList = true;
         window.siteName = "{{ fs_config('site_name') }}";
         window.siteIcon = "{{ fs_config('site_icon') }}";
-        window.langTag = "{{ fs_theme('lang') }}";
         window.cookiePrefix = "{{ fs_config('website_cookie_prefix') }}";
         window.userIdentifier = "{{ fs_config('user_identifier') }}";
         window.mentionStatus = {{ fs_config('mention_status') ? 1 : 0 }};

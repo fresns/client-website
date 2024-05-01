@@ -61,12 +61,6 @@ window.fs_lang = function (key, replace = {}) {
 
 // tips
 window.tips = function (message, code = 200) {
-    if (window.langTag) {
-        langTag = '/' + window.langTag;
-    } else {
-        langTag = '';
-    }
-
     siteName = window.siteName ?? 'Tip';
     siteIcon = window.siteIcon ?? '/static/images/icon.png';
 
@@ -79,14 +73,14 @@ window.tips = function (message, code = 200) {
     if (code == 36104) {
         apiMessage = `${message}
             <div class="mt-2 pt-2 border-top">
-                <a class="btn btn-primary btn-sm" href="${langTag}/me/settings" role="button">
+                <a class="btn btn-primary btn-sm" href="/me/settings" role="button">
                     ${fs_lang('settingAccount')}
                 </a>
             </div>`;
     } else if (code == 38200) {
         apiMessage = `${message}
             <div class="mt-2 pt-2 border-top">
-                <a class="btn btn-primary btn-sm" href="${langTag}/me/drafts" role="button">
+                <a class="btn btn-primary btn-sm" href="/me/drafts" role="button">
                     ${fs_lang('view')}
                 </a>
             </div>`;
