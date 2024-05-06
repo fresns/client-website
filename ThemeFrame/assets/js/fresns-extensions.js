@@ -89,7 +89,7 @@ window.onmessage = function (event) {
 
         case 'fresnsAccountSign':
             html = `<div class="position-fixed top-50 start-50 translate-middle bg-secondary bg-opacity-75 rounded px-4 py-3" style="z-index:2048;">
-                <div>
+                <div class="text-center">
                     <div class="spinner-border text-light" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
