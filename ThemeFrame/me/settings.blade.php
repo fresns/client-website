@@ -41,7 +41,7 @@
                                 <img src="{{ fs_user('detail.avatar') }}" loading="lazy" class="rounded-circle" style="width:8rem;height:8rem;">
                                 <div class="position-absolute top-50 start-50 translate-middle">
                                     <label class="btn btn-light" type="button" for="uploadAvatar"><i class="bi bi-camera-fill"></i></label>
-                                    <input hidden="hidden" type="file" name="uploadAvatar" id="uploadAvatar" accept="{{ fs_editor_post('image.inputAccept') }}" data-user-fsid="{{ fs_user('detail.uid') }}" data-upload-action="{{ route('fresns.api.post', ['path' => '/api/fresns/common/v1/file/upload']) }}">
+                                    <input hidden="hidden" type="file" name="uploadAvatar" id="uploadAvatar" accept="{{ fs_editor_post('image.inputAccept') }}" data-user-fsid="{{ fs_user('detail.uid') }}">
                                 </div>
                             </div>
                         </div>
@@ -122,8 +122,10 @@
                         </div>
                         {{-- Birthday --}}
                         <div class="input-group mb-3">
+                            <span class="input-group-text">{{ fs_lang('userBirthday') }}</span>
+                            <span class="form-control">{{ fs_account('detail.birthday') }}</span>
                             <span class="input-group-text">{{ fs_lang('settingBirthdayDisplayType') }}</span>
-                            <span class="form-control" id="input-birthday">{{ fs_lang('settingBirthdayDisplayType'.fs_user('detail.birthdayDisplayType')) }}</span>
+                            <span class="form-control">{{ fs_lang('settingBirthdayDisplayType'.fs_user('detail.birthdayDisplayType')) }}</span>
                             <button class="btn btn-outline-secondary"
                                 data-label="{{ fs_lang('settingBirthdayDisplayType') }}"
                                 data-type="select"

@@ -13,10 +13,16 @@ $.ajaxSetup({
 });
 
 // utc timezone
-const now = new Date();
-const timezoneOffsetInHours = now.getTimezoneOffset() / -60;
-const fresnsTimezone = (timezoneOffsetInHours > 0 ? '+' : '') + timezoneOffsetInHours.toString();
-Cookies.set('fresns_timezone', fresnsTimezone);
+const cookieTimezone = Cookies.get('fresns_timezone');
+if (!cookieTimezone) {
+    const now = new Date();
+    const timezoneOffsetInHours = now.getTimezoneOffset() / -60;
+    const fresnsTimezone = (timezoneOffsetInHours > 0 ? '+' : '') + timezoneOffsetInHours.toString();
+    const cookieMinutes = 30 / 1440;
+
+    console.log('cookie', 'fresns_timezone', fresnsTimezone);
+    Cookies.set('fresns_timezone', fresnsTimezone, {expires: cookieMinutes});
+}
 
 // bootstrap Tooltips
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -796,8 +802,7 @@ window.buildAjaxAndSubmit = function (url, body, succeededCallback, failedCallba
         let formData = new FormData(),
             token = $('meta[name="csrf-token"]').attr('content'),
             obj = $(this),
-            uploadAction = $(this).data('upload-action'),
-            uidOrUsername = $(this).data('user-fsid');
+            uidOrUsername = obj.data('user-fsid');
 
         obj.prop('disabled', true);
         obj.prev().prepend('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ');
@@ -809,7 +814,7 @@ window.buildAjaxAndSubmit = function (url, body, succeededCallback, failedCallba
         formData.append('type', 'image');
 
         $.ajax({
-            url: uploadAction,
+            url: '/api/theme/actions/api/fresns/v1/common/file/upload',
             type: 'POST',
             cache: false,
             data: formData,
@@ -835,8 +840,7 @@ window.buildAjaxAndSubmit = function (url, body, succeededCallback, failedCallba
             token = $('meta[name="csrf-token"]').attr('content'),
             obj = $(this),
             type = obj.data('type'),
-            uploadAction = $(this).data('upload-action'),
-            uidOrUsername = $(this).data('user-fsid');
+            uidOrUsername = obj.data('user-fsid');
 
         $('.send-file-btn').prop('disabled', true);
         $('.send-file-btn').prepend(
@@ -850,7 +854,7 @@ window.buildAjaxAndSubmit = function (url, body, succeededCallback, failedCallba
         formData.append('type', type);
 
         $.ajax({
-            url: uploadAction,
+            url: '/api/theme/actions/api/fresns/v1/common/file/upload',
             type: 'POST',
             cache: false,
             data: formData,
