@@ -21,7 +21,7 @@ if (!cookieTimezone) {
     const cookieMinutes = 30 / 1440;
 
     console.log('cookie', 'fresns_timezone', fresnsTimezone);
-    Cookies.set('fresns_timezone', fresnsTimezone, {expires: cookieMinutes});
+    Cookies.set('fresns_timezone', fresnsTimezone, { expires: cookieMinutes });
 }
 
 // bootstrap Tooltips
