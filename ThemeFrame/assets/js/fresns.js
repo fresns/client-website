@@ -1426,10 +1426,14 @@ var fresnsFile = {
                         $('#uploadSubmit').prop('disabled', false);
                         $('#uploadSubmit').find('.spinner-border').remove();
 
-                        $('#fresnsUploadModal .btn-close').trigger('click');
-
                         $('#uploadProgressBar').attr('aria-valuenow', 100);
                         $('#uploadProgressBar').find('.progress-bar').css('width', '100%').text('100%');
+
+                        $('#fresnsUploadModal .btn-close').trigger('click');
+
+                        var fileInput = $('#fileInput');
+                        fileInput.replaceWith(fileInput.val('').clone(true));
+                        $('#uploadProgressBar').addClass('d-none');
                     }
                 },
             });
@@ -1491,10 +1495,14 @@ var fresnsFile = {
                     $('#uploadSubmit').prop('disabled', false);
                     $('#uploadSubmit').find('.spinner-border').remove();
 
-                    $('#fresnsUploadModal .btn-close').trigger('click');
-
                     $('#uploadProgressBar').attr('aria-valuenow', 100);
                     $('#uploadProgressBar').find('.progress-bar').css('width', '100%').text('100%');
+
+                    $('#fresnsUploadModal .btn-close').trigger('click');
+
+                    var fileInput = $('#fileInput');
+                    fileInput.replaceWith(fileInput.val('').clone(true));
+                    $('#uploadProgressBar').addClass('d-none');
                 }
             },
         });
