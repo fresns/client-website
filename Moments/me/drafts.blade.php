@@ -7,11 +7,9 @@
         {{-- Menus --}}
         <div class="card-header">
             <div class="d-flex">
-                @desktop
-                    <span class="me-2 mb-2" style="margin-top:3px;">
-                        <a class="btn btn-outline-secondary border-0 rounded-circle" href="javascript:goBack()" role="button"><i class="fa-solid fa-arrow-left"></i></a>
-                    </span>
-                @enddesktop
+                <span class="me-2 mb-2 d-none d-lg-block" style="margin-top:3px;">
+                    <a class="btn btn-outline-secondary border-0 rounded-circle" href="javascript:goBack()" role="button"><i class="fa-solid fa-arrow-left"></i></a>
+                </span>
                 <h1 class="fs-5 mt-2">{{ fs_config('channel_me_drafts_name') }}</h1>
             </div>
             <ul class="nav nav-tabs card-header-tabs">

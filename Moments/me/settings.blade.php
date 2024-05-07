@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="d-flex mx-3">
-        <span class="me-2" style="margin-top:11px;">
+        <span class="me-2 d-none d-lg-block" style="margin-top:11px;">
             <a class="btn btn-outline-secondary border-0 rounded-circle" href="javascript:goBack()" role="button"><i class="fa-solid fa-arrow-left"></i></a>
         </span>
         <h1 class="fs-5 my-3">{{ fs_config('channel_me_settings_name') }}</h1>
@@ -113,19 +113,39 @@
                 type="button" data-bs-toggle="modal" data-bs-target="#editModal">{{ fs_lang('modify') }}</button>
         </div>
         {{-- Birthday --}}
-        <div class="input-group mb-3">
-            <span class="input-group-text">{{ fs_lang('userBirthday') }}</span>
-            <span class="form-control">{{ fs_account('detail.birthday') }}</span>
-            <span class="input-group-text">{{ fs_lang('settingBirthdayDisplayType') }}</span>
-            <span class="form-control" id="input-birthday">{{ fs_lang('settingBirthdayDisplayType'.fs_user('detail.birthdayDisplayType')) }}</span>
-            <button class="btn btn-outline-secondary"
-                data-label="{{ fs_lang('settingBirthdayDisplayType') }}"
-                data-type="select"
-                data-option='[{"id":1,"text":"{{ fs_lang('settingBirthdayDisplayType1') }}"},{"id":2,"text":"{{ fs_lang('settingBirthdayDisplayType2') }}"},{"id":3,"text":"{{ fs_lang('settingBirthdayDisplayType3') }}"},{"id":4,"text":"{{ fs_lang('settingBirthdayDisplayType4') }}"}]'
-                data-name="birthdayDisplayType"
-                data-action="{{ route('fresns.api.patch', ['path' => '/api/fresns/v1/user/profile']) }}"
-                data-value="{{ fs_user('detail.birthdayDisplayType') }}"
-                type="button" data-bs-toggle="modal" data-bs-target="#editModal">{{ fs_lang('modify') }}</button>
+        <div class="d-none d-lg-block">
+            <div class="input-group mb-3">
+                <span class="input-group-text">{{ fs_lang('userBirthday') }}</span>
+                <span class="form-control">{{ fs_account('detail.birthday') }}</span>
+                <span class="input-group-text">{{ fs_lang('settingBirthdayDisplayType') }}</span>
+                <span class="form-control">{{ fs_lang('settingBirthdayDisplayType'.fs_user('detail.birthdayDisplayType')) }}</span>
+                <button class="btn btn-outline-secondary"
+                    data-label="{{ fs_lang('settingBirthdayDisplayType') }}"
+                    data-type="select"
+                    data-option='[{"id":1,"text":"{{ fs_lang('settingBirthdayDisplayType1') }}"},{"id":2,"text":"{{ fs_lang('settingBirthdayDisplayType2') }}"},{"id":3,"text":"{{ fs_lang('settingBirthdayDisplayType3') }}"},{"id":4,"text":"{{ fs_lang('settingBirthdayDisplayType4') }}"}]'
+                    data-name="birthdayDisplayType"
+                    data-action="{{ route('fresns.api.patch', ['path' => '/api/fresns/v1/user/profile']) }}"
+                    data-value="{{ fs_user('detail.birthdayDisplayType') }}"
+                    type="button" data-bs-toggle="modal" data-bs-target="#editModal">{{ fs_lang('modify') }}</button>
+            </div>
+        </div>
+        <div class="d-lg-none">
+            <div class="input-group mb-3">
+                <span class="input-group-text">{{ fs_lang('userBirthday') }}</span>
+                <span class="form-control">{{ fs_account('detail.birthday') }}</span>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">{{ fs_lang('settingBirthdayDisplayType') }}</span>
+                <span class="form-control">{{ fs_lang('settingBirthdayDisplayType'.fs_user('detail.birthdayDisplayType')) }}</span>
+                <button class="btn btn-outline-secondary"
+                    data-label="{{ fs_lang('settingBirthdayDisplayType') }}"
+                    data-type="select"
+                    data-option='[{"id":1,"text":"{{ fs_lang('settingBirthdayDisplayType1') }}"},{"id":2,"text":"{{ fs_lang('settingBirthdayDisplayType2') }}"},{"id":3,"text":"{{ fs_lang('settingBirthdayDisplayType3') }}"},{"id":4,"text":"{{ fs_lang('settingBirthdayDisplayType4') }}"}]'
+                    data-name="birthdayDisplayType"
+                    data-action="{{ route('fresns.api.patch', ['path' => '/api/fresns/v1/user/profile']) }}"
+                    data-value="{{ fs_user('detail.birthdayDisplayType') }}"
+                    type="button" data-bs-toggle="modal" data-bs-target="#editModal">{{ fs_lang('modify') }}</button>
+            </div>
         </div>
         {{-- Conversation --}}
         <div class="input-group mb-3">
@@ -217,14 +237,14 @@
         {{-- Account Center --}}
         <div class="card mb-4">
             <div class="card-body">
-                <p><img src="{{ fs_config('site_logo') }}" height="28"></p>
-                <h5 class="card-title">{{ fs_lang('accountCenter') }}</h5>
-                <p class="text-secondary mb-2">{{ fs_lang('accountCenterDesc') }}</p>
-                <p class="text-secondary mb-1"><i class="fa-solid fa-cake-candles fa-fw"></i> {{ fs_lang('userBirthday') }}</p>
-                <p class="text-secondary mb-1"><i class="fa-solid fa-user-shield fa-fw"></i> {{ fs_lang('emailOrPhone') }}</p>
-                <p class="text-secondary"><i class="fa-solid fa-key fa-fw"></i> {{ fs_lang('accountPassword') }}</p>
+                <p class="mb-2"><img src="{{ fs_config('site_logo') }}" height="20"></p>
+                <h5 class="card-title fs-6">{{ fs_lang('accountCenter') }}</h5>
+                <p class="text-secondary-emphasis fs-7 mb-2">{{ fs_lang('accountCenterDesc') }}</p>
+                <p class="text-secondary fs-7 mb-1"><i class="fa-solid fa-cake-candles fa-fw"></i> {{ fs_lang('userBirthday') }}</p>
+                <p class="text-secondary fs-7 mb-1"><i class="fa-solid fa-user-shield fa-fw"></i> {{ fs_lang('emailOrPhone') }}</p>
+                <p class="text-secondary fs-7 mb-2"><i class="fa-solid fa-key fa-fw"></i> {{ fs_lang('accountPassword') }}</p>
                 <p class="mb-0">
-                    <a class="link-primary text-decoration-none" data-bs-toggle="modal" href="#fresnsModal"
+                    <a class="link-primary fs-7 text-decoration-none" data-bs-toggle="modal" href="#fresnsModal"
                         data-modal-height="700px"
                         data-title="{{ fs_lang('accountCenter') }}"
                         data-url="{{ fs_config('account_center_service') }}"
