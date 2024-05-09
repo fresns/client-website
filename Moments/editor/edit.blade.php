@@ -284,7 +284,7 @@
                     <div class="position-absolute top-0 end-0 editor-btn-delete">
                         <button type="button" class="btn btn-outline-dark btn-sm rounded-0 border-0" data-fid="${fileInfo.fid}" onclick="deleteFile(this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ fs_lang('delete') }}" title="{{ fs_lang('delete') }}">
                             <i class="fa-regular fa-trash-can"></i>
-                        </button>x
+                        </button>
                     </div>
                 </div>`;
 

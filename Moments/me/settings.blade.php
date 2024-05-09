@@ -51,6 +51,7 @@
                 data-label="{{ fs_config('user_username_name') }}"
                 data-desc="{{ fs_lang('settingIntervalDays') }}: {{ fs_config('username_edit') }} {{ fs_lang('modifierDays') }} | {{ fs_lang('settingLastTime') }}: {{ fs_user('detail.lastEditUsernameDateTime') }}<br>{{ fs_lang('modifierLength') }}: {{ fs_config('username_min') }} - {{ fs_config('username_max') }}<br>{{ fs_lang('settingNameWarning') }}"
                 data-name="username"
+                data-action="{{ route('fresns.api.patch', ['path' => '/api/fresns/v1/user/profile']) }}"
                 data-value="{{ fs_user('detail.username') }}"
                 type="button" data-bs-toggle="modal" data-bs-target="#editModal">{{ fs_lang('modify') }}</button>
         </div>
