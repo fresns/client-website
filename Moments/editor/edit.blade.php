@@ -423,8 +423,8 @@
                     uploadType = form.find('input[name=uploadType]').val(),
                     files = form.find('input[name=files]')[0].files,
                     supportedExtensions = $('#extensions').text(),
-                    maxSize = parseInt($('#maxSize').text()),
-                    maxDuration = parseInt($('#maxDuration').text() || 0),
+                    maxSize = parseInt($('#maxSize').text() || 0) + 1,
+                    maxDuration = parseInt($('#maxDuration').text() || 0) + 1,
                     maxNumber = parseInt($('#maxNumber').text());
 
                 console.log(usageType, usageFsid, fileType, uploadType, supportedExtensions, maxSize, maxDuration);
