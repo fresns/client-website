@@ -21,7 +21,7 @@
             @if (! $lang['isEnabled'])
                 @continue
             @endif
-            <link rel="alternate" href="{{ request()->fullUrlWithQuery(['language' => $lang['langTag']]) }}" hreflang="{{ $lang['langTag'] }}"/>
+            <link rel="alternate" hreflang="{{ $lang['langTag'] }}" href="{!! fs_config('default_language') == $lang['langTag'] ? request()->fullUrl() : request()->fullUrlWithQuery(['language' => $lang['langTag']]) !!}"/>
         @endforeach
     @endif
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
@@ -184,7 +184,7 @@
                                 @if (! $lang['isEnabled'])
                                     @continue
                                 @endif
-                                <a class="list-group-item list-group-item-action @if (fs_theme('lang') == $lang['langTag']) active @endif" href="{{ request()->fullUrlWithQuery(['language' => $lang['langTag']]) }}" hreflang="{{ $lang['langTag'] }}">
+                                <a class="list-group-item list-group-item-action @if (fs_theme('lang') == $lang['langTag']) active @endif" href="{!! fs_config('default_language') == $lang['langTag'] ? request()->fullUrl() : request()->fullUrlWithQuery(['language' => $lang['langTag']]) !!}" hreflang="{{ $lang['langTag'] }}">
                                     {{ $lang['langName'] }}
                                     @if ($lang['areaName'])
                                         {{ '('.$lang['areaName'].')' }}
