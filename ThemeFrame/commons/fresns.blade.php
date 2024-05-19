@@ -124,7 +124,7 @@
                                 @if (! $lang['isEnabled'])
                                     @continue
                                 @endif
-                                <a class="list-group-item list-group-item-action @if (fs_theme('lang') == $lang['langTag']) active @endif" href="{!! fs_config('default_language') == $lang['langTag'] ? request()->fullUrl() : request()->fullUrlWithQuery(['language' => $lang['langTag']]) !!}" hreflang="{{ $lang['langTag'] }}">
+                                <a class="list-group-item list-group-item-action @if (fs_theme('lang') == $lang['langTag']) active @endif" href="{!! request()->fullUrlWithQuery(['language' => $lang['langTag']]) !!}" hreflang="{{ $lang['langTag'] }}">
                                     {{ $lang['langName'] }}
                                     @if ($lang['areaName'])
                                         {{ '('.$lang['areaName'].')' }}
@@ -152,7 +152,6 @@
         window.ajaxGetList = false;
         window.siteName = "{{ fs_config('site_name') }}";
         window.siteIcon = "{{ fs_config('site_icon') }}";
-        window.cookiePrefix = "{{ fs_config('website_cookie_prefix') }}";
         window.userIdentifier = "{{ fs_config('user_identifier') }}";
         window.mentionStatus = {{ fs_config('mention_status') ? 1 : 0 }};
         window.hashtagStatus = {{ fs_config('hashtag_status') ? 1 : 0 }};

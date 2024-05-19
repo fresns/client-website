@@ -150,7 +150,7 @@
                                         @continue
                                     @endif
                                     <li>
-                                        <a class="dropdown-item py-3 @if (fs_theme('lang') == $lang['langTag']) active @endif" href="{!! fs_config('default_language') == $lang['langTag'] ? request()->fullUrl() : request()->fullUrlWithQuery(['language' => $lang['langTag']]) !!}" hreflang="{{ $lang['langTag'] }}">
+                                        <a class="dropdown-item py-3 @if (fs_theme('lang') == $lang['langTag']) active @endif" href="{!! request()->fullUrlWithQuery(['language' => $lang['langTag']]) !!}" hreflang="{{ $lang['langTag'] }}">
                                             {{ $lang['langName'] }}
                                             @if ($lang['areaName'])
                                                 {{ '('.$lang['areaName'].')' }}
