@@ -63,45 +63,45 @@
                 {{-- Wallet Logs --}}
                 <div class="card">
                     <div class="card-header">
-                        {{ fs_lang('walletLogs') }}
+                        {{ fs_lang('walletRecords') }}
                     </div>
                     <div class="card-body">
                         <table class="table table-hover align-middle text-nowrap">
                             <thead>
                                 <tr class="table-info">
-                                    <th scope="col">{{ fs_lang('walletLogType') }}</th>
-                                    <th scope="col">{{ fs_lang('walletLogAmountTotal') }}</th>
-                                    <th scope="col">{{ fs_lang('walletLogAmount') }}</th>
-                                    <th scope="col">{{ fs_lang('walletLogSystemFee') }}</th>
-                                    <th scope="col">{{ fs_lang('walletLogOpeningBalance') }}</th>
-                                    <th scope="col">{{ fs_lang('walletLogClosingBalance') }}</th>
-                                    <th scope="col">{{ fs_lang('walletLogTime') }}</th>
-                                    <th scope="col">{{ fs_lang('walletLogRemark') }}</th>
-                                    <th scope="col">{{ fs_lang('walletLogUser') }}</th>
-                                    <th scope="col">{{ fs_lang('walletLogState') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordType') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordAmountTotal') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordAmount') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordSystemFee') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordOpeningBalance') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordClosingBalance') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordTime') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordRemark') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordUser') }}</th>
+                                    <th scope="col">{{ fs_lang('walletRecordState') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($logs as $log)
+                                @foreach($records as $record)
                                     <tr>
-                                        <th scope="row">{{ fs_lang("walletLogType{$log['type']}") }}</th>
-                                        <td>{{ $log['amountTotal'] }}</td>
-                                        <td>{{ $log['transactionAmount'] }}</td>
-                                        <td>{{ $log['systemFee'] }}</td>
-                                        <td>{{ $log['openingBalance'] }}</td>
-                                        <td>{{ $log['closingBalance'] }}</td>
+                                        <th scope="row">{{ fs_lang("walletRecordType{$record['type']}") }}</th>
+                                        <td>{{ $record['amountTotal'] }}</td>
+                                        <td>{{ $record['transactionAmount'] }}</td>
+                                        <td>{{ $record['systemFee'] }}</td>
+                                        <td>{{ $record['openingBalance'] }}</td>
+                                        <td>{{ $record['closingBalance'] }}</td>
                                         <td>
-                                            <time class="text-secondary" datetime="{{ $log['datetime'] }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ $log['datetime'] }}">
-                                                {{ $log['timeAgo'] }}
+                                            <time class="text-secondary" datetime="{{ $record['datetime'] }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ $record['datetime'] }}">
+                                                {{ $record['timeAgo'] }}
                                             </time>
                                         </td>
-                                        <td>{{ $log['remark'] }}</td>
+                                        <td>{{ $record['remark'] }}</td>
                                         <td>
-                                            @if ($log['user'])
-                                                @if ($log['user']['status'])
-                                                    <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $log['user']['fsid']]) }}">
-                                                        <img src="{{ $log['user']['avatar'] }}" loading="lazy" class="rounded-circle" width="24" height="24">
-                                                        {{ $log['user']['nickname'] }}
+                                            @if ($record['user'])
+                                                @if ($record['user']['status'])
+                                                    <a href="{{ route('fresns.profile.index', ['uidOrUsername' => $record['user']['fsid']]) }}">
+                                                        <img src="{{ $record['user']['avatar'] }}" loading="lazy" class="rounded-circle" width="24" height="24">
+                                                        {{ $record['user']['nickname'] }}
                                                     </a>
                                                 @else
                                                     {{-- Deactivate --}}
@@ -109,14 +109,14 @@
                                                 @endif
                                             @endif
                                         </td>
-                                        <td>{{ fs_lang("walletLogState{$log['state']}") }}</td>
+                                        <td>{{ fs_lang("walletRecordState{$record['state']}") }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
 
                         <div class="my-3 table-responsive">
-                            {{ $logs->links() }}
+                            {{ $records->links() }}
                         </div>
                     </div>
                 </div>

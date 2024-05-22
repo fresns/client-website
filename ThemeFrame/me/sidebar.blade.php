@@ -53,7 +53,7 @@
         {{-- User Extcredits --}}
         <a href="{{ route('fresns.me.extcredits') }}" class="list-group-item list-group-item-action {{ Route::is('fresns.me.extcredits') ? 'active' : '' }}">
             <img class="img-fluid" src="{{ fs_theme('assets') }}images/menu-account-wallet.png" loading="lazy" width="36" height="36">
-            {{ fs_lang('userExtcreditsLogs') }}
+            {{ fs_lang('userExtcreditsRecords') }}
         </a>
 
         {{-- Users of this account --}}
