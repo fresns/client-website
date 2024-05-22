@@ -192,7 +192,7 @@
     {{-- Toolbar Extends --}}
     @if ($editorConfig['extend']['list'])
         @foreach($editorConfig['extend']['list'] as $extend)
-            @if ($extend['editorToolbar'])
+            @if ($extend['isInToolbar'])
                 <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                     data-title="{{ $extend['name'] }}"
                     data-url="{{ $extend['appUrl']  }}"
@@ -221,19 +221,20 @@
             {{-- Extend List --}}
             <ul class="dropdown-menu rounded-0" aria-labelledby="expands">
                 @foreach($editorConfig['extend']['list'] as $extend)
-                    @if (! $extend['editorToolbar'])
-                        <li>
-                            <a class="dropdown-item" role="button" data-bs-toggle="modal" href="#fresnsModal"
-                                data-title="{{ $extend['name'] }}"
-                                data-url="{{ $extend['appUrl']  }}"
-                                data-draft-type="{{ $type }}"
-                                data-did="{{ $did }}"
-                                data-post-message-key="fresnsEditorExtension">
-                                <img src="{{ $extend['icon'] }}" loading="lazy" width="20" height="20">
-                                {{ $extend['name'] }}
-                            </a>
-                        </li>
+                    @if ($extend['isInToolbar'])
+                        @continue
                     @endif
+                    <li>
+                        <a class="dropdown-item" role="button" data-bs-toggle="modal" href="#fresnsModal"
+                            data-title="{{ $extend['name'] }}"
+                            data-url="{{ $extend['appUrl']  }}"
+                            data-draft-type="{{ $type }}"
+                            data-did="{{ $did }}"
+                            data-post-message-key="fresnsEditorExtension">
+                            <img src="{{ $extend['icon'] }}" loading="lazy" width="20" height="20">
+                            {{ $extend['name'] }}
+                        </a>
+                    </li>
                 @endforeach
             </ul>
         </div>
