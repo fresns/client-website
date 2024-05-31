@@ -1230,7 +1230,7 @@ var fresnsFile = {
             type: fileType,
             name: file.name,
             mime: file.type,
-            extension: file.name.split('.').pop(),
+            extension: file.name.split('.').pop().toLowerCase(),
             size: file.size,
             width: null,
             height: null,
