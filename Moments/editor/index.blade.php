@@ -7,7 +7,7 @@
         <div class="fresns-editor ms-lg-5">
             {{-- Tip: Publish Permissions --}}
             @if ($configs['publish']['limit']['status'] && $configs['publish']['limit']['isInTime'])
-                @component('components.editor.tip.publish', [
+                @component('components.editor.tips.publish', [
                     'publishConfig' => $configs['publish'],
                 ])@endcomponent
             @endif

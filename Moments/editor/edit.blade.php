@@ -7,14 +7,14 @@
         <div class="fresns-editor ms-lg-5">
             {{-- Tip: Publish Permissions --}}
             @if ($configs['publish']['limit']['status'] && $configs['publish']['limit']['isInTime'])
-                @component('components.editor.tip.publish', [
+                @component('components.editor.tips.publish', [
                     'publishConfig' => $configs['publish'],
                 ])@endcomponent
             @endif
 
             {{-- Tip: Edit Controls --}}
             @if ($draft['controls']['isEditDraft'] && ! in_array($draft['detail']['state'], [2, 3]))
-                @component('components.editor.tip.edit', [
+                @component('components.editor.tips.edit', [
                     'controls' => $draft['controls'],
                 ])@endcomponent
             @endif
@@ -75,13 +75,13 @@
                     ])@endcomponent
 
                     {{-- Extends --}}
-                    @component('components.editor.sections.extends', [
+                    @component('components.editor.expands.content-box', [
                         'extends' => $draft['detail']['extends'],
                     ])@endcomponent
 
                     {{-- readConfig --}}
                     @if ($draft['detail']['permissions']['readConfig'] ?? null)
-                        @component('components.editor.sections.config-read', [
+                        @component('components.editor.expands.read-config', [
                             'type' => $type,
                             'did' => $draft['detail']['did'],
                             'readConfig' => $draft['detail']['permissions']['readConfig'],
@@ -90,7 +90,7 @@
 
                     {{-- commentConfig --}}
                     @if ($draft['detail']['permissions']['commentConfig']['action'] ?? null)
-                        @component('components.editor.sections.config-action-button', [
+                        @component('components.editor.expands.action-button', [
                             'type' => $type,
                             'did' => $draft['detail']['did'],
                             'actionButton' => $draft['detail']['permissions']['commentConfig']['action'],
@@ -99,7 +99,7 @@
 
                     {{-- associatedUserListConfig --}}
                     @if ($draft['detail']['permissions']['associatedUserListConfig'] ?? null)
-                        @component('components.editor.sections.config-associated-user-list', [
+                        @component('components.editor.expands.associated-user-list', [
                             'type' => $type,
                             'did' => $draft['detail']['did'],
                             'associatedUserListConfig' => $draft['detail']['permissions']['associatedUserListConfig'],
