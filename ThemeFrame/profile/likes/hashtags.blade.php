@@ -4,7 +4,7 @@
     {{-- List --}}
     <article class="py-4" id="fresns-list-container">
         @foreach($hashtags as $hashtag)
-            @component('components.hashtag.list', compact('hashtag'))@endcomponent
+            @component('components.hashtags.list', compact('hashtag'))@endcomponent
             @if (! $loop->last)
                 <hr>
             @endif

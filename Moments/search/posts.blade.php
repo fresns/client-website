@@ -18,7 +18,7 @@
     {{-- Search Results --}}
     <div class="clearfix border-top">
         @foreach($posts as $post)
-            @component('components.post.list', compact('post'))@endcomponent
+            @component('components.posts.list', compact('post'))@endcomponent
         @endforeach
     </div>
 

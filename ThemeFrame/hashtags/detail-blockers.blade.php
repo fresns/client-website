@@ -15,7 +15,7 @@
             {{-- Middle --}}
             <div class="col-sm-6">
                 <div class="card shadow-sm mb-3">
-                    @component('components.hashtag.detail', compact('hashtag'))@endcomponent
+                    @component('components.hashtags.detail', compact('hashtag'))@endcomponent
                 </div>
 
                 {{-- User List --}}
@@ -23,7 +23,7 @@
                     <div class="card-header">{{ $hashtag['interaction']['blockUserTitle'] }}</div>
 
                     @foreach($users as $user)
-                        @component('components.user.list', compact('user'))@endcomponent
+                        @component('components.users.list', compact('user'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

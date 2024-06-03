@@ -17,7 +17,7 @@
                 {{-- Post List --}}
                 <article class="card clearfix" @if (fs_config('channel_post_list_query_state') != 1) id="fresns-list-container" @endif>
                     @foreach($posts as $post)
-                        @component('components.post.list', compact('post'))@endcomponent
+                        @component('components.posts.list', compact('post'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

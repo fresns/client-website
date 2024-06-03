@@ -20,7 +20,7 @@
                         <h3 class="fs-5">{{ $tree['name'] }}</h3>
                         <div class="card mb-5 py-4">
                             @foreach($tree['groups'] ?? [] as $group)
-                                @component('components.group.list', compact('group'))@endcomponent
+                                @component('components.groups.list', compact('group'))@endcomponent
                                 @if (! $loop->last)
                                     <hr>
                                 @endif
@@ -31,7 +31,7 @@
                     {{-- Group List --}}
                     <div class="card mb-5 py-4" @if (fs_config('channel_group_query_state') != 1) id="fresns-list-container" @endif>
                         @foreach($groups ?? [] as $group)
-                            @component('components.group.list', compact('group'))@endcomponent
+                            @component('components.groups.list', compact('group'))@endcomponent
                             @if (! $loop->last)
                                 <hr>
                             @endif

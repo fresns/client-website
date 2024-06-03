@@ -17,7 +17,7 @@
     {{-- User List --}}
     <div class="clearfix border-top" @if (fs_config('channel_user_list_query_state') != 1) id="fresns-list-container" @endif>
         @foreach($users as $user)
-            @component('components.user.list', compact('user'))@endcomponent
+            @component('components.users.list', compact('user'))@endcomponent
         @endforeach
     </div>
 

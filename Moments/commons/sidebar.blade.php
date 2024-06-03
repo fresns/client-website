@@ -28,7 +28,7 @@
     <aside class="fs-list-group rounded mb-3">
         <h4 class="fs-5 px-3 pb-1 pt-3">{{ fs_lang('contentSticky') }}</h4>
         @foreach(fs_sticky_posts() as $sticky)
-            @component('components.post.sticky', compact('sticky'))@endcomponent
+            @component('components.posts.sticky', compact('sticky'))@endcomponent
         @endforeach
     </aside>
 @endif
@@ -48,6 +48,6 @@
 <aside class="fs-list-group rounded mb-3">
     <h4 class="fs-5 px-3 pb-1 pt-3">{{ fs_lang('contentRecommend') }}</h4>
     @foreach(fs_content_list('user', 'home') as $topUser)
-        @component('components.user.sidebar-list', compact('topUser'))@endcomponent
+        @component('components.users.sidebar-list', compact('topUser'))@endcomponent
     @endforeach
 </aside>

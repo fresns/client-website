@@ -31,7 +31,7 @@
 
                 {{-- Group --}}
                 @if ($configs['editor']['group']['status'])
-                    @component('components.editor.section.group', [
+                    @component('components.editor.sections.group', [
                         'groupConfig' => $configs['editor']['group'],
                         'did' => $draft['detail']['did'],
                         'group' => $draft['detail']['group'],
@@ -39,7 +39,7 @@
                 @endif
 
                 {{-- Toolbar --}}
-                @component('components.editor.section.toolbar', [
+                @component('components.editor.sections.toolbar', [
                     'type' => $type,
                     'did' => $draft['detail']['did'],
                     'editorConfig' => $configs['editor'],
@@ -49,7 +49,7 @@
                 <div class="editor-box p-3">
                     {{-- Title --}}
                     @if ($configs['editor']['title']['status'] || optional($draft['detail'])['title'])
-                        @component('components.editor.section.title', [
+                        @component('components.editor.sections.title', [
                             'titleConfig' => $configs['editor']['title'],
                             'title' => $draft['detail']['title'] ?? '',
                         ])@endcomponent
@@ -59,18 +59,18 @@
                     <textarea class="form-control rounded-0 border-0 editor-content" name="content" id="content" rows="15" placeholder="{{ fs_lang('editorContent') }}">{{ $draft['detail']['content'] }}</textarea>
 
                     {{-- Files --}}
-                    @component('components.editor.section.files', [
+                    @component('components.editor.sections.files', [
                         'files' => $draft['detail']['files'],
                     ])@endcomponent
 
                     {{-- Extends --}}
-                    @component('components.editor.section.extends', [
+                    @component('components.editor.sections.extends', [
                         'extends' => $draft['detail']['extends'],
                     ])@endcomponent
 
                     {{-- readConfig --}}
                     @if ($draft['detail']['permissions']['readConfig'] ?? null)
-                        @component('components.editor.section.config-read', [
+                        @component('components.editor.sections.config-read', [
                             'type' => $type,
                             'did' => $draft['detail']['did'],
                             'readConfig' => $draft['detail']['permissions']['readConfig'],
@@ -79,7 +79,7 @@
 
                     {{-- commentConfig --}}
                     @if ($draft['detail']['permissions']['commentConfig']['action'] ?? null)
-                        @component('components.editor.section.config-action-button', [
+                        @component('components.editor.sections.config-action-button', [
                             'type' => $type,
                             'did' => $draft['detail']['did'],
                             'actionButton' => $draft['detail']['permissions']['commentConfig']['action'],
@@ -88,7 +88,7 @@
 
                     {{-- associatedUserListConfig --}}
                     @if ($draft['detail']['permissions']['associatedUserListConfig'] ?? null)
-                        @component('components.editor.section.config-associated-user-list', [
+                        @component('components.editor.sections.config-associated-user-list', [
                             'type' => $type,
                             'did' => $draft['detail']['did'],
                             'associatedUserListConfig' => $draft['detail']['permissions']['associatedUserListConfig'],
@@ -101,7 +101,7 @@
                     <div class="d-flex justify-content-between">
                         {{-- Location --}}
                         @if ($configs['editor']['location']['status'])
-                            @component('components.editor.section.location', [
+                            @component('components.editor.sections.location', [
                                 'type' => $type,
                                 'did' => $draft['detail']['did'],
                                 'locationConfig' => $configs['editor']['location'],

@@ -15,7 +15,7 @@
             {{-- Middle --}}
             <div class="col-sm-6">
                 <div class="card shadow-sm mb-3">
-                    @component('components.group.detail', compact('group'))@endcomponent
+                    @component('components.groups.detail', compact('group'))@endcomponent
                 </div>
 
                 {{-- extensions --}}
@@ -46,7 +46,7 @@
                     <div class="card-header">{{ $group['interaction']['dislikeUserTitle'] }}</div>
 
                     @foreach($users as $user)
-                        @component('components.user.list', compact('user'))@endcomponent
+                        @component('components.users.list', compact('user'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

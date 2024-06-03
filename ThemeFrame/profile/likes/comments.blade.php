@@ -4,7 +4,7 @@
     {{-- List --}}
     <article class="py-4" id="fresns-list-container">
         @foreach($comments as $comment)
-            @component('components.comment.list', [
+            @component('components.comments.list', [
                 'comment' => $comment,
                 'detailLink' => true,
                 'sectionAuthorLiked' => false,

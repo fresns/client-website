@@ -15,7 +15,7 @@
                 {{-- Hashtag List --}}
                 <article class="card clearfix">
                     @foreach($hashtags as $hashtag)
-                        @component('components.hashtag.list', compact('hashtag'))@endcomponent
+                        @component('components.hashtags.list', compact('hashtag'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

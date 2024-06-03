@@ -126,7 +126,7 @@
         {{-- Notification List --}}
         <div class="list-group list-group-flush border-bottom" id="notifications">
             @foreach($notifications as $notification)
-                @component('components.message.notification', compact('notification'))@endcomponent
+                @component('components.messages.notification', compact('notification'))@endcomponent
             @endforeach
         </div>
     @endif

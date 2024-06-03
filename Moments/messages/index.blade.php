@@ -10,7 +10,7 @@
     {{-- Conversation List --}}
     <div class="list-group rounded-0">
         @foreach($conversations as $conversation)
-            @component('components.message.conversation', compact('conversation'))@endcomponent
+            @component('components.messages.conversation', compact('conversation'))@endcomponent
         @endforeach
     </div>
 

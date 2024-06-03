@@ -18,7 +18,7 @@
     {{-- Search Results --}}
     <div class="clearfix border-top">
         @foreach($users as $user)
-            @component('components.user.list', compact('user'))@endcomponent
+            @component('components.users.list', compact('user'))@endcomponent
         @endforeach
     </div>
 

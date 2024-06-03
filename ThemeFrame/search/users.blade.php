@@ -15,7 +15,7 @@
                 {{-- User List --}}
                 <article class="card clearfix">
                     @foreach($users as $user)
-                        @component('components.user.list', compact('user'))@endcomponent
+                        @component('components.users.list', compact('user'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

@@ -17,7 +17,7 @@
                 {{-- Group List --}}
                 <article class="card clearfix py-4" @if (fs_config('channel_group_list_query_state') != 1) id="fresns-list-container" @endif>
                     @foreach($groups as $group)
-                        @component('components.group.list', compact('group'))@endcomponent
+                        @component('components.groups.list', compact('group'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

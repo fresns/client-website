@@ -19,7 +19,7 @@
     @enddesktop
 
     <div class="shadow-sm">
-        @component('components.comment.detail', compact('comment'))@endcomponent
+        @component('components.comments.detail', compact('comment'))@endcomponent
     </div>
 
     <div class="clearfix pb-5" id="commentList" name="commentList">
@@ -32,7 +32,7 @@
 
         <div id="fresns-list-container">
             @foreach($comments as $comment)
-                @component('components.comment.list', [
+                @component('components.comments.list', [
                     'comment' => $comment,
                     'detailLink' => false,
                     'sectionAuthorLiked' => true,

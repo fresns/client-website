@@ -13,7 +13,7 @@
             @endif
 
             {{-- Toolbar --}}
-            @component('components.editor.section.toolbar', [
+            @component('components.editor.sections.toolbar', [
                 'type' => $type,
                 'did' => '',
                 'editorConfig' => $configs['editor'],
@@ -23,7 +23,7 @@
             <div class="editor-box p-3">
                 {{-- Title --}}
                 @if ($configs['editor']['title']['status'])
-                    @component('components.editor.section.title', [
+                    @component('components.editor.sections.title', [
                         'titleConfig' => $configs['editor']['title'],
                         'title' => '',
                     ])@endcomponent

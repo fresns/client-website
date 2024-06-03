@@ -17,7 +17,7 @@
     {{-- Group List --}}
     <div class="clearfix border-top" @if (fs_config('channel_group_list_query_state') != 1) id="fresns-list-container" @endif>
         @foreach($groups ?? [] as $group)
-            @component('components.group.list', compact('group'))@endcomponent
+            @component('components.groups.list', compact('group'))@endcomponent
         @endforeach
     </div>
 

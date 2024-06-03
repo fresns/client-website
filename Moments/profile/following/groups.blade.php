@@ -4,7 +4,7 @@
     {{-- List --}}
     <div class="clearfix border-top" id="fresns-list-container">
         @foreach($groups as $group)
-            @component('components.group.list', compact('group'))@endcomponent
+            @component('components.groups.list', compact('group'))@endcomponent
         @endforeach
     </div>
 

@@ -19,11 +19,11 @@
     @enddesktop
 
     <div class="bg-light shadow-sm">
-        @component('components.post.detail', compact('post'))@endcomponent
+        @component('components.posts.detail', compact('post'))@endcomponent
     </div>
 
     {{-- Comment Box --}}
-    @component('components.post.section.comment-box', [
+    @component('components.posts.sections.comment-box', [
         'nickname' => $post['author']['nickname'],
         'pid' => $post['pid'],
     ])@endcomponent
@@ -36,7 +36,7 @@
             </div>
             <div class="bg-primary bg-opacity-10 mb-4">
                 @foreach(fs_sticky_comments($post['pid']) as $sticky)
-                    @component('components.comment.sticky', [
+                    @component('components.comments.sticky', [
                         'sticky' => $sticky,
                         'detailLink' => true,
                         'sectionAuthorLiked' => true,
@@ -68,7 +68,7 @@
         {{-- Comment List --}}
         <div class="clearfix" id="fresns-list-container">
             @foreach($comments as $comment)
-                @component('components.comment.list', [
+                @component('components.comments.list', [
                     'comment' => $comment,
                     'detailLink' => true,
                     'sectionAuthorLiked' => true,

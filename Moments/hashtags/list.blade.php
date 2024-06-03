@@ -17,7 +17,7 @@
     {{-- Hashtag List --}}
     <div class="clearfix border-top" @if (fs_config('channel_hashtag_list_query_state') != 1) id="fresns-list-container" @endif>
         @foreach($hashtags as $hashtag)
-            @component('components.hashtag.list', compact('hashtag'))@endcomponent
+            @component('components.hashtags.list', compact('hashtag'))@endcomponent
         @endforeach
     </div>
 

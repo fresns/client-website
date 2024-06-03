@@ -4,7 +4,7 @@
     {{-- List --}}
     <div class="clearfix border-top" id="fresns-list-container">
         @foreach($comments as $comment)
-            @component('components.comment.list', [
+            @component('components.comments.list', [
                 'comment' => $comment,
                 'detailLink' => true,
                 'sectionAuthorLiked' => false,

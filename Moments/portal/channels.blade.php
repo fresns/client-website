@@ -27,7 +27,7 @@
         @if (fs_sticky_posts())
             <div class="mt-2">
                 @foreach(fs_sticky_posts() as $sticky)
-                    @component('components.post.sticky', compact('sticky'))@endcomponent
+                    @component('components.posts.sticky', compact('sticky'))@endcomponent
                 @endforeach
             </div>
         @endif

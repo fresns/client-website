@@ -18,7 +18,7 @@
     {{-- Search Results --}}
     <div class="clearfix border-top">
         @foreach($comments as $comment)
-            @component('components.comment.list', compact('comment'))@endcomponent
+            @component('components.comments.list', compact('comment'))@endcomponent
         @endforeach
     </div>
 

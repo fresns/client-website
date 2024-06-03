@@ -15,7 +15,7 @@
             {{-- Middle --}}
             <div class="col-sm-6">
                 <div class="card shadow-sm mb-3">
-                    @component('components.comment.detail', compact('comment'))@endcomponent
+                    @component('components.comments.detail', compact('comment'))@endcomponent
                 </div>
 
                 {{-- User List --}}
@@ -23,7 +23,7 @@
                     <div class="card-header">{{ $comment['interaction']['blockUserTitle'] }}</div>
 
                     @foreach($users as $user)
-                        @component('components.user.list', compact('user'))@endcomponent
+                        @component('components.users.list', compact('user'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

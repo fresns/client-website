@@ -17,7 +17,7 @@
                 {{-- Hashtag List --}}
                 <article class="card clearfix py-4" @if (fs_config('channel_hashtag_list_query_state') != 1) id="fresns-list-container" @endif>
                     @foreach($hashtags as $hashtag)
-                        @component('components.hashtag.list', compact('hashtag'))@endcomponent
+                        @component('components.hashtags.list', compact('hashtag'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

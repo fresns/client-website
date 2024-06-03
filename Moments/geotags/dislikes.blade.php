@@ -15,7 +15,7 @@
                 {{-- Hashtag List --}}
                 <article class="card clearfix py-4" id="fresns-list-container">
                     @foreach($geotags as $geotag)
-                        @component('components.geotag.list', compact('geotag'))@endcomponent
+                        @component('components.geotags.list', compact('geotag'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

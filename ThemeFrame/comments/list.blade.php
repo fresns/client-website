@@ -17,7 +17,7 @@
                 {{-- Comment List --}}
                 <article class="card clearfix" @if (fs_config('channel_comment_list_query_state') != 1) id="fresns-list-container" @endif>
                     @foreach($comments as $comment)
-                        @component('components.comment.list', [
+                        @component('components.comments.list', [
                             'comment' => $comment,
                             'detailLink' => true,
                             'sectionAuthorLiked' => false,

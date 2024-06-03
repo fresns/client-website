@@ -30,7 +30,7 @@
                     {{-- Messages --}}
                     <div class="card-body">
                         @foreach($messages as $message)
-                            @component('components.message.message', compact('message'))@endcomponent
+                            @component('components.messages.message', compact('message'))@endcomponent
                         @endforeach
 
                         <div class="d-flex justify-content-center mt-4">
@@ -40,7 +40,7 @@
 
                     {{-- Send Box --}}
                     <div class="card-footer">
-                        @component('components.message.send', [
+                        @component('components.messages.send', [
                             'configs' => $conversation['configs'],
                             'user' => $conversation['detail']['user'],
                         ])@endcomponent

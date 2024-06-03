@@ -9,7 +9,7 @@
     {{-- List --}}
     <div class="clearfix border-top" id="fresns-list-container">
         @foreach($users as $user)
-            @component('components.user.list', compact('user'))@endcomponent
+            @component('components.users.list', compact('user'))@endcomponent
         @endforeach
     </div>
 

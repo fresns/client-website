@@ -11,7 +11,7 @@
     {{-- Post List --}}
     <div class="clearfix border-top" @if (fs_config('channel_post_query_state') != 1) id="fresns-list-container" @endif>
         @foreach($posts as $post)
-            @component('components.post.list', compact('post'))@endcomponent
+            @component('components.posts.list', compact('post'))@endcomponent
         @endforeach
     </div>
 

@@ -15,7 +15,7 @@
                 {{-- Comment List --}}
                 <article class="card clearfix" id="fresns-list-container">
                     @foreach($comments as $comment)
-                        @component('components.comment.list', [
+                        @component('components.comments.list', [
                             'comment' => $comment,
                             'detailLink' => true,
                             'sectionAuthorLiked' => false,

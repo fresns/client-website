@@ -18,7 +18,7 @@
     {{-- Search Results --}}
     <div class="clearfix border-top">
         @foreach($groups as $group)
-            @component('components.group.list', compact('group'))@endcomponent
+            @component('components.groups.list', compact('group'))@endcomponent
         @endforeach
     </div>
 

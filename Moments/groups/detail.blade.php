@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="bg-light shadow-sm py-3">
-        @component('components.group.detail', compact('group'))@endcomponent
+        @component('components.groups.detail', compact('group'))@endcomponent
     </div>
 
     {{-- extensions --}}
@@ -36,7 +36,7 @@
     @if (fs_sticky_posts($group['gid']))
         <div class="list-group rounded-0 mb-3">
             @foreach(fs_sticky_posts($group['gid']) as $sticky)
-                @component('components.post.sticky', compact('sticky'))@endcomponent
+                @component('components.posts.sticky', compact('sticky'))@endcomponent
             @endforeach
         </div>
     @endif
@@ -51,7 +51,7 @@
                 @case('posts')
                     <div class="clearfix" id="fresns-list-container">
                         @foreach($posts as $post)
-                            @component('components.post.list', compact('post'))@endcomponent
+                            @component('components.posts.list', compact('post'))@endcomponent
                         @endforeach
                     </div>
 
@@ -73,7 +73,7 @@
                 @case('comments')
                     <div class="clearfix" id="fresns-list-container">
                         @foreach($comments as $comment)
-                            @component('components.comment.list', [
+                            @component('components.comments.list', [
                                 'comment' => $comment,
                                 'detailLink' => true,
                                 'sectionAuthorLiked' => false,

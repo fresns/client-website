@@ -9,7 +9,7 @@
     {{-- Hashtag List --}}
     <div class="clearfix border-top" id="fresns-list-container">
         @foreach($hashtags as $hashtag)
-            @component('components.hashtag.list', compact('hashtag'))@endcomponent
+            @component('components.hashtags.list', compact('hashtag'))@endcomponent
         @endforeach
     </div>
 

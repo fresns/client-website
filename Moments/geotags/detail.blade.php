@@ -25,7 +25,7 @@
         @case('posts')
             <div class="clearfix border-top" id="fresns-list-container">
                 @foreach($posts as $post)
-                    @component('components.post.list', compact('post'))@endcomponent
+                    @component('components.posts.list', compact('post'))@endcomponent
                 @endforeach
             </div>
 
@@ -47,7 +47,7 @@
         @case('comments')
             <div class="clearfix border-top" id="fresns-list-container">
                 @foreach($comments as $comment)
-                    @component('components.comment.list', [
+                    @component('components.comments.list', [
                         'comment' => $comment,
                         'detailLink' => true,
                         'sectionAuthorLiked' => false,

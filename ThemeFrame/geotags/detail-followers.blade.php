@@ -15,7 +15,7 @@
             {{-- Middle --}}
             <div class="col-sm-6">
                 <div class="card shadow-sm mb-3">
-                    @component('components.geotag.detail', compact('geotag'))@endcomponent
+                    @component('components.geotags.detail', compact('geotag'))@endcomponent
                 </div>
 
                 {{-- User List --}}
@@ -23,7 +23,7 @@
                     <div class="card-header">{{ $geotag['interaction']['followUserTitle'] }}</div>
 
                     @foreach($users as $user)
-                        @component('components.user.list', compact('user'))@endcomponent
+                        @component('components.users.list', compact('user'))@endcomponent
                         @if (! $loop->last)
                             <hr>
                         @endif

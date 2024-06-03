@@ -16,7 +16,7 @@
             </h3>
             <div class="mb-4">
                 @foreach($tree['groups'] ?? [] as $group)
-                    @component('components.group.list', compact('group'))@endcomponent
+                    @component('components.groups.list', compact('group'))@endcomponent
                 @endforeach
             </div>
         @endforeach
@@ -33,7 +33,7 @@
         {{-- Group List --}}
         <div class="clearfix border-top" @if (fs_config('channel_group_query_state') != 1) id="fresns-list-container" @endif>
             @foreach($groups ?? [] as $group)
-                @component('components.group.list', compact('group'))@endcomponent
+                @component('components.groups.list', compact('group'))@endcomponent
             @endforeach
         </div>
 
