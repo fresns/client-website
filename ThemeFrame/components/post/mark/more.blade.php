@@ -1,6 +1,6 @@
 <ul class="dropdown-menu interaction-more" aria-labelledby="more">
     {{-- Edit --}}
-    @if ($editControls['isAuthor'] && $editControls['canEdit'])
+    @if ($controls['canEdit'])
         <li>
             <a class="dropdown-item py-2" href="{{ route('fresns.editor.post', ['pid' => $pid]) }}">
                 <i class="bi bi-pencil-square"></i>
@@ -10,7 +10,7 @@
     @endif
 
     {{-- Delete --}}
-    @if ($editControls['isAuthor'] && $editControls['canDelete'])
+    @if ($controls['canDelete'])
         <li><a class="dropdown-item py-2" data-bs-toggle="modal" href="#delete-{{ $pid }}"><i class="bi bi-trash"></i> {{ fs_lang('delete') }}</a></li>
     @endif
 
@@ -58,7 +58,7 @@
 </ul>
 
 {{-- Delete Secondary Confirmation --}}
-@if ($editControls['isAuthor'] && $editControls['canDelete'])
+@if ($controls['canDelete'])
     <div class="modal fade" id="delete-{{ $pid }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="delete-{{ $pid }}Label" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">

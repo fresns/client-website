@@ -301,7 +301,7 @@
                 @component('components.post.mark.more', [
                     'pid' => $post['pid'],
                     'uid' => $post['author']['uid'],
-                    'editControls' => $post['editControls'],
+                    'controls' => $post['controls'],
                     'interaction' => $post['interaction'],
                     'followCount' => $post['followCount'],
                     'blockCount' => $post['blockCount'],

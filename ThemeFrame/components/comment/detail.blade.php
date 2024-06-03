@@ -231,7 +231,7 @@
                 @component('components.comment.mark.more', [
                     'cid' => $comment['cid'],
                     'uid' => $comment['author']['uid'],
-                    'editControls' => $comment['editControls'],
+                    'controls' => $comment['controls'],
                     'interaction' => $comment['interaction'],
                     'followCount' => $comment['followCount'],
                     'blockCount' => $comment['blockCount'],

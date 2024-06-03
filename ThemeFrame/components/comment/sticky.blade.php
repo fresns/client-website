@@ -232,7 +232,7 @@
                 @component('components.comment.mark.more', [
                     'cid' => $sticky['cid'],
                     'uid' => $sticky['author']['uid'],
-                    'editControls' => $sticky['editControls'],
+                    'controls' => $sticky['controls'],
                     'interaction' => $sticky['interaction'],
                     'followCount' => $sticky['followCount'],
                     'blockCount' => $sticky['blockCount'],

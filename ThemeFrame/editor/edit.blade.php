@@ -16,9 +16,9 @@
                 @endif
 
                 {{-- Tip: Edit Controls --}}
-                @if ($draft['editControls']['isEditDraft'] && ! in_array($draft['detail']['state'], [2, 3]))
+                @if ($draft['controls']['isEditDraft'] && ! in_array($draft['detail']['state'], [2, 3]))
                     @component('components.editor.tip.edit', [
-                        'editControls' => $draft['editControls'],
+                        'controls' => $draft['controls'],
                     ])@endcomponent
                 @endif
 

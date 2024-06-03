@@ -1,8 +1,8 @@
 <div class="editor-alert">
-    @if ($editControls['editableStatus'])
+    @if ($controls['editableStatus'])
         <div class="alert alert-danger" role="alert">
             {{ fs_lang('editorEditTimeTitle') }}<br>
-            <kbd>{{ fs_lang('editorEditTimeDesc') }}: {{ $editControls['editableTime'] }} ({{ $editControls['deadlineTime'] }})</kbd>
+            <kbd>{{ fs_lang('editorEditTimeDesc') }}: {{ $controls['editableTime'] }} ({{ $controls['deadlineTime'] }})</kbd>
         </div>
     @else
         <div class="alert alert-danger" role="alert">
