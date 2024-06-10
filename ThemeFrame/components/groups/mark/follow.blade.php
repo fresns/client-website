@@ -20,19 +20,21 @@
         @endif
     </form>
 @elseif ($interaction['followMethod'] == 'page')
-    @if (! $interaction['followStatus'])
-        <form class="float-start me-2">
-            <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#fresnsModal"
-                data-title="{{ $interaction['followName'] }}: {{ $name }}"
-                data-url="{{ $interaction['followAppUrl'] }}"
-                data-gid="{{ $gid }}"
-                data-post-message-key="fresnsFollow">
+    <form class="float-start me-2">
+        <button type="button" class="btn btn-sm {{ $interaction['followStatus'] ? 'btn-success' : 'btn-outline-success'}}" data-bs-toggle="modal" data-bs-target="#fresnsModal"
+            data-title="{{ $interaction['followName'] }}: {{ $gname }}"
+            data-url="{{ $interaction['followAppUrl'] }}"
+            data-gid="{{ $gid }}"
+            data-post-message-key="fresnsFollow">
+            @if ($interaction['followStatus'])
+                <i class="bi bi-person-check-fill"></i>
+            @else
                 <i class="bi bi-person-check"></i>
-                {{ $interaction['followName'] }}
-                @if ($interaction['followPublicCount'] && $count)
-                    <span class="badge rounded-pill bg-success">{{ $count }}</span>
-                @endif
-            </button>
-        </form>
-    @endif
+            @endif
+            {{ $interaction['followName'] }}
+            @if ($interaction['followPublicCount'] && $count)
+                <span class="badge rounded-pill bg-success">{{ $count }}</span>
+            @endif
+        </button>
+    </form>
 @endif

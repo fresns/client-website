@@ -1,20 +1,40 @@
-<form action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/user/mark']) }}" method="post" class="float-start me-2">
-    <input type="hidden" name="markType" value="follow"/>
-    <input type="hidden" name="type" value="user"/>
-    <input type="hidden" name="fsid" value="{{ $uid }}"/>
-    @if ($interaction['followStatus'])
-        <a class="btn btn-success btn-sm fs-mark" data-interaction-active="{{ $interaction['followStatus'] }}" data-bi="bi-person-check">
-            <i class="bi bi-person-check-fill"></i>
-            @if ($interaction['followPublicCount'] != 1 && $count)
-                <span class="show-count">{{ $count }}</span>
+@if ($interaction['followMethod'] == 'api')
+    <form action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/user/mark']) }}" method="post" class="float-start me-2">
+        <input type="hidden" name="markType" value="follow"/>
+        <input type="hidden" name="type" value="user"/>
+        <input type="hidden" name="fsid" value="{{ $uid }}"/>
+        @if ($interaction['followStatus'])
+            <a class="btn btn-success btn-sm fs-mark" data-interaction-active="{{ $interaction['followStatus'] }}" data-bi="bi-person-check">
+                <i class="bi bi-person-check-fill"></i>
+                @if ($interaction['followPublicCount'] != 1 && $count)
+                    <span class="show-count">{{ $count }}</span>
+                @endif
+            </a>
+        @else
+            <a class="btn btn-outline-success btn-sm fs-mark" data-bi="bi-person-check-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $interaction['followName'] }}">
+                <i class="bi bi-person-check"></i>
+                @if ($interaction['followPublicCount'] != 1 && $count)
+                    <span class="show-count">{{ $count }}</span>
+                @endif
+            </a>
+        @endif
+    </form>
+@elseif ($interaction['followMethod'] == 'page')
+    <form class="float-start me-2">
+        <button type="button" class="btn btn-sm {{ $interaction['followStatus'] ? 'btn-success' : 'btn-outline-success'}}" data-bs-toggle="modal" data-bs-target="#fresnsModal"
+            data-title="{{ $interaction['followName'] }}: {{ $name }}"
+            data-url="{{ $interaction['followAppUrl'] }}"
+            data-uid="{{ $uid }}"
+            data-post-message-key="fresnsFollow">
+            @if ($interaction['followStatus'])
+                <i class="bi bi-person-check-fill"></i>
+            @else
+                <i class="bi bi-person-check"></i>
             @endif
-        </a>
-    @else
-        <a class="btn btn-outline-success btn-sm fs-mark" data-bi="bi-person-check-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $interaction['followName'] }}">
-            <i class="bi bi-person-check"></i>
-            @if ($interaction['followPublicCount'] != 1 && $count)
-                <span class="show-count">{{ $count }}</span>
+            {{ $interaction['followName'] }}
+            @if ($interaction['followPublicCount'] && $count)
+                <span class="badge rounded-pill bg-success">{{ $count }}</span>
             @endif
-        </a>
-    @endif
-</form>
+        </button>
+    </form>
+@endif
