@@ -1,4 +1,4 @@
-@if ($interaction['followType'] == 1)
+@if ($interaction['followMethod'] == 'api')
     <form action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/user/mark']) }}" method="post" class="float-start me-2">
         <input type="hidden" name="markType" value="follow"/>
         <input type="hidden" name="type" value="group"/>
@@ -19,12 +19,12 @@
             </a>
         @endif
     </form>
-@elseif ($interaction['followType'] == 2)
+@elseif ($interaction['followMethod'] == 'page')
     @if (! $interaction['followStatus'])
         <form class="float-start me-2">
             <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                 data-title="{{ $interaction['followName'] }}: {{ $name }}"
-                data-url="{{ $interaction['followUrl'] }}"
+                data-url="{{ $interaction['followAppUrl'] }}"
                 data-gid="{{ $gid }}"
                 data-post-message-key="fresnsFollow">
                 <i class="fa-regular fa-flag"></i>
