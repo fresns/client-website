@@ -35,7 +35,7 @@
 
     {{-- Image --}}
     @if ($editorConfig['image']['status'])
-        @if ($editorConfig['image']['uploadType'] == 'page')
+        @if ($editorConfig['image']['uploadMethod'] == 'page')
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                 data-title="{{ fs_lang('uploadTip') }}"
                 data-url="{{ $editorConfig['image']['uploadUrl'] }}"
@@ -51,7 +51,7 @@
         @else
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsUploadModal"
                 data-type="image"
-                data-uploadtype="{{ $editorConfig['image']['uploadType'] }}"
+                data-uploadmethod="{{ $editorConfig['image']['uploadMethod'] }}"
                 data-accept="{{ $editorConfig['image']['inputAccept'] }}"
                 data-extensions="{{ $editorConfig['image']['extensions'] }}"
                 data-maxsize="{{ $editorConfig['image']['maxSize'] }}"
@@ -66,7 +66,7 @@
 
     {{-- Video --}}
     @if ($editorConfig['video']['status'])
-        @if ($editorConfig['video']['uploadType'] == 'page')
+        @if ($editorConfig['video']['uploadMethod'] == 'page')
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                 data-title="{{ fs_lang('uploadTip') }}"
                 data-url="{{ $editorConfig['video']['uploadUrl'] }}"
@@ -82,7 +82,7 @@
         @else
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsUploadModal"
                 data-type="video"
-                data-uploadtype="{{ $editorConfig['video']['uploadType'] }}"
+                data-uploadmethod="{{ $editorConfig['video']['uploadMethod'] }}"
                 data-accept="{{ $editorConfig['video']['inputAccept'] }}"
                 data-extensions="{{ $editorConfig['video']['extensions'] }}"
                 data-maxsize="{{ $editorConfig['video']['maxSize'] }}"
@@ -98,7 +98,7 @@
 
     {{-- Audio --}}
     @if ($editorConfig['audio']['status'])
-        @if ($editorConfig['audio']['uploadType'] == 'page')
+        @if ($editorConfig['audio']['uploadMethod'] == 'page')
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                 data-title="{{ fs_lang('uploadTip') }}"
                 data-url="{{ $editorConfig['audio']['uploadUrl'] }}"
@@ -114,7 +114,7 @@
         @else
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsUploadModal"
                 data-type="audio"
-                data-uploadtype="{{ $editorConfig['audio']['uploadType'] }}"
+                data-uploadmethod="{{ $editorConfig['audio']['uploadMethod'] }}"
                 data-accept="{{ $editorConfig['audio']['inputAccept'] }}"
                 data-extensions="{{ $editorConfig['audio']['extensions'] }}"
                 data-maxsize="{{ $editorConfig['audio']['maxSize'] }}"
@@ -130,7 +130,7 @@
 
     {{-- Document --}}
     @if ($editorConfig['document']['status'])
-        @if ($editorConfig['document']['uploadType'] == 'page')
+        @if ($editorConfig['document']['uploadMethod'] == 'page')
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                 data-title="{{ fs_lang('uploadTip') }}"
                 data-url="{{ $editorConfig['document']['uploadUrl'] }}"
@@ -146,7 +146,7 @@
         @else
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsUploadModal"
                 data-type="document"
-                data-uploadtype="{{ $editorConfig['document']['uploadType'] }}"
+                data-uploadmethod="{{ $editorConfig['document']['uploadMethod'] }}"
                 data-accept="{{ $editorConfig['document']['inputAccept'] }}"
                 data-extensions="{{ $editorConfig['document']['extensions'] }}"
                 data-maxsize="{{ $editorConfig['document']['maxSize'] }}"

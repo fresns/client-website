@@ -1137,7 +1137,7 @@ var fresnsFile = {
         usageType,
         usageFsid,
         fileType,
-        uploadType,
+        uploadMethod,
         files,
         supportedExtensions,
         maxSize,
@@ -1189,7 +1189,7 @@ var fresnsFile = {
                 usageType,
                 usageFsid,
                 fileType,
-                uploadType,
+                uploadMethod,
                 file,
                 supportedExtensions,
                 maxSize,
@@ -1203,7 +1203,7 @@ var fresnsFile = {
         usageType,
         usageFsid,
         fileType,
-        uploadType,
+        uploadMethod,
         file,
         supportedExtensions,
         maxSize,
@@ -1221,7 +1221,7 @@ var fresnsFile = {
                 return;
             }
 
-            fresnsFile.makeUploadToken(fileData, uploadType, file);
+            fresnsFile.makeUploadToken(fileData, uploadMethod, file);
         }
 
         let fileData = {
@@ -1319,8 +1319,8 @@ var fresnsFile = {
     },
 
     // make upload token
-    makeUploadToken: function (fileData, uploadType, file) {
-        if (uploadType == 'api') {
+    makeUploadToken: function (fileData, uploadMethod, file) {
+        if (uploadMethod == 'api') {
             let uploadToken = {
                 url: '/api/theme/actions/api/fresns/v1/common/file/upload',
                 method: 'POST',
@@ -1328,7 +1328,7 @@ var fresnsFile = {
                 fid: '',
             };
 
-            fresnsFile.uploadFile(uploadType, uploadToken, fileData, file);
+            fresnsFile.uploadFile(uploadMethod, uploadToken, fileData, file);
             return;
         }
 
@@ -1348,7 +1348,7 @@ var fresnsFile = {
                     return;
                 }
 
-                fresnsFile.uploadFile(uploadType, res.data, fileData, file);
+                fresnsFile.uploadFile(uploadMethod, res.data, fileData, file);
             },
             error: function (e) {
                 tips(e.responseJSON.message, true);
@@ -1362,7 +1362,7 @@ var fresnsFile = {
     },
 
     // upload file
-    uploadFile: function (uploadType, uploadToken, fileData, file) {
+    uploadFile: function (uploadMethod, uploadToken, fileData, file) {
         let formData = new FormData();
         formData.append('usageType', fileData.usageType);
         formData.append('usageFsid', fileData.usageFsid);
@@ -1372,7 +1372,7 @@ var fresnsFile = {
         formData.append('moreInfo', JSON.stringify(fileData.moreInfo));
 
         // api upload
-        if (uploadType == 'api') {
+        if (uploadMethod == 'api') {
             let fileNumber = numberFiles - numberUploaded;
 
             $.ajax({

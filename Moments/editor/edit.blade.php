@@ -156,7 +156,7 @@
                         <input type="hidden" name="usageType" @if ($type === 'post') value="postDraft" @elseif ($type === "comment") value="commentDraft" @endif>
                         <input type="hidden" name="usageFsid" value="{{ $draft['detail']['did'] }}">
                         <input type="hidden" name="fileType">
-                        <input type="hidden" name="uploadType">
+                        <input type="hidden" name="uploadMethod">
                         <input type="file" name="files" class="form-control" id="fileInput">
 
                         {{-- progress bar --}}
@@ -383,7 +383,7 @@
                 var button = $(e.relatedTarget);
 
                 let fileType = button.data('type'),
-                    uploadType = button.data('uploadtype'),
+                    uploadMethod = button.data('uploadmethod'),
                     accept = button.data('accept'),
                     extensions = button.data('extensions'),
                     maxSize = button.data('maxsize'),
@@ -409,7 +409,7 @@
                 }
 
                 $(this).find("input[name='fileType']").val(fileType);
-                $(this).find("input[name='uploadType']").val(uploadType);
+                $(this).find("input[name='uploadMethod']").val(uploadMethod);
             });
 
             // upload request
@@ -420,15 +420,15 @@
                     usageType = form.find('input[name=usageType]').val(),
                     usageFsid = form.find('input[name=usageFsid]').val(),
                     fileType = form.find('input[name=fileType]').val(),
-                    uploadType = form.find('input[name=uploadType]').val(),
+                    uploadMethod = form.find('input[name=uploadMethod]').val(),
                     files = form.find('input[name=files]')[0].files,
                     supportedExtensions = $('#extensions').text(),
                     maxSize = parseInt($('#maxSize').text() || 0) + 1,
                     maxDuration = parseInt($('#maxDuration').text() || 0) + 1,
                     maxNumber = parseInt($('#maxNumber').text());
 
-                console.log(usageType, usageFsid, fileType, uploadType, supportedExtensions, maxSize, maxDuration);
-                fresnsFile.uploadRequest(usageType, usageFsid, fileType, uploadType, files, supportedExtensions, maxSize, maxDuration);
+                console.log(usageType, usageFsid, fileType, uploadMethod, supportedExtensions, maxSize, maxDuration);
+                fresnsFile.uploadRequest(usageType, usageFsid, fileType, uploadMethod, files, supportedExtensions, maxSize, maxDuration);
             });
         })(jQuery);
     </script>
