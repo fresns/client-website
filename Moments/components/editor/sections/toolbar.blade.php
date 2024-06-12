@@ -38,7 +38,7 @@
         @if ($editorConfig['image']['uploadMethod'] == 'page')
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                 data-title="{{ fs_lang('uploadTip') }}"
-                data-url="{{ $editorConfig['image']['uploadUrl'] }}"
+                data-url="{{ $editorConfig['image']['uploadAppUrl'] }}"
                 data-draft-type="{{ $type }}"
                 data-did="{{ $did }}"
                 data-upload-info="{{ $type.'Draft,'.$did.',image' }}"
@@ -69,7 +69,7 @@
         @if ($editorConfig['video']['uploadMethod'] == 'page')
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                 data-title="{{ fs_lang('uploadTip') }}"
-                data-url="{{ $editorConfig['video']['uploadUrl'] }}"
+                data-url="{{ $editorConfig['video']['uploadAppUrl'] }}"
                 data-draft-type="{{ $type }}"
                 data-did="{{ $did }}"
                 data-upload-info="{{ $type.'Draft,'.$did.',video' }}"
@@ -101,7 +101,7 @@
         @if ($editorConfig['audio']['uploadMethod'] == 'page')
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                 data-title="{{ fs_lang('uploadTip') }}"
-                data-url="{{ $editorConfig['audio']['uploadUrl'] }}"
+                data-url="{{ $editorConfig['audio']['uploadAppUrl'] }}"
                 data-draft-type="{{ $type }}"
                 data-did="{{ $did }}"
                 data-upload-info="{{ $type.'Draft,'.$did.',audio' }}"
@@ -133,7 +133,7 @@
         @if ($editorConfig['document']['uploadMethod'] == 'page')
             <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#fresnsModal"
                 data-title="{{ fs_lang('uploadTip') }}"
-                data-url="{{ $editorConfig['document']['uploadUrl'] }}"
+                data-url="{{ $editorConfig['document']['uploadAppUrl'] }}"
                 data-draft-type="{{ $type }}"
                 data-did="{{ $did }}"
                 data-upload-info="{{ $type.'Draft,'.$did.',document' }}"
