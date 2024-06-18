@@ -12,6 +12,10 @@ This is a client program developed with a plugin mechanism, running by being ins
 
 The following view and configuration function development are all pre-encapsulated functions that can be used directly.
 
+## Sponsors
+
+Fresns is an Apache-2.0-licensed open source project with its ongoing development made possible entirely by the support of these awesome backers. If you'd like to join them, please consider [sponsoring Fresns development](https://github.com/sponsors/fresns).
+
 ## Preview
 
 ### ThemeFrame
