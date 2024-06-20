@@ -108,7 +108,7 @@
                 <label class="col-lg-2 col-form-label text-lg-end">{{ $lang['search_method'] }}</label>
                 <div class="col-lg-6">
                     <select class="form-select" name="moments_search_method">
-                        <option value="" {{ ! $params['moments_search_method'] ? 'selected' : '' }}>Fresns API</option>
+                        <option value="api" {{ $params['moments_search_method'] == 'api' ? 'selected' : '' }}>Fresns API</option>
                         <option value="google" {{ $params['moments_search_method'] == 'google' ? 'selected' : '' }}>Google</option>
                     </select>
                 </div>
