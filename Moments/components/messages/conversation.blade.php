@@ -29,7 +29,7 @@
 
         {{-- Notification Brief --}}
         <div class="conversation-brief text-break mt-1">
-            @if ($conversation['latestMessage']['type'] == 1)
+            @if ($conversation['latestMessage']['type'] == 'text')
                 {{ $conversation['latestMessage']['message'] }}
             @else
                 {{ '['.$conversation['latestMessage']['message'].']' }}
