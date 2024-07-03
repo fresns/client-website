@@ -1392,7 +1392,6 @@ var fresnsFile = {
                 data: formData,
                 processData: false,
                 contentType: false,
-                enctype: 'multipart/form-data',
                 success: function (res) {
                     if (res.code != 0) {
                         tips(res.message, res.code);
@@ -1446,10 +1445,9 @@ var fresnsFile = {
             url: uploadToken.url,
             type: uploadToken.method,
             headers: uploadToken.headers,
-            data: formData,
+            data: file,
             processData: false,
             contentType: false,
-            enctype: 'multipart/form-data',
             success: function (res) {
                 numberUploaded++;
 
