@@ -4,7 +4,7 @@
     "description": "Fresns website framework to showcase web-side functionality and interaction flow.",
     "author": "Fresns",
     "website": "https://fresns.org",
-    "version": "4.2.2",
+    "version": "4.2.3",
     "functions": true,
     "functionItems": [
         {
