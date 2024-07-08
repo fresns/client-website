@@ -12,7 +12,7 @@
                     @if (fs_config('channel_portal_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.portal') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'portal') active @endif"
+                                @if (Route::is('fresns.home') && fs_config('default_homepage') == 'portal') active @endif"
                                 href="{{ route('fresns.portal') }}">
                                 {{ fs_config('channel_portal_name') }}
                             </a>
@@ -23,7 +23,7 @@
                     @if (fs_config('channel_user_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.user.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'user') active @endif"
+                                @if (Route::is('fresns.home') && fs_config('default_homepage') == 'user') active @endif"
                                 href="{{ route('fresns.user.index') }}">
                                 {{ fs_config('channel_user_name') }}
                             </a>
@@ -34,7 +34,7 @@
                     @if (fs_config('channel_group_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.group.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'group') active @endif"
+                                @if (Route::is('fresns.home') && fs_config('default_homepage') == 'group') active @endif"
                                 href="{{ route('fresns.group.index') }}">
                                 {{ fs_config('channel_group_name') }}
                             </a>
@@ -45,7 +45,7 @@
                     @if (fs_config('channel_hashtag_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.hashtag.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'hashtag') active @endif"
+                                @if (Route::is('fresns.home') && fs_config('default_homepage') == 'hashtag') active @endif"
                                 href="{{ route('fresns.hashtag.index') }}">
                                 {{ fs_config('channel_hashtag_name') }}
                             </a>
@@ -56,7 +56,7 @@
                     @if (fs_config('channel_geotag_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.geotag.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'geotag') active @endif"
+                                @if (Route::is('fresns.home') && fs_config('default_homepage') == 'geotag') active @endif"
                                 href="{{ route('fresns.geotag.index') }}">
                                 {{ fs_config('channel_geotag_name') }}
                             </a>
@@ -67,7 +67,7 @@
                     @if (fs_config('channel_post_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.post.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'post') active @endif"
+                                @if (Route::is('fresns.home') && fs_config('default_homepage') == 'post') active @endif"
                                 href="{{ route('fresns.post.index') }}">
                                 {{ fs_config('channel_post_name') }}
                             </a>
@@ -78,7 +78,7 @@
                     @if (fs_config('channel_comment_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.comment.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'comment') active @endif"
+                                @if (Route::is('fresns.home') && fs_config('default_homepage') == 'comment') active @endif"
                                 href="{{ route('fresns.comment.index') }}">
                                 {{ fs_config('channel_comment_name') }}
                             </a>
@@ -89,7 +89,7 @@
                     @if (fs_config('channel_timeline_posts_status') || fs_config('channel_timeline_comments_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.timeline.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'timeline') active @endif"
+                                @if (Route::is('fresns.home') && fs_config('default_homepage') == 'timeline') active @endif"
                                 href="{{ route('fresns.timeline.index') }}">
                                 {{ fs_config('channel_timeline_name') }}
                             </a>
@@ -100,7 +100,7 @@
                     @if (fs_config('channel_nearby_posts_status') || fs_config('channel_nearby_comments_status'))
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('fresns.nearby.*') ? 'active' : '' }}
-                                @if (request()->url() == rtrim(route('fresns.home'), '/') && fs_config('default_homepage') == 'nearby') active @endif"
+                                @if (Route::is('fresns.home') && fs_config('default_homepage') == 'nearby') active @endif"
                                 href="{{ route('fresns.nearby.index') }}">
                                 {{ fs_config('channel_nearby_name') }}
                             </a>

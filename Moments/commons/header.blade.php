@@ -51,10 +51,21 @@
             <ul class="navbar-nav fs-menus d-flex flex-column">
                 {{-- Home --}}
                 <li class="nav-item mt-1">
-                    <a class="nav-link rounded-pill d-inline-flex {{ Route::is('fresns.home') ? 'active' : '' }}" href="{{ route('fresns.home') }}">
-                        {!! Route::is('fresns.home') ? '<i class="fa-solid fa-fw fa-house-user mx-2 mt-1"></i>' : '<i class="fa-solid fa-fw fa-house mx-2 mt-1"></i>' !!}
-                        <span class="me-2">{{ fs_lang('home') }}</span>
-                    </a>
+                    @if (Route::is('fresns.home') || (fs_config('default_homepage') == 'post' && Route::is([
+                            'fresns.post.index',
+                            'fresns.timeline.posts',
+                            'fresns.nearby.posts',
+                        ])))
+                        <a class="nav-link rounded-pill d-inline-flex active" href="{{ route('fresns.home') }}">
+                            <i class="fa-solid fa-fw fa-house-user mx-2 mt-1"></i>
+                            <span class="me-2">{{ fs_lang('home') }}</span>
+                        </a>
+                    @else
+                        <a class="nav-link rounded-pill d-inline-flex" href="{{ route('fresns.home') }}">
+                            <i class="fa-solid fa-fw fa-house mx-2 mt-1"></i>
+                            <span class="me-2">{{ fs_lang('home') }}</span>
+                        </a>
+                    @endif
                 </li>
                 {{-- Portal or Post --}}
                 @if (fs_config('default_homepage') == 'post')

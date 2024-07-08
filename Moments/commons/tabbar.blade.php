@@ -14,10 +14,21 @@
         <div class="row mx-1">
             {{-- home --}}
             <div class="col text-center">
-                <a class="text-decoration-none {{ Route::is('fresns.home') ? 'link-fresns' : 'link-secondary' }}" href="{{ route('fresns.home') }}">
-                    <div class="fs-5 pt-2">{!! Route::is('fresns.home') ? '<i class="fa-solid fa-house-user"></i>' : '<i class="fa-solid fa-house"></i>' !!}</div>
-                    <div class="fs-8 pb-2">{{ fs_lang('home') }}</div>
-                </a>
+                @if (Route::is('fresns.home') || (fs_config('default_homepage') == 'post' && Route::is([
+                        'fresns.post.index',
+                        'fresns.timeline.posts',
+                        'fresns.nearby.posts',
+                    ])))
+                    <a class="text-decoration-none link-fresns" href="{{ route('fresns.home') }}">
+                        <div class="fs-5 pt-2"><i class="fa-solid fa-house"></i></div>
+                        <div class="fs-8 pb-2">{{ fs_lang('home') }}</div>
+                    </a>
+                @else
+                    <a class="text-decoration-none link-secondary" href="{{ route('fresns.home') }}">
+                        <div class="fs-5 pt-2"><i class="fa-solid fa-house-user"></i></div>
+                        <div class="fs-8 pb-2">{{ fs_lang('home') }}</div>
+                    </a>
+                @endif
             </div>
 
             {{-- portal or Post --}}
