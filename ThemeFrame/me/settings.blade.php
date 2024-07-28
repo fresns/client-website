@@ -123,7 +123,7 @@
                         {{-- Birthday --}}
                         <div class="input-group mb-3">
                             <span class="input-group-text">{{ fs_lang('userBirthday') }}</span>
-                            <span class="form-control">{{ fs_account('detail.birthday') }}</span>
+                            <span class="form-control">{{ fs_account('detail.birthday') ? date(fs_config('current_language_menu')['dateFormat'], strtotime(fs_account('detail.birthday'))) : '' }}</span>
                             <span class="input-group-text">{{ fs_lang('settingBirthdayDisplayType') }}</span>
                             <span class="form-control">{{ fs_lang('settingBirthdayDisplayType'.fs_user('detail.birthdayDisplayType')) }}</span>
                             <button class="btn btn-outline-secondary"
