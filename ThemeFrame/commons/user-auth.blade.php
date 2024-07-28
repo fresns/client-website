@@ -14,7 +14,7 @@
                                 <img src="{{ $item['avatar'] }}" loading="lazy" class="auth-avatar rounded-circle">
                                 <div class="auth-nickname mt-2">{{ $item['nickname'] }}</div>
                                 <div class="text-secondary">{{ '@'.$item['fsid'] }}</div>
-                                <form action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/user/auth-token']) }}" method="post" class="user-login-form">
+                                <form action="{{ route('fresns.api.post', ['path' => '/api/fresns/v1/user/auth-token']) }}" method="post" class="user-login-form" id="{{ 'uid-'.$item['uid'] }}">
                                     @csrf
                                     <input type="hidden" name="uidOrUsername" value="{{ $item['uid'] }}">
                                     @if ($item['hasPin'])
@@ -98,21 +98,22 @@
     @if (fs_account()->check() && fs_user()->guest())
         <script>
             $(function () {
-                var userCount = "{{ count(fs_account('detail.users')) }}";
+                var userCount = {{ count(fs_account('detail.users')) }};
 
-                switch (Number(userCount)) {
-                    default:
-                        new bootstrap.Modal('#userAuth').show();
-                    break;
-                    case 1:
-                        var hasPin = "{{ fs_account('detail.users.0.hasPin') }}" || true;
-                        if (hasPin == "true") {
-                            new bootstrap.Modal('#userPinLogin').show()
-                        } else {
-                            $("#uid-{{ fs_account('detail.users.0.uid') }} button").click()
-                        }
-                    break;
+                if (userCount > 1) {
+                    new bootstrap.Modal('#userAuth').show();
+
+                    return;
                 }
+
+                var hasPin = {{ fs_account('detail.users.0.hasPin') ? 1 : 0 }};
+                if (hasPin) {
+                    new bootstrap.Modal('#userPinLogin').show()
+
+                    return;
+                }
+
+                $("#uid-{{ fs_account('detail.users.0.uid') }} button").click();
             })
         </script>
     @endif
