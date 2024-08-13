@@ -35,7 +35,7 @@
 
 {{-- Digest Posts --}}
 <aside class="fs-list-group rounded mb-3">
-    <h4 class="fs-5 px-3 pb-1 pt-3">{{ fs_lang('contentHotList') }}</h4>
+    <h4 class="fs-5 px-3 pb-1 pt-3">{{ fs_lang('contentPopularList') }}</h4>
     @foreach(fs_content_list('post', 'list') as $topPost)
         <a href="{{ route('fresns.post.detail', ['pid' => $topPost['pid']]) }}" class="list-group-item list-group-item-action text-break px-3 py-2">
             <i class="fa-solid fa-arrow-trend-up me-1 text-primary"></i>

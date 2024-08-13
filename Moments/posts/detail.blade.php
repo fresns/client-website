@@ -60,7 +60,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item py-2" href="{{ request()->fullUrlWithQuery(['orderType' => 'createdTime', 'orderDirection' => 'asc']).'#commentList' }}"><i class="fa-solid fa-eye me-2"></i> {{ fs_lang('default') }}</a></li>
                     <li><a class="dropdown-item py-2" href="{{ request()->fullUrlWithQuery(['orderType' => 'createdTime', 'orderDirection' => 'desc']).'#commentList' }}"><i class="fa-solid fa-arrow-up-9-1 me-2"></i> {{ fs_lang('contentNewList') }}</a></li>
-                    <li><a class="dropdown-item py-2" href="{{ request()->fullUrlWithQuery(['orderType' => 'like', 'orderDirection' => 'desc']).'#commentList' }}"><i class="fa-brands fa-hotjar me-2"></i> {{ fs_lang('contentHotList') }}</a></li>
+                    <li><a class="dropdown-item py-2" href="{{ request()->fullUrlWithQuery(['orderType' => 'like', 'orderDirection' => 'desc']).'#commentList' }}"><i class="fa-brands fa-hotjar me-2"></i> {{ fs_lang('contentPopularList') }}</a></li>
                 </ul>
             </div>
         </div>
